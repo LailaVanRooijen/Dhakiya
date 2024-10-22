@@ -1,4 +1,4 @@
-package com.lvr.Dhakiya_backend.flashcards;
+package com.lvr.Dhakiya_backend.notes;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,16 +8,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-public class Flashcard {
-    @Id @GeneratedValue Long id;
+public class Note {
+    @GeneratedValue @Id Long id;
 
-    private String frontContent;
-    private String backContent;
+    private String title;
+    private String content;
+    private String label;
 
     @ManyToOne
-    FlashcardCollection flashcardCollection;
+    private NoteCollection noteCollection;
 }

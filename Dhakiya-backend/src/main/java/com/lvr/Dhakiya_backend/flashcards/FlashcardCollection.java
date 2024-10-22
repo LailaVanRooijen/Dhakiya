@@ -5,12 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
-public class Deck {
+public class FlashcardCollection {
     @GeneratedValue @Id Long id;
 
     @OneToMany
-    ArrayList<Flashcard> flashcard;
+    private List<Flashcard> flashcard = new ArrayList<>();
 }
