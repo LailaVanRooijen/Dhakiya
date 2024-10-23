@@ -1,6 +1,7 @@
-package com.lvr.Dhakiya_backend.notes;
+package com.lvr.Dhakiya_backend.notes.notecollection;
 
 import com.lvr.Dhakiya_backend.environment.Environment;
+import com.lvr.Dhakiya_backend.notes.Note;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

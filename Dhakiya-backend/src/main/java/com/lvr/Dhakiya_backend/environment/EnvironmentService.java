@@ -10,10 +10,19 @@ import java.util.List;
 public class EnvironmentService {
     private final EnvironmentRepository environmentRepository;
     public Environment create(CreateEnvironmentDto environment) {
-    return environmentRepository.save(new Environment(environment.title()));
+    return environmentRepository.save(CreateEnvironmentDto.to(environment));
     }
 
     public List<Environment> getAll() {
         return environmentRepository.findAll();
+    }
+
+    public Environment getById(Long id) {
+        return environmentRepository.findById(id).orElseThrow();
+    }
+
+    public void delete(Long id){
+        environmentRepository.findById(id).orElseThrow();
+        environmentRepository.deleteById(id);
     }
 }

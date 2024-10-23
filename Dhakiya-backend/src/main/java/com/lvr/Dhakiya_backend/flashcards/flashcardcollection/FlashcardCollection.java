@@ -1,5 +1,6 @@
-package com.lvr.Dhakiya_backend.flashcards;
+package com.lvr.Dhakiya_backend.flashcards.flashcardcollection;
 
+import com.lvr.Dhakiya_backend.flashcards.Flashcard;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -32,4 +32,14 @@ public class EnvironmentController {
     public List<Environment> getAll(){
         return environmentService.getAll();
     }
+
+    @GetMapping("/{id}")
+    public Environment getById(@PathVariable Long id){
+        return environmentService.getById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        environmentService.delete(id);
+    }
 }

@@ -1,7 +1,7 @@
 package com.lvr.Dhakiya_backend.environment;
 
-import com.lvr.Dhakiya_backend.flashcards.FlashcardCollection;
-import com.lvr.Dhakiya_backend.notes.NoteCollection;
+import com.lvr.Dhakiya_backend.flashcards.flashcardcollection.FlashcardCollection;
+import com.lvr.Dhakiya_backend.notes.notecollection.NoteCollection;
 import com.lvr.Dhakiya_backend.quiz.QuizSet;
 import jakarta.persistence.*;
 import lombok.Getter;

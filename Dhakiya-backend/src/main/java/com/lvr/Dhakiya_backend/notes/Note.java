@@ -1,5 +1,6 @@
 package com.lvr.Dhakiya_backend.notes;
 
+import com.lvr.Dhakiya_backend.notes.notecollection.NoteCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -21,4 +22,10 @@ public class Note {
 
     @ManyToOne
     private NoteCollection noteCollection;
+
+    public Note(String title, String content, String label) {
+        this.title = title;
+        this.content = content;
+        this.label = label;
+    }
 }
