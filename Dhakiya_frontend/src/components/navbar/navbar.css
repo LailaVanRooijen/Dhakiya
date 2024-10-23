@@ -1,0 +1,19 @@
+@import "../../basestyles/base.css";
+@import "../../basestyles/variables.css";
+
+.navbar {
+    background-color: var(--salmon-pink);
+    display: flex;
+    flex-direction: column;
+}
+.navbar > ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}

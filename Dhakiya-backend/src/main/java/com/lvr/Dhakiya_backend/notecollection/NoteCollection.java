@@ -1,7 +1,7 @@
-package com.lvr.Dhakiya_backend.notes.notecollection;
+package com.lvr.Dhakiya_backend.notecollection;
 
 import com.lvr.Dhakiya_backend.environment.Environment;
-import com.lvr.Dhakiya_backend.notes.Note;
+import com.lvr.Dhakiya_backend.notecollection.notes.Note;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,4 +24,8 @@ public class NoteCollection {
 
     @OneToMany(mappedBy = "noteCollection")
     private List<Note> notes = new ArrayList<>();
+
+    public NoteCollection(String title) {
+        this.title = title;
+    }
 }

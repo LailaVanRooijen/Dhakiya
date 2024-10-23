@@ -1,17 +1,16 @@
 package com.lvr.Dhakiya_backend.environment;
 
-import com.lvr.Dhakiya_backend.flashcards.flashcardcollection.FlashcardCollection;
-import com.lvr.Dhakiya_backend.notes.notecollection.NoteCollection;
+import com.lvr.Dhakiya_backend.flashcardcollection.FlashcardCollection;
+import com.lvr.Dhakiya_backend.notecollection.NoteCollection;
 import com.lvr.Dhakiya_backend.quiz.QuizSet;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
+@Entity 
 @NoArgsConstructor
 @Getter
 @Setter

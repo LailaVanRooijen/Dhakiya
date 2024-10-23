@@ -1,28 +1,28 @@
 package com.lvr.Dhakiya_backend.environment;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class EnvironmentService {
-    private final EnvironmentRepository environmentRepository;
-    public Environment create(CreateEnvironmentDto environment) {
-    return environmentRepository.save(CreateEnvironmentDto.to(environment));
-    }
+  private final EnvironmentRepository environmentRepository;
 
-    public List<Environment> getAll() {
-        return environmentRepository.findAll();
-    }
+  public Environment create(EnvironmentDto environment) {
+    return environmentRepository.save(EnvironmentDto.to(environment));
+  }
 
-    public Environment getById(Long id) {
-        return environmentRepository.findById(id).orElseThrow();
-    }
+  public List<Environment> getAll() {
+    return environmentRepository.findAll();
+  }
 
-    public void delete(Long id){
-        environmentRepository.findById(id).orElseThrow();
-        environmentRepository.deleteById(id);
-    }
+  public Environment getById(Long id) {
+    return environmentRepository.findById(id).orElseThrow();
+  }
+
+  public void delete(Long id) {
+    environmentRepository.findById(id).orElseThrow();
+    environmentRepository.deleteById(id);
+  }
 }

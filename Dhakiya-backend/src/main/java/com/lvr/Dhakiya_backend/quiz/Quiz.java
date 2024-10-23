@@ -9,6 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Answer {
-    @GeneratedValue @Id Long id;
+public class Quiz {
+  @GeneratedValue @Id Long id;
+
+  private String title;
 }

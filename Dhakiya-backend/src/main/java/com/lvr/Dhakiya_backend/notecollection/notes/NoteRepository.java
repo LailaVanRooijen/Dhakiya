@@ -1,7 +1,7 @@
-package com.lvr.Dhakiya_backend.flashcards;
+package com.lvr.Dhakiya_backend.notecollection.notes;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FlashcardRepository extends JpaRepository<Flashcard,Long> {}
+public interface NoteRepository extends JpaRepository<Note, Long> {}
