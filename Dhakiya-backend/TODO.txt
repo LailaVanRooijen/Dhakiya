@@ -1,0 +1,5 @@
+TODO
+- uitvogelen welke endpoints ik precies wil?
+- welke aanpak voor het aanmaken van een quiz set e.d.
+- hoe wil je alles patchen? met welke endpoints?
+- alle nieuw aangemaakte endpoints testen op bugs,
