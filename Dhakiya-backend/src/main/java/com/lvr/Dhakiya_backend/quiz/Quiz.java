@@ -8,11 +8,13 @@ import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class Quiz {
   @GeneratedValue @Id Long id;
 
@@ -22,5 +24,13 @@ public class Quiz {
 
   public Quiz(String title) {
     this.title = title;
+  }
+
+  public void addQuestion(Question question) {
+    this.questions.add(question);
+  }
+
+  public void deleteQuestion(Question question) {
+    this.questions.remove(question);
   }
 }

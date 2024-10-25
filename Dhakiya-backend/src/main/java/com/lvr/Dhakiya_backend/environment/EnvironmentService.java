@@ -22,7 +22,7 @@ public class EnvironmentService {
   }
 
   public void delete(Long id) {
-    environmentRepository.findById(id).orElseThrow();
-    environmentRepository.deleteById(id);
+    Environment environment = environmentRepository.findById(id).orElseThrow();
+    environmentRepository.delete(environment);
   }
 }

@@ -3,6 +3,7 @@ package com.lvr.Dhakiya_backend.flashcardcollection;
 import com.lvr.Dhakiya_backend.flashcardcollection.flashcard.Flashcard;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -11,15 +12,15 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class FlashcardCollection {
-    @GeneratedValue @Id Long id;
+  @GeneratedValue @Id Long id;
 
-    private String title;
+  private String title;
 
-    @OneToMany
-    private List<Flashcard> flashcard = new ArrayList<>();
+  @OneToMany private List<Flashcard> flashcard = new ArrayList<>();
 
-    public FlashcardCollection(String title) {
-        this.title = title;
-    }
+  public FlashcardCollection(String title) {
+    this.title = title;
+  }
 }

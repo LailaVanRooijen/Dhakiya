@@ -22,7 +22,8 @@ public class FlashcardCollectionService {
   }
 
   public void delete(Long id) {
-    flashcardCollectionRepository.findById(id).orElseThrow();
-    flashcardCollectionRepository.deleteById(id);
+    FlashcardCollection flashcardCollection =
+        flashcardCollectionRepository.findById(id).orElseThrow();
+    flashcardCollectionRepository.delete(flashcardCollection);
   }
 }

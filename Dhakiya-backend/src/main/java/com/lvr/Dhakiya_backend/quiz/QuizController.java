@@ -41,4 +41,10 @@ public class QuizController {
   public void delete(@PathVariable Long id) {
     quizService.delete(id);
   }
+
+  @PatchMapping("/{quizId}")
+  public Quiz editQuiz(
+      @PathVariable Long quizId, @RequestParam Long questionId, @RequestParam Action action) {
+    return quizService.patchQuiz(quizId, questionId, action);
+  }
 }

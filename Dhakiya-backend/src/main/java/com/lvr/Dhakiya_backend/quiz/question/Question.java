@@ -6,11 +6,13 @@ import jakarta.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class Question {
   @GeneratedValue @Id Long id;
 

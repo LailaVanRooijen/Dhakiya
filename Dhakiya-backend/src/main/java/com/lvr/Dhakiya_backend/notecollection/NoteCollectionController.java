@@ -2,6 +2,7 @@ package com.lvr.Dhakiya_backend.notecollection;
 
 import static com.lvr.Dhakiya_backend.appConfig.Routes.NOTE_COLLECTIONS;
 
+import com.lvr.Dhakiya_backend.quiz.Action;
 import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -40,5 +41,11 @@ public class NoteCollectionController {
   @DeleteMapping("/{id}")
   public void delete(@PathVariable Long id) {
     noteCollectionService.delete(id);
+  }
+
+  @PatchMapping("/{noteCollectionId}")
+  public NoteCollection editNoteCollection(
+      @PathVariable Long noteCollectionId, @RequestParam Long noteId, @RequestParam Action action) {
+    return noteCollectionService.patchNoteCollection(noteCollectionId, noteId, action);
   }
 }
