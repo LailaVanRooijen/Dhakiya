@@ -4,7 +4,7 @@ import "./navbar.css";
 
 export const NavBarLink: React.FC<NavBarLinkProps> = ({ path, label }) => {
     return (
-        <li>
+        <li className="link-item">
             <Link className="nav-link" to={path}>
                 {label}
             </Link>
@@ -14,5 +14,5 @@ export const NavBarLink: React.FC<NavBarLinkProps> = ({ path, label }) => {
 
 interface NavBarLinkProps {
     path: string;
-    label: string;
+    label: React.ReactNode;
 }

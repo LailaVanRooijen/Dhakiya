@@ -2,19 +2,27 @@
 @import "../../basestyles/variables.css";
 
 .navbar {
-    background-color: var(--salmon-pink);
-    display: flex;
-    flex-direction: column;
+    background-color: var(--primary-color-dark);
+    width: 60px;
 }
 .navbar > ul {
+    padding: 0px;
+    margin: 0px;
     list-style-type: none;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
+}
+
+.link-item {
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-link {
     text-decoration: none;
     color: white;
-    letter-spacing: 1px;
-    font-weight: 600;
+    font-size: xx-large;
 }

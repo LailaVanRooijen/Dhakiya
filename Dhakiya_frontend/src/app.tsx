@@ -4,15 +4,18 @@ import Home from "./pages/home/Home";
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Environment } from "./pages/environment/Environment";
 import { NavBar } from "./components/navbar/NavBar";
+import { Page } from "./components/pageLayout/Page";
 
 const App: React.FC = () => {
     return (
         <Router>
-            <NavBar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/environment" element={<Environment />} />
-            </Routes>
+            <Page>
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/environment" element={<Environment />} />
+                </Routes>
+            </Page>
         </Router>
     );
 };
