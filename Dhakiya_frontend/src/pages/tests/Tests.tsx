@@ -1,12 +1,10 @@
 import React from "react";
 import { LabelBar } from "../../components/generic/LabelBar";
 
-const Home: React.FC = () => {
+export const Tests = () => {
     return (
         <div>
-            <LabelBar label={"Home"} />
+            <LabelBar label={"Tests"} />
         </div>
     );
 };
-
-export default Home;

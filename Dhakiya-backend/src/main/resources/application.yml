@@ -16,5 +16,5 @@ spring:
         dialect: org.hibernate.community.dialect.SQLiteDialect
         format-sql: true
 dhakiya:
-  cors: http://localhost:5173
+  cors: http://localhost:3000
 
