@@ -1,5 +1,3 @@
-import { boxShadow } from "html2canvas/dist/types/css/property-descriptors/box-shadow";
-import { textShadow } from "html2canvas/dist/types/css/property-descriptors/text-shadow";
 import React from "react";
 
 export const LabelBar: React.FC<LabelBarProps> = ({ label }) => {
@@ -14,7 +12,7 @@ interface LabelBarProps {
 /* css */
 const bar = {
     color: "var(--text-light)",
-    backgroundColor: "var(--accent-color)",
+    backgroundColor: "var(--primary-color-light)",
     padding: "18px",
     borderRadius: "3px",
     display: "flex",

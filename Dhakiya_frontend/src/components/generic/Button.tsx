@@ -1,12 +1,17 @@
 import React from "react";
 
-export const Button: React.FC<ButtonProps> = ({ content }) => {
-    return <button style={style}>{content}</button>;
+export const Button: React.FC<ButtonProps> = ({ content, handleClick }) => {
+    return (
+        <button style={style} onClick={handleClick}>
+            {content}
+        </button>
+    );
 };
 
 /* interfaces */
 interface ButtonProps {
     content: string;
+    handleClick: () => void;
 }
 
 /* css */

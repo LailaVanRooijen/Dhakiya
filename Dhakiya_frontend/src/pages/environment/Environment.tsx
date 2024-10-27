@@ -2,25 +2,43 @@ import { SidebarLayout } from "../../components/pageLayout/SidebarLayout";
 import { Button } from "../../components/generic/Button";
 import { LabelBar } from "../../components/generic/LabelBar";
 import { useFetch } from "../../context/ContextApi";
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { OverviewList } from "../../components/generic/OverviewList";
 
 export const Environment: React.FC<EnvironmentProps> = () => {
-    const [environments, setEvironments] = useState(null);
-    const { data, error, fetchData } = useFetch();
+    const { data: environments, error, fetchData } = useFetch();
+
+    const addEnvironment = () => {
+        console.log("add");
+    };
 
     useEffect(() => {
+        console.log("fething environments");
         fetchData("environments");
-        console.log("response: ", data);
     }, []);
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div>
             <LabelBar label={"Environments"} />
             <SidebarLayout
-                leftContent={<div>ae</div>}
+                leftContent={
+                    <>
+                        {environments && (
+                            <OverviewList
+                                list={environments}
+                                linkTo={"environment"}
+                            />
+                        )}
+                    </>
+                }
                 rightContent={
                     <div>
-                        <Button content="add +" />
+                        <Button content="add +" handleClick={addEnvironment} />
                     </div>
                 }
             />
@@ -31,4 +49,12 @@ export const Environment: React.FC<EnvironmentProps> = () => {
 /* interfaces */
 interface EnvironmentProps {}
 
+interface I_Environment {
+    id: number;
+    title: string;
+}
+
 /* css */
+const listStyle = {
+    listStyleType: "none",
+};

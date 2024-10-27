@@ -8,6 +8,10 @@ import { Notes } from "./pages/notes/Notes";
 import { Flashcards } from "./pages/flashcards/Flashcards";
 import { Tests } from "./pages/tests/Tests";
 import { FetchProvider } from "./context/ContextApi";
+import { EnvironmentView } from "./pages/environment/EnvironmentView";
+import { NoteSet } from "./pages/notes/NoteSet";
+import { FlashCardSet } from "./pages/flashcards/FlashCardSet";
+import { FlashcardView } from "./pages/flashcards/FlashcardView";
 
 const App: React.FC = () => {
     return (
@@ -16,8 +20,22 @@ const App: React.FC = () => {
                 <Page>
                     <Routes>
                         <Route path="/" element={<Environment />} />
+                        <Route
+                            path="/environment/:id"
+                            element={<EnvironmentView />}
+                        />
                         <Route path="/notes" element={<Notes />} />
+                        <Route path="/note-set/:id" element={<NoteSet />} />
+                        <Route path="/note/:id" element={<NoteSet />} />
                         <Route path="/flashcards" element={<Flashcards />} />
+                        <Route
+                            path="/flashcard-set/:id"
+                            element={<FlashCardSet />}
+                        />
+                        <Route
+                            path="/flashcard/:id"
+                            element={<FlashcardView />}
+                        />
                         <Route path="/tests" element={<Tests />} />
                     </Routes>
                 </Page>
