@@ -1,9 +1,9 @@
-import { NavBar } from "../navbar/NavBar";
+import { ToolBar } from "../toolbar/ToolBar";
 
 export const Page: React.FC<PageProps> = ({ children }) => {
     return (
         <div style={pageLayout}>
-            <NavBar />
+            <ToolBar />
             <div style={contentBox}>{children}</div>
         </div>
     );

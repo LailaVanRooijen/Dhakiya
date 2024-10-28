@@ -1,25 +1,25 @@
 import { SidebarLayout } from "../../components/pageLayout/SidebarLayout";
 import { Button } from "../../components/generic/Button";
 import { LabelBar } from "../../components/generic/LabelBar";
-import { useFetch } from "../../context/ContextApi";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { OverviewList } from "../../components/generic/OverviewList";
+import { useFetch } from "../../hooks/useApi";
+import { useEffect } from "react";
 
 export const Environment: React.FC<EnvironmentProps> = () => {
-    const { data: environments, error, fetchData } = useFetch();
+    const { data: environments, error } = useFetch("environments");
 
     const addEnvironment = () => {
         console.log("add");
+        // TODO make function to create new environment
     };
 
     useEffect(() => {
-        console.log("fething environments");
-        fetchData("environments");
-    }, []);
+        // temp useEffect. delete me later!
+        console.log(environments);
+    }, [environments]);
 
-    if (error) {
-        return <div>Error: {error}</div>;
+    if (error != null) {
+        return <div>error</div>;
     }
 
     return (
@@ -52,6 +52,7 @@ interface EnvironmentProps {}
 interface I_Environment {
     id: number;
     title: string;
+    noteCollection: [];
 }
 
 /* css */

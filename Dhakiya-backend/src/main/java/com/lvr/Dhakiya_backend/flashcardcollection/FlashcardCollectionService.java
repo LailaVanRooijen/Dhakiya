@@ -1,5 +1,7 @@
 package com.lvr.Dhakiya_backend.flashcardcollection;
 
+import com.lvr.Dhakiya_backend.environment.Environment;
+import com.lvr.Dhakiya_backend.environment.EnvironmentService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -8,9 +10,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class FlashcardCollectionService {
   private final FlashcardCollectionRepository flashcardCollectionRepository;
+  private final EnvironmentService environmentService;
 
-  public FlashcardCollection create(FlashcardCollectionDto flashcardCollectionDto) {
-    return flashcardCollectionRepository.save(FlashcardCollectionDto.to(flashcardCollectionDto));
+  public FlashcardCollection create(FlashcardCollectionDto dto) {
+    Environment environment = environmentService.getById(dto.environmentId());
+    return flashcardCollectionRepository.save(FlashcardCollectionDto.to(dto, environment));
   }
 
   public List<FlashcardCollection> getAll() {

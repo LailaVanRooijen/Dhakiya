@@ -1,18 +1,11 @@
-import { NavBarLink } from "./NavBarLink";
+import { ToolBarLink } from "./ToolBarLink";
 import { FaHome } from "react-icons/fa";
-import { VscServerEnvironment } from "react-icons/vsc";
-import { FaNoteSticky } from "react-icons/fa6";
-import { PiCardsThreeFill } from "react-icons/pi";
-import { MdQuiz } from "react-icons/md";
 
-export const NavBar = () => {
+export const ToolBar = () => {
     return (
         <nav style={navBox}>
             <ul style={navBar}>
-                <NavBarLink path="/" label={<FaHome />} />
-                <NavBarLink path="/notes" label={<FaNoteSticky />} />
-                <NavBarLink path="/flashcards" label={<PiCardsThreeFill />} />
-                <NavBarLink path="/tests" label={<MdQuiz />} />
+                <ToolBarLink path="/" label={<FaHome />} />
             </ul>
         </nav>
     );

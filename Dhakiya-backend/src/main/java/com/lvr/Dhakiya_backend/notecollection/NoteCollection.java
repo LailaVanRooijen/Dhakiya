@@ -16,16 +16,10 @@ import lombok.Setter;
 public class NoteCollection {
   @GeneratedValue @Id Long id;
 
-  private String title;
-
-  @OneToOne private Environment environment;
-
   @OneToMany(mappedBy = "noteCollection")
   private List<Note> notes = new ArrayList<>();
 
-  public NoteCollection(String title) {
-    this.title = title;
-  }
+  @ManyToOne private Environment environment;
 
   public void addNote(Note note) {
     this.notes.add(note);

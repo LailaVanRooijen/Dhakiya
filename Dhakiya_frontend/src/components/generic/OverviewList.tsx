@@ -3,20 +3,22 @@ import { useNavigate } from "react-router-dom";
 
 export const OverviewList: React.FC<OverviewListProps> = ({ list, linkTo }) => {
     const navigate = useNavigate();
+    if (!Array.isArray(list)) {
+        return <div>Nothing to see here</div>;
+    }
     return (
         <ul style={listStyle}>
-            {list &&
-                list.map((list) => (
-                    <li
-                        style={listItem}
-                        key={list.id}
-                        onClick={() => {
-                            navigate(`${linkTo}/${list.id}`);
-                        }}
-                    >
-                        {list.title}
-                    </li>
-                ))}
+            {list.map((list) => (
+                <li
+                    style={listItem}
+                    key={list.id}
+                    onClick={() => {
+                        navigate(`${linkTo}/${list.id}`);
+                    }}
+                >
+                    {list.title}
+                </li>
+            ))}
         </ul>
     );
 };

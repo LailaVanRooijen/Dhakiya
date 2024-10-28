@@ -19,7 +19,7 @@ public class Environment {
 
   private String title;
 
-  @OneToOne private NoteCollection noteCollection;
+  @OneToOne private NoteCollection noteCollection = new NoteCollection();
 
   @OneToMany private List<FlashcardCollection> flashcardCollections = new ArrayList<>();
 
@@ -27,5 +27,16 @@ public class Environment {
 
   public Environment(String title) {
     this.title = title;
+  }
+
+  public Environment(
+      String title,
+      NoteCollection noteCollections,
+      List<FlashcardCollection> flashcardCollections,
+      List<Quiz> quizSet) {
+    this.title = title;
+    this.noteCollection = noteCollections;
+    this.flashcardCollections = flashcardCollections;
+    this.quizSets = quizSet;
   }
 }

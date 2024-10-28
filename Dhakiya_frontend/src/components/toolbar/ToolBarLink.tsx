@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const NavBarLink: React.FC<NavBarLinkProps> = ({ path, label }) => {
+export const ToolBarLink: React.FC<NavBarLinkProps> = ({ path, label }) => {
     return (
         <li style={linkItem}>
             <Link style={navLink} to={path}>
