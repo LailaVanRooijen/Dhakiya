@@ -1,6 +1,6 @@
 package com.lvr.Dhakiya_backend.environment;
 
-import com.lvr.Dhakiya_backend.notecollection.NoteCollection;
+import com.lvr.Dhakiya_backend.noteSet.NoteSet;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,14 +15,10 @@ public class Environment {
 
   private String title;
 
-  @OneToOne private NoteCollection noteCollection = new NoteCollection();
+  @OneToOne(cascade = CascadeType.REMOVE)
+  private NoteSet noteSet = new NoteSet();
 
   public Environment(String title) {
     this.title = title;
-  }
-
-  public Environment(String title, NoteCollection noteCollections) {
-    this.title = title;
-    this.noteCollection = noteCollections;
   }
 }

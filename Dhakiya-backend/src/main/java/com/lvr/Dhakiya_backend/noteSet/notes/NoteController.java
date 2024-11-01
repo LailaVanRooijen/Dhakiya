@@ -1,4 +1,4 @@
-package com.lvr.Dhakiya_backend.notecollection.notes;
+package com.lvr.Dhakiya_backend.noteSet.notes;
 
 import static com.lvr.Dhakiya_backend.appConfig.Routes.NOTES;
 
@@ -17,8 +17,8 @@ public class NoteController {
   private final NoteService noteService;
 
   @PostMapping()
-  public ResponseEntity<Note> create(@RequestBody NoteDto note) {
-    Note savedNote = noteService.create(note);
+  public ResponseEntity<Note> create(@RequestBody NoteDto dto) {
+    Note savedNote = noteService.create(dto);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/id")
@@ -27,6 +27,13 @@ public class NoteController {
     return ResponseEntity.created(location).body(savedNote);
   }
 
+  @PatchMapping("/{id}")
+  public ResponseEntity<Note> update(@PathVariable Long id, @RequestBody NotePatch patch) {
+    Note patchedNote = noteService.update(id, patch);
+    return ResponseEntity.ok(patchedNote);
+  }
+
+  // TODO delete me, only needed for debug purposes
   @GetMapping()
   public List<Note> getAll() {
     return noteService.getAll();

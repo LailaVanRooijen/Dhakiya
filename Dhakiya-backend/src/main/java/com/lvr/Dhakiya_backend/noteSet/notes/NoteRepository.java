@@ -1,4 +1,4 @@
-package com.lvr.Dhakiya_backend.notecollection.notes;
+package com.lvr.Dhakiya_backend.noteSet.notes;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

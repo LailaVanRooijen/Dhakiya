@@ -1,7 +1,6 @@
-package com.lvr.Dhakiya_backend.notecollection;
+package com.lvr.Dhakiya_backend.noteSet;
 
-import com.lvr.Dhakiya_backend.environment.Environment;
-import com.lvr.Dhakiya_backend.notecollection.notes.Note;
+import com.lvr.Dhakiya_backend.noteSet.notes.Note;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +12,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class NoteCollection {
+public class NoteSet {
   @GeneratedValue @Id Long id;
 
-  @OneToMany(mappedBy = "noteCollection")
-  private List<Note> notes = new ArrayList<>();
-
-  @ManyToOne private Environment environment;
+  @OneToMany private List<Note> notes = new ArrayList<>();
 
   public void addNote(Note note) {
     this.notes.add(note);
