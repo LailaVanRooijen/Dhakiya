@@ -2,6 +2,7 @@ package com.lvr.Dhakiya_backend.environment;
 
 import com.lvr.Dhakiya_backend.noteSet.NoteSet;
 import com.lvr.Dhakiya_backend.noteSet.NoteSetRepository;
+import com.lvr.Dhakiya_backend.noteSet.notes.NoteRepository;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class EnvironmentService {
   private final EnvironmentRepository environmentRepository;
   private final NoteSetRepository noteSetRepository;
+  private final NoteRepository noteRepository;
 
   public Environment create(EnvironmentDto dto) {
     Environment environment = EnvironmentDto.to(dto);
@@ -35,6 +37,7 @@ public class EnvironmentService {
         noteSetRepository
             .findById(environment.getNoteSet().getId())
             .orElseThrow(NotFoundException::new);
+    noteSet.getNotes().forEach(noteRepository::delete);
     noteSetRepository.delete(noteSet);
     environmentRepository.delete(environment);
   }
