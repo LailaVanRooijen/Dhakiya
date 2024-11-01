@@ -1,8 +1,6 @@
 package com.lvr.Dhakiya_backend.notecollection;
 
-import com.lvr.Dhakiya_backend.notecollection.notes.Note;
 import com.lvr.Dhakiya_backend.notecollection.notes.NoteRepository;
-import com.lvr.Dhakiya_backend.quiz.Action;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +14,7 @@ public class NoteCollectionService {
     return noteCollectionRepository.findById(id).orElseThrow();
   }
 
-  public NoteCollection patchNoteCollection(Long noteCollectionId, Long noteId, Action action) {
-    Note note = noteRepository.findById(noteId).orElseThrow();
-    NoteCollection noteCollection =
-        noteCollectionRepository.findById(noteCollectionId).orElseThrow();
-    if (action == Action.ADD) {
-      noteCollection.addNote(note);
-    } else if (action == Action.DELETE) {
-      noteCollection.deleteNote(note);
-    }
-    return noteCollection;
+  public NoteCollection create() {
+    return noteCollectionRepository.save(new NoteCollection());
   }
 }

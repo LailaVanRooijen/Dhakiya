@@ -21,10 +21,19 @@ export const EnvironmentView = () => {
         <div>
             <LabelBar label={"he"} />
             <EnivronmentLayout
-                notes={"test"}
-                flashcards={"test"}
-                tests={"test"}
+                notesCollection={environment.noteCollection}
+                flashcardsCollection={environment.flashcardCollections}
+                quizSets={environment.quizSets}
             />
         </div>
     );
 };
+
+interface Ienvironment {
+    notesCollection: {
+        id: number;
+        notes: [];
+    };
+    flashcardsCollection: [];
+    quizSets: [];
+}

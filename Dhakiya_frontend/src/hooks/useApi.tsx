@@ -13,7 +13,6 @@ const HEADERS = { "Content-Type": "application/json" };
 export const useFetch = (url: string) => {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {

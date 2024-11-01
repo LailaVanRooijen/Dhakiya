@@ -1,7 +1,7 @@
 package com.lvr.Dhakiya_backend.environment;
 
 import com.lvr.Dhakiya_backend.notecollection.NoteCollection;
-import com.lvr.Dhakiya_backend.notecollection.NoteCollectionRepository;
+import com.lvr.Dhakiya_backend.notecollection.NoteCollectionService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,11 +10,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EnvironmentService {
   private final EnvironmentRepository environmentRepository;
-  private final NoteCollectionRepository noteCollectionRepository;
+
+  private final NoteCollectionService noteCollectionService;
 
   public Environment create(EnvironmentDto dto) {
     Environment environment = EnvironmentDto.to(dto);
-    NoteCollection noteCollection = noteCollectionRepository.save(new NoteCollection());
+    NoteCollection noteCollection = noteCollectionService.create();
     environment.setNoteCollection(noteCollection);
     return environmentRepository.save(environment);
   }

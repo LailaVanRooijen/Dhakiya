@@ -30,3 +30,7 @@ application.yml
 # Junk files
 TODO.txt
 Endpoints.txt
+
+#files that could hold info like passwords etc.
+application.yml
+pom.xml
