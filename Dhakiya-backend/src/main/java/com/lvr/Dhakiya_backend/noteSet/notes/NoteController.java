@@ -21,7 +21,7 @@ public class NoteController {
     Note savedNote = noteService.create(dto);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/id")
+            .path("/{id}")
             .buildAndExpand(savedNote.getId())
             .toUri();
     return ResponseEntity.created(location).body(savedNote);

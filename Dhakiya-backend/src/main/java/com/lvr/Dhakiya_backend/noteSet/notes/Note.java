@@ -5,8 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,9 +19,9 @@ public class Note {
 
   @Setter private String title;
   @Setter private String content;
-  @ManyToMany private List<Tag> tags = new ArrayList<>();
+  @ManyToMany private Set<Tag> tags = new HashSet<>();
 
-  public Note(String title, String content, List<Tag> tags) {
+  public Note(String title, String content, Set<Tag> tags) {
     this.title = title;
     this.content = content;
     this.tags.addAll(tags);
@@ -36,7 +36,7 @@ public class Note {
     this.tags.add(tag);
   }
 
-  public void addTagList(List<Tag> tags) {
+  public void addTagList(Set<Tag> tags) {
     this.tags.addAll(tags);
   }
 }

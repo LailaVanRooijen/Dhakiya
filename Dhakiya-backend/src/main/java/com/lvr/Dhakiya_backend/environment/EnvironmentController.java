@@ -21,7 +21,7 @@ public class EnvironmentController {
     Environment savedEnvironment = environmentService.create(environment);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/id")
+            .path("/{id}")
             .buildAndExpand(savedEnvironment.getId())
             .toUri();
     return ResponseEntity.created(location).body(savedEnvironment);
