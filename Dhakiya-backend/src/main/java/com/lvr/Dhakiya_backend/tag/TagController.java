@@ -37,4 +37,16 @@ public class TagController {
   public Tag getById(@PathVariable Long id) {
     return tagService.getById(id);
   }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Tag> delete(@PathVariable Long id) {
+    tagService.delete(id);
+    return ResponseEntity.ok().build();
+  }
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<Tag> update(@PathVariable Long id, @RequestBody TagDto patch) {
+    Tag updatedTag = tagService.update(id, patch);
+    return ResponseEntity.ok(updatedTag);
+  }
 }

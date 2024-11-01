@@ -11,7 +11,6 @@ public class TagService {
   private final TagRepository tagRepository;
 
   public Tag create(TagDto dto) {
-    System.out.println("creating a tag"); // todo remove me later, debug
     return tagRepository.save(TagDto.to(dto));
   }
 
@@ -21,5 +20,16 @@ public class TagService {
 
   public Tag getById(Long id) {
     return tagRepository.findById(id).orElseThrow(NotFoundException::new);
+  }
+
+  public void delete(Long id) {
+    tagRepository.findById(id).orElseThrow(NotFoundException::new);
+    tagRepository.deleteById(id);
+  }
+
+  public Tag update(Long id, TagDto patch) {
+    Tag tag = tagRepository.findById(id).orElseThrow(NotFoundException::new);
+    if (patch.name() != null) tag.setName(patch.name());
+    return tagRepository.save(tag);
   }
 }

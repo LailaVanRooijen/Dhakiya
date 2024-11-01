@@ -38,12 +38,15 @@ public class EnvironmentController {
   }
 
   @DeleteMapping("/{id}")
-  public void delete(@PathVariable Long id) {
+  public ResponseEntity<Environment> delete(@PathVariable Long id) {
     environmentService.delete(id);
+    return ResponseEntity.ok().build();
   }
 
   @PatchMapping("/{id}")
-  public Environment update(@PathVariable Long id, @RequestBody EnvironmentDto patch) {
-    return environmentService.update(id, patch);
+  public ResponseEntity<Environment> update(
+      @PathVariable Long id, @RequestBody EnvironmentDto patch) {
+    Environment patchedEnvironment = environmentService.update(id, patch);
+    return ResponseEntity.ok(patchedEnvironment);
   }
 }

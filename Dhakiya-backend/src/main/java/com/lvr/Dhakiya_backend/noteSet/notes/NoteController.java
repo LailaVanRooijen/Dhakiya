@@ -3,7 +3,6 @@ package com.lvr.Dhakiya_backend.noteSet.notes;
 import static com.lvr.Dhakiya_backend.appConfig.Routes.NOTES;
 
 import java.net.URI;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,19 +32,14 @@ public class NoteController {
     return ResponseEntity.ok(patchedNote);
   }
 
-  // TODO delete me, only needed for debug purposes
-  @GetMapping()
-  public List<Note> getAll() {
-    return noteService.getAll();
-  }
-
   @GetMapping("/{id}")
   public Note getById(@PathVariable Long id) {
     return noteService.getById(id);
   }
 
   @DeleteMapping("/{id}")
-  public void delete(@PathVariable Long id) {
+  public ResponseEntity<Note> delete(@PathVariable Long id) {
     noteService.delete(id);
+    return ResponseEntity.ok().build();
   }
 }

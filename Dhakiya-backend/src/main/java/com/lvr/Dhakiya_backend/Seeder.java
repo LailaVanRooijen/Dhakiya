@@ -23,8 +23,8 @@ public class Seeder implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     seedEnvironments();
-    seedNotes();
     seedTags();
+    seedNotes();
   }
 
   public void seedEnvironments() {
