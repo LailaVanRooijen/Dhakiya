@@ -1,6 +1,7 @@
 package com.lvr.Dhakiya_backend.noteSet.notes;
 
 import com.lvr.Dhakiya_backend.noteSet.NoteSetService;
+import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,16 +23,16 @@ public class NoteService {
   }
 
   public Note getById(Long id) {
-    return noteRepository.findById(id).orElseThrow();
+    return noteRepository.findById(id).orElseThrow(NotFoundException::new);
   }
 
   public void delete(Long id) {
-    noteRepository.findById(id).orElseThrow();
+    noteRepository.findById(id).orElseThrow(NotFoundException::new);
     noteRepository.deleteById(id);
   }
 
   public Note update(Long id, NotePatch patch) {
-    Note note = noteRepository.findById(id).orElseThrow();
+    Note note = noteRepository.findById(id).orElseThrow(NotFoundException::new);
     if (patch.title() != null) note.setTitle(patch.title());
     if (patch.content() != null) note.setContent(patch.content());
     if (patch.label() != null) note.setLabel(patch.label());

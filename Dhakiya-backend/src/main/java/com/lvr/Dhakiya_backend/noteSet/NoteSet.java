@@ -6,22 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
 @Getter
-@Setter
 public class NoteSet {
-  @GeneratedValue @Id Long id;
+  @GeneratedValue @Id private Long id;
 
-  @OneToMany private List<Note> notes = new ArrayList<>();
+  @OneToMany(fetch = FetchType.EAGER)
+  private List<Note> notes = new ArrayList<>();
 
   public void addNote(Note note) {
     this.notes.add(note);
-  }
-
-  public void deleteNote(Note notes) {
-    this.notes.remove(notes);
   }
 }

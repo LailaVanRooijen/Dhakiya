@@ -11,12 +11,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Environment {
-  @GeneratedValue @Id Long id;
+  @GeneratedValue @Id private Long id;
 
   private String title;
 
-  @OneToOne(cascade = CascadeType.REMOVE)
-  private NoteSet noteSet = new NoteSet();
+  @OneToOne() private NoteSet noteSet = new NoteSet();
 
   public Environment(String title) {
     this.title = title;

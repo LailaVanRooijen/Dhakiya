@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 public class Seeder implements CommandLineRunner {
   private final EnvironmentService environmentService;
   private NoteService noteService;
-  private NoteSetService noteSetService;
 
   @Override
   public void run(String... args) throws Exception {

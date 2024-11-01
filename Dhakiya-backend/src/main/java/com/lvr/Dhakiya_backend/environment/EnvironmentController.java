@@ -15,7 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 public class EnvironmentController {
   private final EnvironmentService environmentService;
-  
+
   @PostMapping()
   public ResponseEntity<Environment> create(@RequestBody EnvironmentDto environment) {
     Environment savedEnvironment = environmentService.create(environment);
@@ -40,5 +40,10 @@ public class EnvironmentController {
   @DeleteMapping("/{id}")
   public void delete(@PathVariable Long id) {
     environmentService.delete(id);
+  }
+
+  @PatchMapping("/{id}")
+  public Environment update(@PathVariable Long id, @RequestBody EnvironmentDto patch) {
+    return environmentService.update(id, patch);
   }
 }

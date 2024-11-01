@@ -20,7 +20,7 @@ public class NoteSetController {
 
   // TODO delete me later, for debug purpose
   @GetMapping()
-  public List<NoteSet> getById() {
+  public List<NoteSet> getAll() {
     return noteSetService.getAll();
   }
 }

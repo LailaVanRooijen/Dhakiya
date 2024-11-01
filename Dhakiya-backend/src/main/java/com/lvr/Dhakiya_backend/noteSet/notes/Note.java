@@ -10,14 +10,15 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @Getter
-@Setter
 public class Note {
-  @GeneratedValue @Id Long id;
+  @GeneratedValue @Id private Long id;
 
-  private String title;
-  private String content;
-  private String label;
-  
+  @Setter private String title;
+  @Setter private String content;
+  @Setter private String label;
+
+  // @ManyToMany private Tag tag;
+
   public Note(String title, String content, String label) {
     this.title = title;
     this.content = content;
