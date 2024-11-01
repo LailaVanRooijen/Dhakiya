@@ -35,7 +35,7 @@ public class NoteService {
     Note note = noteRepository.findById(id).orElseThrow(NotFoundException::new);
     if (patch.title() != null) note.setTitle(patch.title());
     if (patch.content() != null) note.setContent(patch.content());
-    if (patch.label() != null) note.setLabel(patch.label());
+    if (patch.tags() != null) note.addTagList(patch.tags());
     return noteRepository.save(note);
   }
 }
