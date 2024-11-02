@@ -6,7 +6,9 @@ import { useEffect } from "react";
 
 export const EnvironmentView = () => {
     const { id } = useParams<{ id: string }>();
-    const { data: environment, error } = useFetch(`environments/${id}`);
+    const { data: environment, error } = useFetch<IEnvironment>(
+        `environments/${id}`
+    );
 
     useEffect(() => {
         // temp use effect, delete me later!
@@ -19,21 +21,30 @@ export const EnvironmentView = () => {
 
     return (
         <div>
-            <LabelBar label={"he"} />
-            <EnivronmentLayout
-                notesCollection={environment.noteCollection}
-                flashcardsCollection={environment.flashcardCollections}
+            <LabelBar label={environment.title} />
+            {/* <EnivronmentLayout
+                notesCollection={environment.noteSet}
+                flashcardsCollection={environment.flashcardSets}
                 quizSets={environment.quizSets}
-            />
+            /> */}
         </div>
     );
 };
 
-interface Ienvironment {
-    notesCollection: {
+interface IEnvironment {
+    id: string;
+    title: string;
+    noteSet: {
         id: number;
-        notes: [];
-    };
-    flashcardsCollection: [];
-    quizSets: [];
+        notes: string[];
+    }[];
+    flashcardSets: {
+        id: number;
+        question: string;
+        answer: string;
+    }[];
+    quizSets: {
+        id: number;
+        questions: string[];
+    }[];
 }

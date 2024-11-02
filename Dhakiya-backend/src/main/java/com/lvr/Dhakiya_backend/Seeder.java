@@ -1,12 +1,15 @@
 package com.lvr.Dhakiya_backend;
 
-import com.lvr.Dhakiya_backend.environment.EnvironmentDto;
-import com.lvr.Dhakiya_backend.environment.EnvironmentService;
-import com.lvr.Dhakiya_backend.noteSet.notes.NoteDto;
-import com.lvr.Dhakiya_backend.noteSet.notes.NoteService;
-import com.lvr.Dhakiya_backend.tag.Tag;
-import com.lvr.Dhakiya_backend.tag.TagDto;
-import com.lvr.Dhakiya_backend.tag.TagService;
+import com.lvr.Dhakiya_backend.entities.environment.EnvironmentDto;
+import com.lvr.Dhakiya_backend.entities.environment.EnvironmentService;
+import com.lvr.Dhakiya_backend.entities.flashcard.FlashcardDto;
+import com.lvr.Dhakiya_backend.entities.flashcard.FlashcardService;
+import com.lvr.Dhakiya_backend.entities.flashcardset.FlashcardSetDto;
+import com.lvr.Dhakiya_backend.entities.flashcardset.FlashcardSetService;
+import com.lvr.Dhakiya_backend.entities.notes.NoteDto;
+import com.lvr.Dhakiya_backend.entities.notes.NoteService;
+import com.lvr.Dhakiya_backend.entities.tag.Tag;
+import com.lvr.Dhakiya_backend.entities.tag.TagRepository;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -17,36 +20,66 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class Seeder implements CommandLineRunner {
   private final EnvironmentService environmentService;
-  private NoteService noteService;
-  private TagService tagService;
+  private final TagRepository tagRepository;
+  private final NoteService noteService;
+  private final FlashcardSetService flashcardSetService;
+  private final FlashcardService flashcardService;
 
   @Override
   public void run(String... args) throws Exception {
     seedEnvironments();
     seedTags();
     seedNotes();
+    seedFlashcardSets();
+    seedFlashcards();
   }
 
-  public void seedEnvironments() {
+  private void seedFlashcards() {
+    if (!flashcardService.getAll().isEmpty()) return;
+
+    flashcardService.create(
+        new FlashcardDto(1L, "Is there a?", "Yes", new ArrayList<>(List.of(1L, 2L))));
+    flashcardService.create(
+        new FlashcardDto(2L, "Is a?", "Maybe", new ArrayList<>(List.of(3L, 4L))));
+  }
+
+  private void seedFlashcardSets() {
+    if (!flashcardSetService.getAll().isEmpty()) return;
+
+    flashcardSetService.create(new FlashcardSetDto(1L, "My first set"));
+    flashcardSetService.create(new FlashcardSetDto(2L, "My second set"));
+    flashcardSetService.create(new FlashcardSetDto(3L, "Set creation Master!"));
+  }
+
+  private void seedEnvironments() {
     if (!environmentService.getAll().isEmpty()) return;
-    ArrayList<String> subjects =
-        new ArrayList<>(List.of("Math", "English", "History", "Psychology"));
+
+    List<String> subjects =
+        new ArrayList<>(List.of("Math", "History", "Geography", "Computer Science", "OCA 21"));
     subjects.forEach(subject -> environmentService.create(new EnvironmentDto(subject)));
   }
 
   private void seedTags() {
-    if (!tagService.getAll().isEmpty()) return;
+    if (!tagRepository.findAll().isEmpty()) return;
 
-    Tag tag = tagService.create(new TagDto("Chapter 1"));
-    Tag tag1 = tagService.create(new TagDto("Chapter 2"));
-    Tag tag2 = tagService.create(new TagDto("Chapter 3"));
+    List<String> tagNames =
+        new ArrayList<>(List.of("Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5"));
+    tagNames.forEach(name -> tagRepository.save(new Tag(name)));
   }
 
-  public void seedNotes() {
+  private void seedNotes() {
     if (!noteService.getAll().isEmpty()) return;
-    Long noteSetId = environmentService.getAll().get(0).getNoteSet().getId();
-    noteService.create(
-        new NoteDto(noteSetId, "Another test note", "this note also has text", null));
-    noteService.create(new NoteDto(noteSetId + 1, "Test a note", "this note has text", null));
+
+    List<String> noteContentList =
+        new ArrayList<>(List.of("i am a note", "i am also a note", "i am a imposter note"));
+    noteContentList.forEach(
+        content -> {
+          noteService.create(
+              new NoteDto(
+                  1L,
+                  (content + " on the front"),
+                  (content + " on the back"),
+                  new ArrayList<>(List.of(1L))));
+        });
   }
 }
