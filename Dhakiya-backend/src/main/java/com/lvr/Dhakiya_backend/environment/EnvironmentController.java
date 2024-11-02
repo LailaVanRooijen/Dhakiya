@@ -17,8 +17,8 @@ public class EnvironmentController {
   private final EnvironmentService environmentService;
 
   @PostMapping()
-  public ResponseEntity<Environment> create(@RequestBody EnvironmentDto environment) {
-    Environment savedEnvironment = environmentService.create(environment);
+  public ResponseEntity<Environment> create(@RequestBody EnvironmentDto dto) {
+    Environment savedEnvironment = environmentService.create(dto);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
@@ -28,8 +28,13 @@ public class EnvironmentController {
   }
 
   @GetMapping()
-  public List<Environment> getAll() {
-    return environmentService.getAll();
+  public ResponseEntity<List<Environment>> getAll() {
+    List<Environment> environments = environmentService.getAll();
+    if (environments.isEmpty()) {
+      return ResponseEntity.noContent().build();
+    } else {
+      return ResponseEntity.ok(environments);
+    }
   }
 
   @GetMapping("/{id}")

@@ -1,12 +1,11 @@
 package com.lvr.Dhakiya_backend.noteSet;
 
-import static com.lvr.Dhakiya_backend.appConfig.Routes.NOTE_COLLECTIONS;
+import static com.lvr.Dhakiya_backend.appConfig.Routes.NOTE_SETS;
 
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping(NOTE_COLLECTIONS)
+@RequestMapping(NOTE_SETS)
 @RequiredArgsConstructor
 @CrossOrigin(origins = "${dhakiya.cors}")
 @RestController
@@ -16,11 +15,5 @@ public class NoteSetController {
   @GetMapping("/{id}")
   public NoteSet getById(@PathVariable Long id) {
     return noteSetService.getById(id);
-  }
-
-  // TODO delete me later, for debug purpose
-  @GetMapping()
-  public List<NoteSet> getAll() {
-    return noteSetService.getAll();
   }
 }

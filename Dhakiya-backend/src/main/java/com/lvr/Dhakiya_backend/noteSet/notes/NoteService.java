@@ -55,13 +55,17 @@ public class NoteService {
     noteRepository.deleteById(id);
   }
 
-  public Note update(Long id, NotePatch patch) {
+  public Note update(Long id, NoteDto patch) {
     Note note = noteRepository.findById(id).orElseThrow(NotFoundException::new);
     if (patch.title() != null) note.setTitle(patch.title());
     if (patch.content() != null) note.setContent(patch.content());
-    if (patch.tags() != null)
-      note.addTagList(
-          patch.tags()); // TODO morgen deze ff fixen alleen List met id's meegegevn via json
+    if (patch.tagIds() != null) {
+      Set<Tag> tags = convertToTags(patch.tagIds());
+      if (tags.size() < patch.tagIds().size()) {
+        throw new BadRequestException("duplicate tag id's");
+      }
+      note.addTagList(tags);
+    }
     return noteRepository.save(note);
   }
 }
