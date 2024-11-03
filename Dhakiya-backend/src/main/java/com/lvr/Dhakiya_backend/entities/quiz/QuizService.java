@@ -20,7 +20,7 @@ public class QuizService {
         environmentRepository
             .findById(dto.environmentId())
             .orElseThrow(() -> new BadRequestException("environment does not exist"));
-    environment.addQuiz(quiz);
+    environment.addQuizSets(quiz);
     quizRepository.save(quiz);
     environmentRepository.save(environment);
     return quiz;

@@ -28,8 +28,10 @@ public class FlashcardService {
         flashcardSetRepository
             .findById(dto.flashcardSetId())
             .orElseThrow(() -> new BadRequestException("flashcardSet set does not exist"));
-    flashcardSet.addFlashcard(flashcard);
-    return flashcardRepository.save(flashcard);
+    flashcardSet.addFlashcards(flashcard);
+    flashcardRepository.save(flashcard);
+    flashcardSetRepository.save(flashcardSet);
+    return flashcard;
   }
 
   public List<Flashcard> getAll() {

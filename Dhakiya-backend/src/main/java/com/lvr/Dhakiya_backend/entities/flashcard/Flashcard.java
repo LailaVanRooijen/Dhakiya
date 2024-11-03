@@ -37,7 +37,17 @@ public class Flashcard {
     this.flashcardTags.addAll(tags);
   }
 
+  // overloaded
+  public void addTags(Tag tag) {
+    this.flashcardTags.add(tag);
+  }
+
   public void deleteTags(Set<Tag> tags) {
     this.flashcardTags.removeAll(tags);
+  }
+
+  // overloaded
+  public void deleteTags(Tag tag) {
+    this.flashcardTags.remove(tag);
   }
 }

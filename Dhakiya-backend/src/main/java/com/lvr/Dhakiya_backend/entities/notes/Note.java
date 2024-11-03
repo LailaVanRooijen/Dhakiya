@@ -32,11 +32,21 @@ public class Note {
     this.content = content;
   }
 
-  public void addAllTags(Set<Tag> tags) {
+  public void addTags(Set<Tag> tags) {
     this.tags.addAll(tags);
   }
 
-  public void removeAllTags(Set<Tag> tags) {
+  // overloaded
+  public void addTags(Tag tag) {
+    this.tags.add(tag);
+  }
+
+  public void removeTags(Set<Tag> tags) {
     this.tags.removeAll(tags);
+  }
+
+  // overloaded
+  public void removeTags(Tag tag) {
+    this.tags.remove(tag);
   }
 }

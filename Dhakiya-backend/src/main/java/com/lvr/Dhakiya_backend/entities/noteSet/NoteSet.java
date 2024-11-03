@@ -16,11 +16,21 @@ public class NoteSet {
   @OneToMany(fetch = FetchType.EAGER)
   private List<Note> notes = new ArrayList<>();
 
-  public void addNote(Note note) {
+  public void addNotes(List<Note> notes) {
+    this.notes.addAll(notes);
+  }
+
+  // overloaded
+  public void addNotes(Note note) {
     this.notes.add(note);
   }
 
-  public void removeAllNotes(List<Note> notes) {
+  public void removeNotes(List<Note> notes) {
     this.notes.removeAll(notes);
+  }
+
+  // overloaded
+  public void removeNotes(Note note) {
+    this.notes.remove(note);
   }
 }

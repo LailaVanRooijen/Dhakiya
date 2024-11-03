@@ -32,19 +32,39 @@ public class Environment {
     this.title = title;
   }
 
-  public void addFlashcardSet(FlashcardSet flashcardSet) {
+  public void addFlashcardSets(List<FlashcardSet> flashcardSets) {
+    this.flashcardSets.addAll(flashcardSets);
+  }
+
+  // overloaded
+  public void addFlashcardSets(FlashcardSet flashcardSet) {
     this.flashcardSets.add(flashcardSet);
   }
 
-  public void removeFlashcardSet(FlashcardSet flashcardSet) {
+  public void removeFlashcardSets(List<FlashcardSet> flashcardSets) {
+    this.flashcardSets.removeAll(flashcardSets);
+  }
+
+  // overloaded
+  public void removeFlashcardSets(FlashcardSet flashcardSet) {
     this.flashcardSets.remove(flashcardSet);
   }
 
-  public void addQuiz(Quiz quiz) {
+  public void addQuizSets(List<Quiz> quizSets) {
+    this.quizSets.addAll(quizSets);
+  }
+
+  // overloaded
+  public void addQuizSets(Quiz quiz) {
     this.quizSets.add(quiz);
   }
 
-  public void removeQuiz(Quiz quiz) {
+  public void removeQuizSets(List<Quiz> quizSets) {
+    this.quizSets.removeAll(quizSets);
+  }
+
+  // overloaded
+  public void removeQuizSets(Quiz quiz) {
     this.quizSets.remove(quiz);
   }
 }

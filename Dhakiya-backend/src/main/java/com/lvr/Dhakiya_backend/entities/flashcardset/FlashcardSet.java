@@ -12,29 +12,31 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class FlashcardSet {
-  @ManyToMany(fetch = FetchType.EAGER)
-  List<Flashcard> flashcards = new ArrayList<>();
-
   @GeneratedValue @Id private Long id;
   @Setter private String name;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  List<Flashcard> flashcards = new ArrayList<>();
 
   public FlashcardSet(String name) {
     this.name = name;
   }
 
-  public void addFlashcard(Flashcard flashcard) {
-    this.flashcards.add(flashcard);
-  }
-
-  public void addAllFlashcards(List<Flashcard> flashcards) {
+  public void addFlashcards(List<Flashcard> flashcards) {
     this.flashcards.addAll(flashcards);
   }
 
-  public void removeFlashcard(Flashcard flashcard) {
-    this.flashcards.remove(flashcard);
+  // overloaded
+  public void addFlashcards(Flashcard flashcard) {
+    this.flashcards.add(flashcard);
   }
 
-  public void removeAllFlashcards(List<Flashcard> flashcards) {
+  public void removeFlashcards(List<Flashcard> flashcards) {
     this.flashcards.removeAll(flashcards);
+  }
+
+  // overloaded
+  public void removeFlashcards(Flashcard flashcard) {
+    this.flashcards.remove(flashcard);
   }
 }

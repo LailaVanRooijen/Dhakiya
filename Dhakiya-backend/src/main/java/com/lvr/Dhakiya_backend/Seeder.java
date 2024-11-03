@@ -8,6 +8,8 @@ import com.lvr.Dhakiya_backend.entities.flashcardset.FlashcardSetDto;
 import com.lvr.Dhakiya_backend.entities.flashcardset.FlashcardSetService;
 import com.lvr.Dhakiya_backend.entities.notes.NoteDto;
 import com.lvr.Dhakiya_backend.entities.notes.NoteService;
+import com.lvr.Dhakiya_backend.entities.question.QuestionDto;
+import com.lvr.Dhakiya_backend.entities.question.QuestionService;
 import com.lvr.Dhakiya_backend.entities.quiz.QuizDto;
 import com.lvr.Dhakiya_backend.entities.quiz.QuizService;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
@@ -27,6 +29,7 @@ public class Seeder implements CommandLineRunner {
   private final FlashcardSetService flashcardSetService;
   private final FlashcardService flashcardService;
   private final QuizService quizService;
+  private final QuestionService questionService;
 
   @Override
   public void run(String... args) throws Exception {
@@ -36,6 +39,16 @@ public class Seeder implements CommandLineRunner {
     seedFlashcardSets();
     seedFlashcards();
     seedQuizSets();
+    seedQuestions();
+  }
+
+  private void seedQuestions() {
+    if (!questionService.getAll().isEmpty()) return;
+
+    Long quizId = quizService.getAll().get(0).getId();
+    questionService.create(new QuestionDto(quizId, "Have you ever?", 4));
+    questionService.create(new QuestionDto((quizId + 1), "Have you never?", 6));
+    questionService.create(new QuestionDto(quizId, "Will you?", 8));
   }
 
   private void seedQuizSets() {
@@ -83,15 +96,12 @@ public class Seeder implements CommandLineRunner {
     if (!noteService.getAll().isEmpty()) return;
 
     List<String> noteContentList =
-        new ArrayList<>(List.of("i am a note", "i am also a note", "i am a imposter note"));
+        new ArrayList<>(List.of("i am a note", "i am also a note", "i am an imposter note"));
     noteContentList.forEach(
         content -> {
           noteService.create(
               new NoteDto(
-                  1L,
-                  (content + " on the front"),
-                  (content + " on the back"),
-                  new ArrayList<>(List.of(1L))));
+                  1L, ("I am the title of this note!"), (content), new ArrayList<>(List.of(1L))));
         });
   }
 }

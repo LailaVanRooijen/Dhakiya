@@ -25,7 +25,7 @@ public class NoteService {
       if (tags.size() < dto.tagIds().size()) {
         throw new BadRequestException("duplicate tag id's");
       }
-      note.addAllTags(tags);
+      note.addTags(tags);
     }
     noteRepository.save(note);
     noteSetService.addNote(dto.noteSetId(), note);
@@ -57,14 +57,14 @@ public class NoteService {
       if (tags.size() < patch.addTags().size()) {
         throw new BadRequestException("Duplicate tags provided");
       }
-      note.addAllTags(tags);
+      note.addTags(tags);
     }
     if (patch.deleteTags() != null) {
       Set<Tag> tags = tagHelper.convertToTags(patch.deleteTags());
       if (tags.size() < patch.deleteTags().size()) {
         throw new BadRequestException("Duplicate tags tags provided");
       }
-      note.removeAllTags(tags);
+      note.removeTags(tags);
     }
     return noteRepository.save(note);
   }

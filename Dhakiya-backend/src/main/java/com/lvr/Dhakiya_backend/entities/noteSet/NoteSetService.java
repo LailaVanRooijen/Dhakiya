@@ -23,7 +23,7 @@ public class NoteSetService {
 
   public void addNote(Long id, Note note) {
     NoteSet noteSet = noteSetRepository.findById(id).orElseThrow(NotFoundException::new);
-    noteSet.addNote(note);
+    noteSet.addNotes(note);
     noteSetRepository.save(noteSet);
   }
 
@@ -35,7 +35,7 @@ public class NoteSetService {
     NoteSet noteSet = noteSetRepository.findById(id).orElseThrow(NotFoundException::new);
     if (patch.removeNotes() != null) {
       List<Note> notes = noteHelper.convertToNoteList(patch.removeNotes());
-      noteSet.removeAllNotes(notes);
+      noteSet.removeNotes(notes);
     }
     noteSetRepository.save(noteSet);
     return noteSet;

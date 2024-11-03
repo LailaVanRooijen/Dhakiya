@@ -26,7 +26,7 @@ public class FlashcardSetService {
         environmentRepository
             .findById(dto.environmentId())
             .orElseThrow(() -> new BadRequestException("Environment does not exist"));
-    environment.addFlashcardSet(flashcardSet);
+    environment.addFlashcardSets(flashcardSet);
     flashcardSetRepository.save(flashcardSet);
     environmentRepository.save(environment);
     return flashcardSet;
@@ -48,11 +48,11 @@ public class FlashcardSetService {
     }
     if (patch.addFlashcards() != null) {
       List<Flashcard> flashcards = flashcardHelper.convertToFlashcardList(patch.addFlashcards());
-      flashcardSet.addAllFlashcards(flashcards);
+      flashcardSet.addFlashcards(flashcards);
     }
     if (patch.deleteFlashcards() != null) {
       List<Flashcard> flashcards = flashcardHelper.convertToFlashcardList(patch.deleteFlashcards());
-      flashcardSet.removeAllFlashcards(flashcards);
+      flashcardSet.removeFlashcards(flashcards);
     }
     return flashcardSetRepository.save(flashcardSet);
   }
