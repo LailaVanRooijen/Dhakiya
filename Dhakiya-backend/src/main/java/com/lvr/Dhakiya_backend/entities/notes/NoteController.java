@@ -27,7 +27,7 @@ public class NoteController {
   }
 
   @PatchMapping("/{id}")
-  public ResponseEntity<Note> update(@PathVariable Long id, @RequestBody NotePatchDto patch) {
+  public ResponseEntity<Note> update(@PathVariable Long id, @RequestBody NotePatch patch) {
     Note patchedNote = noteService.update(id, patch);
     return ResponseEntity.ok(patchedNote);
   }

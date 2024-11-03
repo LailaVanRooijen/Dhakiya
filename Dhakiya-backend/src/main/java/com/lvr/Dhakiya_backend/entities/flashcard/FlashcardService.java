@@ -45,7 +45,7 @@ public class FlashcardService {
     flashcardRepository.deleteById(id);
   }
 
-  public Flashcard update(Long id, FlashcardPatchDto patch) {
+  public Flashcard update(Long id, FlashcardPatch patch) {
     if (patch.flashcardSetId() != null) {
       throw new BadRequestException("Changing flashcard set id is not allowed");
     }

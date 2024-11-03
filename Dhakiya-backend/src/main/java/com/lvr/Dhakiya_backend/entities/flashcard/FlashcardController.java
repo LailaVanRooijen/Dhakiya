@@ -50,7 +50,7 @@ public class FlashcardController {
 
   @PatchMapping("/{id}")
   public ResponseEntity<Flashcard> update(
-      @PathVariable Long id, @RequestBody FlashcardPatchDto patch) {
+      @PathVariable Long id, @RequestBody FlashcardPatch patch) {
     Flashcard flashcard = flashcardService.update(id, patch);
     return ResponseEntity.ok(flashcard);
   }

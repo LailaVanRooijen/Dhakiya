@@ -8,6 +8,8 @@ import com.lvr.Dhakiya_backend.entities.flashcardset.FlashcardSetDto;
 import com.lvr.Dhakiya_backend.entities.flashcardset.FlashcardSetService;
 import com.lvr.Dhakiya_backend.entities.notes.NoteDto;
 import com.lvr.Dhakiya_backend.entities.notes.NoteService;
+import com.lvr.Dhakiya_backend.entities.quiz.QuizDto;
+import com.lvr.Dhakiya_backend.entities.quiz.QuizService;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagRepository;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class Seeder implements CommandLineRunner {
   private final NoteService noteService;
   private final FlashcardSetService flashcardSetService;
   private final FlashcardService flashcardService;
+  private final QuizService quizService;
 
   @Override
   public void run(String... args) throws Exception {
@@ -32,6 +35,15 @@ public class Seeder implements CommandLineRunner {
     seedNotes();
     seedFlashcardSets();
     seedFlashcards();
+    seedQuizSets();
+  }
+
+  private void seedQuizSets() {
+    if (!quizService.getAll().isEmpty()) return;
+    Long environmentId = environmentService.getAll().get(0).getId();
+    quizService.create(new QuizDto(environmentId, "My first quiz"));
+    quizService.create(new QuizDto(2L, "My second quiz"));
+    quizService.create(new QuizDto(3L, "Actual Quiz master"));
   }
 
   private void seedFlashcards() {

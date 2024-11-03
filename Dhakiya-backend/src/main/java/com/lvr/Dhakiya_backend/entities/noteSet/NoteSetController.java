@@ -19,7 +19,7 @@ public class NoteSetController {
   }
 
   @PatchMapping("/{id}")
-  public ResponseEntity<NoteSet> update(@PathVariable Long id, @RequestBody NoteSetPatchDto patch) {
+  public ResponseEntity<NoteSet> update(@PathVariable Long id, @RequestBody NoteSetPatch patch) {
     return ResponseEntity.ok(noteSetService.update(id, patch));
   }
 }

@@ -31,7 +31,7 @@ public class NoteSetService {
     return noteSetRepository.findAll();
   }
 
-  public NoteSet update(Long id, NoteSetPatchDto patch) {
+  public NoteSet update(Long id, NoteSetPatch patch) {
     NoteSet noteSet = noteSetRepository.findById(id).orElseThrow(NotFoundException::new);
     if (patch.removeNotes() != null) {
       List<Note> notes = noteHelper.convertToNoteList(patch.removeNotes());

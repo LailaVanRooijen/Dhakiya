@@ -45,7 +45,7 @@ public class NoteService {
     noteRepository.deleteById(id);
   }
 
-  public Note update(Long id, NotePatchDto patch) {
+  public Note update(Long id, NotePatch patch) {
     if (patch.noteSetId() != null) {
       throw new BadRequestException("Not allowed to set note to another note set");
     }

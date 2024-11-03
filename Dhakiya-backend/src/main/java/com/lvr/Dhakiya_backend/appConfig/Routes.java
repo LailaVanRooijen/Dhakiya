@@ -8,6 +8,6 @@ public class Routes {
   public static final String NOTES = BASE_ROUTE + "notes";
   public static final String NOTE_SETS = BASE_ROUTE + "note-sets";
   public static final String QUESTIONS = BASE_ROUTE + "questions";
-  public static final String QUIZZES = BASE_ROUTE + "quiz";
+  public static final String QUIZZES = BASE_ROUTE + "quiz-sets";
   public static final String TAGS = BASE_ROUTE + "tags";
 }

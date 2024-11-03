@@ -27,7 +27,9 @@ public class FlashcardSetService {
             .findById(dto.environmentId())
             .orElseThrow(() -> new BadRequestException("Environment does not exist"));
     environment.addFlashcardSet(flashcardSet);
-    return flashcardSetRepository.save(flashcardSet);
+    flashcardSetRepository.save(flashcardSet);
+    environmentRepository.save(environment);
+    return flashcardSet;
   }
 
   public List<FlashcardSet> getAll() {
@@ -38,7 +40,7 @@ public class FlashcardSetService {
     return flashcardSetRepository.findById(id).orElseThrow(NotFoundException::new);
   }
 
-  public FlashcardSet update(Long id, FlashcardSetPatchDto patch) {
+  public FlashcardSet update(Long id, FlashcardSetPatch patch) {
     FlashcardSet flashcardSet =
         flashcardSetRepository.findById(id).orElseThrow(NotFoundException::new);
     if (patch.name() != null) {
