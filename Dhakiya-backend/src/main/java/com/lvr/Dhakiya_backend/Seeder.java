@@ -1,5 +1,6 @@
 package com.lvr.Dhakiya_backend;
 
+import com.lvr.Dhakiya_backend.entities.answer.AnswerDto;
 import com.lvr.Dhakiya_backend.entities.environment.EnvironmentDto;
 import com.lvr.Dhakiya_backend.entities.environment.EnvironmentService;
 import com.lvr.Dhakiya_backend.entities.flashcard.FlashcardDto;
@@ -45,10 +46,26 @@ public class Seeder implements CommandLineRunner {
   private void seedQuestions() {
     if (!questionService.getAll().isEmpty()) return;
 
+    List<AnswerDto> answers = getAnswers();
+
     Long quizId = quizService.getAll().get(0).getId();
-    questionService.create(new QuestionDto(quizId, "Have you ever?", 4));
-    questionService.create(new QuestionDto((quizId + 1), "Have you never?", 6));
-    questionService.create(new QuestionDto(quizId, "Will you?", 8));
+    questionService.create(new QuestionDto(quizId, "Have you ever?", 4, answers.subList(0, 4)));
+    questionService.create(
+        new QuestionDto((quizId + 1), "Have you never?", 6, answers.subList(0, 6)));
+    questionService.create(new QuestionDto(quizId, "Will you?", 8, answers.subList(0, 8)));
+  }
+
+  public List<AnswerDto> getAnswers() {
+    return new ArrayList<>(
+        List.of(
+            new AnswerDto("valid answer", true),
+            new AnswerDto("invalid answer", false),
+            new AnswerDto("invalid answer", false),
+            new AnswerDto("invalid answer", false),
+            new AnswerDto("invalid answer", false),
+            new AnswerDto("invalid answer", false),
+            new AnswerDto("invalid answer", false),
+            new AnswerDto("invalid answer", false)));
   }
 
   private void seedQuizSets() {

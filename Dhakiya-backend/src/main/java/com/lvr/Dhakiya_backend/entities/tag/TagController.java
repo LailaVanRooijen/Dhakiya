@@ -18,7 +18,6 @@ public class TagController {
 
   @PostMapping()
   public ResponseEntity<Tag> create(@RequestBody TagDto dto) {
-    System.out.println("calling post mapping"); // todo delete me
     Tag savedTag = tagService.create(dto);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()

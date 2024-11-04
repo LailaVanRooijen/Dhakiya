@@ -1,6 +1,6 @@
 package com.lvr.Dhakiya_backend.entities.quiz;
 
-import static com.lvr.Dhakiya_backend.appConfig.Routes.QUIZZES;
+import static com.lvr.Dhakiya_backend.appConfig.Routes.QUIZ_SETS;
 
 import java.net.URI;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-@RequestMapping(QUIZZES)
+@RequestMapping(QUIZ_SETS)
 @RequiredArgsConstructor
 @CrossOrigin(origins = "${dhakiya.cors}")
 @RestController

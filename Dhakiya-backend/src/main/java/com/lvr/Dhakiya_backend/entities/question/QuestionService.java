@@ -1,5 +1,8 @@
 package com.lvr.Dhakiya_backend.entities.question;
 
+import com.lvr.Dhakiya_backend.entities.answer.Answer;
+import com.lvr.Dhakiya_backend.entities.answer.AnswerDto;
+import com.lvr.Dhakiya_backend.entities.answer.AnswerRepository;
 import com.lvr.Dhakiya_backend.entities.quiz.Quiz;
 import com.lvr.Dhakiya_backend.entities.quiz.QuizRepository;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.BadRequestException;
@@ -13,9 +16,21 @@ import org.springframework.stereotype.Service;
 public class QuestionService {
   private final QuestionRepository questionRepository;
   private final QuizRepository quizRepository;
+  private final AnswerRepository answerRepository;
 
   public Question create(QuestionDto dto) {
+    if (dto.answerAmount() < 2 || dto.answerAmount() > 8) {
+      throw new BadRequestException("Answer amount must be between 2 and 8");
+    } else if (dto.answerAmount() != dto.answers().size()) {
+      throw new BadRequestException(
+          "Answer limit: " + dto.answerAmount() + " Provided answers: " + dto.answers().size());
+    }
     Question question = QuestionDto.to(dto);
+    for (int i = 0; i < dto.answerAmount(); i++) {
+      Answer answer = AnswerDto.to(dto.answers().get(i));
+      answerRepository.save(answer);
+      question.addAnswers(answer);
+    }
     Quiz quiz =
         quizRepository
             .findById(dto.quizId())
@@ -45,10 +60,10 @@ public class QuestionService {
       question.setQuestion(patch.question());
     }
     if (patch.answerAmount() != null) {
-      if (patch.answerAmount() == 4 || patch.answerAmount() == 6 || patch.answerAmount() == 8) {
-        question.setAnswerAmount(patch.answerAmount());
+      if (patch.answerAmount() < 4 || patch.answerAmount() > 8) {
+        throw new BadRequestException("Amount of answers must be between 2 and 6");
       } else {
-        throw new BadRequestException("Amount of answer can be 4,6 or 8");
+        question.setAnswerAmount(patch.answerAmount());
       }
     }
     return questionRepository.save(question);
