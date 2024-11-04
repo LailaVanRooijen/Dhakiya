@@ -6,10 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/dhakiya-frontend/" 
+    directory: "Dhakiya/dhakiya-frontend/" 
     schedule:
       interval: "weekly"
   - package-ecosystem: "maven" # See documentation for possible values
-    directory: "/dhakiya-backend/" 
+    directory: "Dhakiya/dhakiya-backend/" 
     schedule:
       interval: "weekly"
