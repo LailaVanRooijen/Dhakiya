@@ -1,6 +1,9 @@
 import { ToolBar } from "../toolbar/ToolBar";
+import { useStyle } from "../../context/ThemeContext";
 
 export const Page: React.FC<PageProps> = ({ children }) => {
+    const { theme } = useStyle();
+
     return (
         <div style={pageLayout}>
             <ToolBar />
@@ -25,5 +28,5 @@ const pageLayout: React.CSSProperties = {
 const contentBox: React.CSSProperties = {
     padding: "27px",
     width: "100%",
-    backgroundColor: "var(--primary-color)",
+    backgroundColor: "var(--primary-bg-color)",
 };

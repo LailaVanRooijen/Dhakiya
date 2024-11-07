@@ -5,7 +5,7 @@ import { OverviewList } from "../../components/generic/OverviewList";
 import { useFetch } from "../../hooks/useApi";
 import { useEffect } from "react";
 
-export const Environment: React.FC<EnvironmentProps> = () => {
+export const Environments: React.FC<EnvironmentProps> = () => {
     const { data: environments, error } = useFetch("environments");
 
     const addEnvironment = () => {
@@ -48,12 +48,6 @@ export const Environment: React.FC<EnvironmentProps> = () => {
 
 /* interfaces */
 interface EnvironmentProps {}
-
-interface I_Environment {
-    id: number;
-    title: string;
-    noteCollection: [];
-}
 
 /* css */
 const listStyle = {

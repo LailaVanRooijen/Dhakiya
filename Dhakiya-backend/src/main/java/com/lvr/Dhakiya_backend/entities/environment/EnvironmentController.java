@@ -28,8 +28,8 @@ public class EnvironmentController {
   }
 
   @GetMapping()
-  public ResponseEntity<List<Environment>> getAll() {
-    List<Environment> environments = environmentService.getAll();
+  public ResponseEntity<List<EnvironmentMinimalDto>> getAll() {
+    List<EnvironmentMinimalDto> environments = environmentService.getAll();
     if (environments.isEmpty()) {
       return ResponseEntity.noContent().build();
     } else {

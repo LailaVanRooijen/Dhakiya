@@ -1,18 +1,12 @@
-import React, {
-    createContext,
-    useContext,
-    useState,
-    useCallback,
-    useEffect,
-} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const BASE_URL = "http://localhost:8080/api/v1/";
 const HEADERS = { "Content-Type": "application/json" };
 
 export const useFetch = (url: string) => {
-    const [data, setData] = useState([]);
-    const [error, setError] = useState(null);
+    const [data, setData] = useState<any>([]);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,8 +25,8 @@ export const useFetch = (url: string) => {
 };
 
 export const usePost = (url: string, body: {}) => {
-    const [data, setData] = useState([]);
-    const [error, setError] = useState(null);
+    const [data, setData] = useState<any>([]);
+    const [error, setError] = useState<string | null>(null);
 
     axios
         .post(`${BASE_URL}${url}`, {

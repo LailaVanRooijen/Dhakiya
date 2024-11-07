@@ -22,8 +22,8 @@ public class EnvironmentService {
     return environmentRepository.save(environment);
   }
 
-  public List<Environment> getAll() {
-    return environmentRepository.findAll();
+  public List<EnvironmentMinimalDto> getAll() {
+    return environmentRepository.findAll().stream().map(EnvironmentMinimalDto::from).toList();
   }
 
   public Environment getById(Long id) {

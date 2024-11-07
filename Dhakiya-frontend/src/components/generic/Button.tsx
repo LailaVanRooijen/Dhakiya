@@ -23,7 +23,7 @@ const style: React.CSSProperties = {
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "var(--cta-color)",
-    color: "var(--text-light)",
+    color: "var(--text-color)",
     letterSpacing: "1px",
     fontWeight: "400",
     cursor: "pointer",

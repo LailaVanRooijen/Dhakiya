@@ -26,6 +26,6 @@ const linkItem: React.CSSProperties = {
 
 const navLink: React.CSSProperties = {
     textDecoration: "none",
-    color: "var(--text-light)",
+    color: "var(--text-color)",
     fontSize: "xx-large",
 };

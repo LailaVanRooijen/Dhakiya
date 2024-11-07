@@ -11,13 +11,11 @@ interface LabelBarProps {
 
 /* css */
 const bar = {
-    color: "var(--text-light)",
-    backgroundColor: "var(--primary-color-light)",
+    color: "var(--text-color)",
     padding: "18px",
     borderRadius: "3px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    textShadow: "var(--text-outline)",
     boxShadow: "var(--shadow-multi-depth)",
 };

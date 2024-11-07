@@ -21,8 +21,8 @@ body {
     --cta-color-light: rgb(255, 51, 102, 0.8);
     --cta-color-dark: rgb(255, 51, 102);
 
-    --text-light: white;
-    --text-dark: black;
+    --text: rgb(255, 255, 255);
+    --primary-bg-color: #ffffff;
 
     /* shadows */
     --text-outline: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333,

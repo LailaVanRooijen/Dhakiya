@@ -70,7 +70,7 @@ public class Seeder implements CommandLineRunner {
 
   private void seedQuizSets() {
     if (!quizService.getAll().isEmpty()) return;
-    Long environmentId = environmentService.getAll().get(0).getId();
+    Long environmentId = environmentService.getAll().get(0).id();
     quizService.create(new QuizDto(environmentId, "My first quiz"));
     quizService.create(new QuizDto(2L, "My second quiz"));
     quizService.create(new QuizDto(3L, "Actual Quiz master"));
