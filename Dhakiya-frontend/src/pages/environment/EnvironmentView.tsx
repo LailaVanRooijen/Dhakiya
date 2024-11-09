@@ -2,8 +2,11 @@ import { useParams } from "react-router-dom";
 import { LabelBar } from "../../components/generic/LabelBar";
 import { useFetch } from "../../hooks/useApi";
 import { useEffect } from "react";
-import { I_FlashcardSet, I_Quiz } from "../../types/api";
+import { CardDisplay } from "../../components/pageLayout/CardDisplay";
 import { I_Note } from "../../types/api";
+import { I_FlashcardSet } from "../../types/api";
+import { I_QuizSet } from "../../types/api";
+import { ColorOption } from "../../types/enums";
 
 export const EnvironmentView = () => {
     const { id } = useParams<{ id: string }>();
@@ -22,59 +25,40 @@ export const EnvironmentView = () => {
         <div>
             <LabelBar label={environment.title} />
 
-            <div style={section}>
-                {environment.noteSet &&
-                    environment.noteSet.notes.map((note: I_Note) => (
-                        <div key={note.id} style={noteStyle}>
-                            {note.title}
-                        </div>
-                    ))}
-            </div>
+            {environment.noteSet && (
+                <CardDisplay
+                    color={ColorOption.PRIMARY}
+                    cardList={environment.noteSet.notes.map((set: I_Note) => ({
+                        id: set.id,
+                        main: set.title,
+                    }))}
+                />
+            )}
 
-            <div>
-                {environment.flashcardSets &&
-                    environment.flashcardSets.map(
-                        (flashcardSet: I_FlashcardSet) => (
-                            <div key={flashcardSet.id} style={flashcard}>
-                                {flashcardSet.name}
-                            </div>
-                        )
+            {environment.flashcardSets && (
+                <CardDisplay
+                    color={ColorOption.SECUNDARY}
+                    cardList={environment.flashcardSets.map(
+                        (set: I_FlashcardSet) => ({
+                            id: set.id,
+                            main: set.name,
+                        })
                     )}
-            </div>
+                />
+            )}
 
-            <div>
-                {environment.quizSets &&
-                    environment.quizSets.map((quiz: I_Quiz) => (
-                        <div key={quiz.id}>{quiz.name}</div>
-                    ))}
-            </div>
+            {environment.quizSets && (
+                <CardDisplay
+                    color={ColorOption.TERTIARY}
+                    cardList={environment.quizSets.map((set: I_QuizSet) => ({
+                        id: set.id,
+                        main: set.name,
+                    }))}
+                />
+            )}
         </div>
     );
 };
 
 // interfaces
 interface I_EnvironmentViewProps {}
-
-// css styles
-const section: React.CSSProperties = {
-    minHeight: "200px",
-    borderBottom: "2px solid var(--text-color)",
-    borderTop: "2px solid var(--text-color)",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "5px",
-    justifyContent: "center",
-    color: "var(--text-color)",
-    padding: "4px",
-};
-
-const noteStyle = {
-    borderRadius: "3px",
-    borderTopRightRadius: "21px",
-    padding: "20px",
-    backgroundColor: "orange",
-    height: "4rem",
-};
-
-const flashcard = {};

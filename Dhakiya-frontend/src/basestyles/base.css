@@ -24,6 +24,12 @@ body {
     --text: rgb(255, 255, 255);
     --primary-bg-color: #ffffff;
 
+    --main-text-font: "Poppins", sans-serif;
+    --secondary-text-font: "Doto,sans-serif";
+
+    --primary-card-color: "#FFFF88";
+    --secondary-card-color: "#F87060";
+    --tertiary-card-color: "#E9D2F4";
     /* shadows */
     --text-outline: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333,
         1px 1px 0 #333333;

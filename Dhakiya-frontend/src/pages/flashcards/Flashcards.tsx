@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { LabelBar } from "../../components/generic/LabelBar";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useApi";
