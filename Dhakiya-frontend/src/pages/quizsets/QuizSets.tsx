@@ -1,9 +1,9 @@
 import { LabelBar } from "../../components/labelbar/LabelBar";
 
-export const Notes = () => {
+export const QuizSets = () => {
     return (
         <div>
-            <LabelBar label={"Notes"} />
+            <LabelBar label={"Tests"} />
         </div>
     );
 };

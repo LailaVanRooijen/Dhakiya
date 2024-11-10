@@ -1,4 +1,4 @@
-import React from "react";
+import "./overviewlist.css";
 import { useNavigate } from "react-router-dom";
 import { I_Environment } from "../../types/api";
 
@@ -11,10 +11,10 @@ export const OverviewList: React.FC<I_OverviewListProps> = ({
         return <div>Nothing to see here</div>;
     }
     return (
-        <ul style={listStyle}>
+        <ul className={`overview-list-style`}>
             {list.map((list) => (
                 <li
-                    style={listItem}
+                    className={`overview-list-item`}
                     key={list.id}
                     onClick={() => {
                         navigate(`${linkTo}/${list.id}`);
@@ -27,25 +27,7 @@ export const OverviewList: React.FC<I_OverviewListProps> = ({
     );
 };
 
-/* interfaces */
 interface I_OverviewListProps {
     list: I_Environment[];
     linkTo: string;
 }
-
-/* css */
-const listStyle = {
-    listStyleType: "none",
-};
-
-const listItem = {
-    cursor: "pointer",
-    padding: "9px 0 6px 12px",
-    color: "var(--text-color)",
-    letterSpacing: "1px",
-    textTransform: "capitalize" as "capitalize", // typecast cause i know better then typescript
-    boxShadow: "var(--shadow-soft-fade)",
-    borderRadius: "3px",
-    marginTop: "6px",
-    backgroundColor: "var(--primary-bg-color)",
-};

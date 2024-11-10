@@ -1,0 +1,9 @@
+.label-bar {
+    color: var(--text-color);
+    padding: 18px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-multi-depth);
+}

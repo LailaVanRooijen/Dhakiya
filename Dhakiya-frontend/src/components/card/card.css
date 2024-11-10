@@ -1,0 +1,23 @@
+.card {
+    border-radius: 6px;
+    padding: 20px;
+    color: black;
+    height: 4rem;
+    cursor: pointer;
+    font-family: var(--main-text-font);
+}
+.card-color-default {
+    background-color: #ffff88;
+}
+
+.card-display {
+    min-height: 200px;
+    border-bottom: 2px solid var(--text-color);
+    border-top: 2px solid var(--text-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 9px;
+    justify-content: center;
+    padding: 4px;
+}

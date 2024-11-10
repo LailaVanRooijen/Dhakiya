@@ -1,4 +1,4 @@
-import { LabelBar } from "../../components/generic/LabelBar";
+import { LabelBar } from "../../components/labelbar/LabelBar";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useApi";
 

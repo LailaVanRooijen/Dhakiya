@@ -1,0 +1,14 @@
+.button {
+    padding: 9px 12px;
+    border: none;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cta-color);
+    color: var(--text-color);
+    letter-spacing: 1px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: var(--shadow-soft-fade);
+}

@@ -2,22 +2,22 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { Environments } from "./pages/environment/Environments";
-import { Page } from "./components/pageLayout/Page";
+import { BasicPage } from "./components/layouts/basicpage/BasicPage";
 import "./basestyles/base.css";
 import { Notes } from "./pages/notes/Notes";
 import { Flashcards } from "./pages/flashcards/Flashcards";
-import { Tests } from "./pages/tests/Tests";
 import { EnvironmentView } from "./pages/environment/EnvironmentView";
 import { NoteSet } from "./pages/notes/NoteSet";
 import { FlashCardSet } from "./pages/flashcards/FlashCardSet";
 import { FlashcardView } from "./pages/flashcards/FlashcardView";
 import { ThemeProvider } from "./context/ThemeContext";
+import { QuizSets } from "./pages/quizsets/QuizSets";
 
 const App: React.FC = () => {
     return (
         <ThemeProvider>
             <Router>
-                <Page>
+                <BasicPage>
                     <Routes>
                         <Route path="/" element={<Environments />} />
                         <Route
@@ -36,9 +36,9 @@ const App: React.FC = () => {
                             path="/flashcard/:id"
                             element={<FlashcardView />}
                         />
-                        <Route path="/tests" element={<Tests />} />
+                        <Route path="/tests" element={<QuizSets />} />
                     </Routes>
-                </Page>
+                </BasicPage>
             </Router>
         </ThemeProvider>
     );

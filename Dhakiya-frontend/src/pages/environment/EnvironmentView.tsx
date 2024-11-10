@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import { LabelBar } from "../../components/generic/LabelBar";
+import { LabelBar } from "../../components/labelbar/LabelBar";
 import { useFetch } from "../../hooks/useApi";
 import { useEffect } from "react";
-import { CardDisplay } from "../../components/pageLayout/CardDisplay";
+import { CardDisplay } from "../../components/card/CardDisplay";
 import { I_Note } from "../../types/api";
 import { I_FlashcardSet } from "../../types/api";
 import { I_QuizSet } from "../../types/api";
@@ -27,7 +27,7 @@ export const EnvironmentView = () => {
 
             {environment.noteSet && (
                 <CardDisplay
-                    color={ColorOption.PRIMARY}
+                    color={ColorOption.PRIMARY_BG}
                     cardList={environment.noteSet.notes.map((set: I_Note) => ({
                         id: set.id,
                         main: set.title,
@@ -37,7 +37,7 @@ export const EnvironmentView = () => {
 
             {environment.flashcardSets && (
                 <CardDisplay
-                    color={ColorOption.SECUNDARY}
+                    color={ColorOption.SECONDARY_BG}
                     cardList={environment.flashcardSets.map(
                         (set: I_FlashcardSet) => ({
                             id: set.id,
@@ -49,7 +49,7 @@ export const EnvironmentView = () => {
 
             {environment.quizSets && (
                 <CardDisplay
-                    color={ColorOption.TERTIARY}
+                    color={ColorOption.TERTIARY_BG}
                     cardList={environment.quizSets.map((set: I_QuizSet) => ({
                         id: set.id,
                         main: set.name,

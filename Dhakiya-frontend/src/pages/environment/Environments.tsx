@@ -1,11 +1,11 @@
-import { SidebarLayout } from "../../components/pageLayout/SidebarLayout";
-import { Button } from "../../components/generic/Button";
-import { LabelBar } from "../../components/generic/LabelBar";
-import { OverviewList } from "../../components/generic/OverviewList";
+import { SidebarLayout } from "../../components/layouts/sidebarlayout/SidebarLayout";
+import { Button } from "../../components/button/Button";
+import { LabelBar } from "../../components/labelbar/LabelBar";
+import { OverviewList } from "../../components/overviewlist/OverviewList";
 import { useFetch } from "../../hooks/useApi";
 import { useEffect } from "react";
 
-export const Environments: React.FC<EnvironmentProps> = () => {
+export const Environments = () => {
     const { data: environments, error } = useFetch("environments");
 
     const addEnvironment = () => {
@@ -44,12 +44,4 @@ export const Environments: React.FC<EnvironmentProps> = () => {
             />
         </div>
     );
-};
-
-/* interfaces */
-interface EnvironmentProps {}
-
-/* css */
-const listStyle = {
-    listStyleType: "none",
 };

@@ -7,7 +7,7 @@ export const CardDisplay: React.FC<I_CardDisplayProps> = ({
     color,
 }) => {
     return (
-        <div style={cardDisplay}>
+        <div className={`card-display`}>
             {cardList &&
                 cardList.map((card) => (
                     <Card content={card} key={card.id} color={color} />
@@ -20,15 +20,3 @@ interface I_CardDisplayProps {
     cardList: I_Card[];
     color?: ColorOption;
 }
-
-const cardDisplay: React.CSSProperties = {
-    minHeight: "200px",
-    borderBottom: "2px solid var(--text-color)",
-    borderTop: "2px solid var(--text-color)",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "9px",
-    justifyContent: "center",
-    padding: "4px",
-};

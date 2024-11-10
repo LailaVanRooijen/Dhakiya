@@ -1,5 +1,5 @@
 export enum ColorOption {
-    PRIMARY = "primary",
-    SECUNDARY = "secundary",
-    TERTIARY = "tertiary",
+    PRIMARY_BG = "color-option-primary",
+    SECONDARY_BG = "color-option-secondary",
+    TERTIARY_BG = "color-option-tertiary",
 }
