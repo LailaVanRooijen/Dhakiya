@@ -1,6 +1,6 @@
 import "./overviewlist.css";
 import { useNavigate } from "react-router-dom";
-import { I_Environment } from "../../types/api";
+import { I_Environment } from "../../../types/api";
 
 export const OverviewList: React.FC<I_OverviewListProps> = ({
     list,

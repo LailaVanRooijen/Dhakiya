@@ -1,0 +1,72 @@
+.note-view {
+    min-height: 80%;
+    border-radius: 3px;
+    display: grid;
+    grid-template-rows: 2fr 8fr 2fr;
+    margin-top: 27px;
+    box-shadow: var(--shadow-box);
+    background-color: #ffff88;
+}
+
+.note-view-content:focus,
+.note-view-content,
+.note-view-title:focus,
+.note-view-title {
+    border: none;
+    border-bottom: 1px solid rgb(51, 51, 51, 0.2);
+    outline: none;
+}
+
+.note-view-title {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 9px;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.note-view-content {
+    padding: 9px;
+    background-color: inherit;
+    resize: none;
+}
+
+.note-view-tag-list {
+    box-shadow: var(--shadow-box);
+    display: flex;
+    align-items: center;
+    padding: 9px;
+}
+.note-view-tag-box {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-shadow: var(--shadow-box);
+    background-color: var(--primary-bg-color);
+    color: var(--text);
+}
+
+.note-view-tag {
+    padding: 3px;
+}
+
+.tag-delete-btn {
+    cursor: pointer;
+    margin: 0 3px;
+    color: var(--text);
+    font-size: larger;
+}
+.tag-delete-btn:hover {
+    color: #555555;
+}
+
+.note-view-btn-box {
+    display: flex;
+    margin-top: 9px;
+    justify-content: end;
+}

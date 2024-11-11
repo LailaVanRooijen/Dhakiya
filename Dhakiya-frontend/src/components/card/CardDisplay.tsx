@@ -5,12 +5,19 @@ import { ColorOption } from "../../types/enums";
 export const CardDisplay: React.FC<I_CardDisplayProps> = ({
     cardList,
     color,
+    linkTo,
 }) => {
     return (
         <div className={`card-display`}>
             {cardList &&
                 cardList.map((card) => (
-                    <Card content={card} key={card.id} color={color} />
+                    <Card
+                        content={card}
+                        key={card.id}
+                        color={color}
+                        linkTo={linkTo}
+                        itemId={card.id}
+                    />
                 ))}
         </div>
     );
@@ -19,4 +26,5 @@ export const CardDisplay: React.FC<I_CardDisplayProps> = ({
 interface I_CardDisplayProps {
     cardList: I_Card[];
     color?: ColorOption;
+    linkTo?: string;
 }

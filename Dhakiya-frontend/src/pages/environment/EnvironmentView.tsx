@@ -28,6 +28,7 @@ export const EnvironmentView = () => {
             {environment.noteSet && (
                 <CardDisplay
                     color={ColorOption.PRIMARY_BG}
+                    linkTo={`note`}
                     cardList={environment.noteSet.notes.map((set: I_Note) => ({
                         id: set.id,
                         main: set.title,
@@ -38,6 +39,7 @@ export const EnvironmentView = () => {
             {environment.flashcardSets && (
                 <CardDisplay
                     color={ColorOption.SECONDARY_BG}
+                    linkTo={`flashcard-set`}
                     cardList={environment.flashcardSets.map(
                         (set: I_FlashcardSet) => ({
                             id: set.id,
@@ -49,6 +51,7 @@ export const EnvironmentView = () => {
 
             {environment.quizSets && (
                 <CardDisplay
+                    linkTo={`quiz`}
                     color={ColorOption.TERTIARY_BG}
                     cardList={environment.quizSets.map((set: I_QuizSet) => ({
                         id: set.id,

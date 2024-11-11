@@ -27,35 +27,31 @@ body {
     --main-text-font: "Poppins", sans-serif;
     --secondary-text-font: "Doto,sans-serif";
 
-    --color-option-primary: "#FFFF88";
-    --color-option-secondary: "#F87060";
-    --color-option-tertiary: "#E9D2F4";
+    --color-option-primary: #f6c5af;
+    --color-option-secondary: #1b998b;
+    --color-option-tertiary: #ac3931;
 
     /* shadows */
     --text-outline: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333,
         1px 1px 0 #333333;
-    --shadow-multi-depth: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-        rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-        rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
-        rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
-        rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-        rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    --shadow-multi-depth: rgba(12, 12, 12, 0.17) 0px -23px 25px 0px inset,
+        rgba(12, 12, 12, 0.15) 0px -36px 30px 0px inset,
+        rgba(12, 12, 12, 0.1) 0px -79px 40px 0px inset,
+        rgba(12, 12, 12, 0.06) 0px 2px 1px, rgba(12, 12, 12, 0.09) 0px 4px 2px,
+        rgba(12, 12, 12, 0.09) 0px 8px 4px, rgba(12, 12, 12, 0.09) 0px 16px 8px,
+        rgba(12, 12, 12, 0.09) 0px 32px 16px;
     --shadow-soft-fade: rgba(0, 0, 0, 0.25) 0px 14px 28px,
         rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    --shadow-stack: var(--cta-color) 0px 0px 0px 2px inset,
-        rgb(51, 51, 51) 10px -10px 0px -3px, var(--accent-color) 10px -10px,
-        rgb(51, 51, 51) 20px -20px 0px -3px, var(--cta-color) 20px -20px,
-        rgb(51, 51, 51) 30px -30px 0px -3px, var(--accent-color) 30px -30px,
-        rgb(51, 51, 51) 40px -40px 0px -3px, var(--cta-color) 40px -40px;
+    --shadow-box: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .color-option-primary {
-    background-color: #00ff88;
+    background-color: var(--color-option-primary);
 }
 
 .color-option-secondary {
-    background-color: #f87060;
+    background-color: var(--color-option-secondary);
 }
 .color-option-tertiary {
-    background-color: #e9d2f4;
+    background-color: var(--color-option-tertiary);
 }

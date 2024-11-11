@@ -1,7 +1,7 @@
 import { SidebarLayout } from "../../components/layouts/sidebarlayout/SidebarLayout";
 import { Button } from "../../components/button/Button";
 import { LabelBar } from "../../components/labelbar/LabelBar";
-import { OverviewList } from "../../components/overviewlist/OverviewList";
+import { OverviewList } from "./overviewlist/OverviewList";
 import { useFetch } from "../../hooks/useApi";
 import { useEffect } from "react";
 
