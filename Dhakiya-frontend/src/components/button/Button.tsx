@@ -1,9 +1,16 @@
+import { ColorOption } from "types/enums";
 import "./button.css";
-import React from "react";
 
-export const Button: React.FC<ButtonProps> = ({ content, handleClick }) => {
+export const Button: React.FC<ButtonProps> = ({
+    content,
+    handleClick,
+    color,
+}) => {
     return (
-        <button className={`button`} onClick={handleClick}>
+        <button
+            className={`button ${color ? color : "btn-color"}`}
+            onClick={handleClick}
+        >
             {content}
         </button>
     );
@@ -12,4 +19,5 @@ export const Button: React.FC<ButtonProps> = ({ content, handleClick }) => {
 interface ButtonProps {
     content: string;
     handleClick: () => void;
+    color?: ColorOption;
 }

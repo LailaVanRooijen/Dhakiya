@@ -6,11 +6,12 @@
 .overview-list-item {
     cursor: pointer;
     padding: 9px 0 6px 12px;
-    color: var(--text-color);
+    color: var(--text);
     letter-spacing: 1px;
     text-transform: "capitalize";
     box-shadow: var(--shadow-soft-fade);
     border-radius: 3px;
     margin-top: 6px;
     background-color: var(--primary-bg-color);
+    font-family: var(--main-text-font);
 }

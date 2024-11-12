@@ -1,4 +1,5 @@
 .note-view {
+    font-family: var(--main-text-font);
     min-height: 80%;
     border-radius: 3px;
     display: grid;
@@ -18,6 +19,7 @@
 }
 
 .note-view-title {
+    font-family: inherit;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     padding: 9px;
@@ -29,6 +31,7 @@
 }
 
 .note-view-content {
+    font-family: inherit;
     padding: 9px;
     background-color: inherit;
     resize: none;
@@ -51,22 +54,9 @@
     color: var(--text);
 }
 
-.note-view-tag {
-    padding: 3px;
-}
-
-.tag-delete-btn {
-    cursor: pointer;
-    margin: 0 3px;
-    color: var(--text);
-    font-size: larger;
-}
-.tag-delete-btn:hover {
-    color: #555555;
-}
-
 .note-view-btn-box {
     display: flex;
     margin-top: 9px;
+    gap: 6px;
     justify-content: end;
 }

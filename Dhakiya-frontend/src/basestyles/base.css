@@ -45,13 +45,13 @@ body {
     --shadow-box: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.color-option-primary {
+.color-option-primary_bg {
     background-color: var(--color-option-primary);
 }
 
-.color-option-secondary {
+.color-option-secondary_bg {
     background-color: var(--color-option-secondary);
 }
-.color-option-tertiary {
+.color-option-tertiary_bg {
     background-color: var(--color-option-tertiary);
 }
