@@ -9,11 +9,12 @@ export interface I_Environment {
 export interface I_Note {
     id?: number;
     noteSetId?: number;
-    title: String;
-    content: String;
-    tags: number;
-    addTags: number;
-    deleteTages: number;
+    title: string;
+    content: string;
+    tagIds?: number[];
+    tags?: I_Tag[];
+    addTags?: number;
+    deleteTages?: number;
 }
 
 export interface I_NoteSet {

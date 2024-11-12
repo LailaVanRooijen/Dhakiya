@@ -23,20 +23,3 @@ export const useFetch = (url: string) => {
     }, [url]);
     return { data, error };
 };
-
-export const usePost = (url: string, body: {}) => {
-    const [data, setData] = useState<any>([]);
-    const [error, setError] = useState<string | null>(null);
-
-    axios
-        .post(`${BASE_URL}${url}`, {
-            body,
-            headers: HEADERS,
-        })
-        .then((response) => {
-            setData(response.data);
-        })
-        .catch((err) => {
-            setError(err);
-        });
-};

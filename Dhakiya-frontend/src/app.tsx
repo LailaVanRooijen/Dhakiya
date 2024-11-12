@@ -12,6 +12,7 @@ import { FlashcardView } from "./pages/flashcards/FlashcardView";
 import { ThemeProvider } from "./context/ThemeContext";
 import { QuizSets } from "./pages/quizsets/QuizSets";
 import { NoteView } from "./pages/notes/NoteView";
+import { CreateNote } from "./pages/notes/CreateNote";
 
 const App: React.FC = () => {
     return (
@@ -27,6 +28,7 @@ const App: React.FC = () => {
                         <Route path="/notes" element={<Notes />} />
                         <Route path="/note-set/:id" element={<NoteSet />} />
                         <Route path="/note/:id" element={<NoteView />} />
+                        <Route path="/note" element={<CreateNote />} />
                         <Route path="/flashcards" element={<Flashcards />} />
                         <Route
                             path="/flashcard-set/:id"

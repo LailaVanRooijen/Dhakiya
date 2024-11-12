@@ -25,7 +25,7 @@ export const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
         const root = document.documentElement;
 
         root.style.setProperty("--primary-bg-color", theme.background);
-        root.style.setProperty("--text-color", theme.text);
+        root.style.setProperty("--text", theme.text);
     }, [theme]);
 
     const toggleTheme = () => {

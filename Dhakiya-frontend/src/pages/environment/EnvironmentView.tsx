@@ -18,7 +18,7 @@ export const EnvironmentView = () => {
     }, [environment]);
 
     if (error != null) {
-        return <div>"woopsie"</div>;
+        return <div>"woopsie" {error}</div>;
     }
 
     return (
@@ -28,7 +28,9 @@ export const EnvironmentView = () => {
             {environment.noteSet && (
                 <CardDisplay
                     color={ColorOption.PRIMARY_BG}
+                    label={"Notes"}
                     linkTo={`note`}
+                    creationEndpoint={"note"}
                     cardList={environment.noteSet.notes.map((set: I_Note) => ({
                         id: set.id,
                         main: set.title,
@@ -38,6 +40,7 @@ export const EnvironmentView = () => {
 
             {environment.flashcardSets && (
                 <CardDisplay
+                    label={"Flashcard sets"}
                     color={ColorOption.SECONDARY_BG}
                     linkTo={`flashcard-set`}
                     cardList={environment.flashcardSets.map(
@@ -51,6 +54,7 @@ export const EnvironmentView = () => {
 
             {environment.quizSets && (
                 <CardDisplay
+                    label={"quiz sets"}
                     linkTo={`quiz`}
                     color={ColorOption.TERTIARY_BG}
                     cardList={environment.quizSets.map((set: I_QuizSet) => ({

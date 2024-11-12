@@ -23,7 +23,7 @@ export const Environments = () => {
     }
 
     return (
-        <div>
+        <div className={` environments-box`}>
             <LabelBar label={"Environments"} />
             <SidebarLayout
                 leftContent={
