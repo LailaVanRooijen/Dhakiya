@@ -1,19 +1,19 @@
 import "./note.css";
-import { useFetch } from "../../hooks/useApi";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Note } from "./Note";
+import { AxiosClient } from "../../services/AxiosClient";
+import { I_Note } from "types/api";
 
 export const NoteView = () => {
     const { id } = useParams<{ id: string }>();
-    const { data: note, error: noteError } = useFetch(`notes/${id}`);
+    const [note, setNote] = useState<I_Note | null>(null);
 
     useEffect(() => {
-        console.log(note);
-    }, [note]);
-
-    if (noteError) return <div>noteError</div>;
-    if (note == null) return <div>No content here</div>;
+        AxiosClient.get(`notes/${id}`)
+            .then((response: I_Note) => setNote(response))
+            .catch((error) => console.error(error));
+    }, []);
 
     return (
         <>

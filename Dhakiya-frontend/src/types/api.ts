@@ -1,9 +1,14 @@
+import { I_Card } from "./styleTypes";
+
 export interface I_Environment {
     id: number;
     title: string;
     noteCollection?: I_NoteSet;
-    flashCardSet?: I_FlashcardSet;
+    noteSet?: I_NoteSet;
+    flashCardSet?: I_Flashcard[];
+    flashcardSets?: I_Flashcard[];
     quizSet?: I_QuizSet;
+    quizSets?: I_QuizSet[];
 }
 
 export interface I_Note {

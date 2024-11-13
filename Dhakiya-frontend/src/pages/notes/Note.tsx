@@ -4,31 +4,44 @@ import { I_Note, I_Tag } from "types/api";
 import { ColorOption } from "../../types/enums";
 import { Tag } from "../../components/tag/Tag";
 import { Button } from "../../components/button/Button";
-import { useFetch } from "../../hooks/useApi";
 import { Dropdown } from "../../components/dropdown/Dropdown";
 import { useDropdownReformatter } from "../../hooks/useListReformatter";
 import { AxiosClient } from "../../services/AxiosClient";
+import { useNavigate } from "react-router-dom";
+import { usePostNoteValidator } from "../../hooks/useValidators";
 
-export const Note: React.FC<NoteProps> = ({ note }) => {
-    const { data: tags, error: tagError } = useFetch(`tags`);
+export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
+    const navigate = useNavigate();
+    const [tags, setTags] = useState<I_Tag[]>([]);
     const formattedTags = useDropdownReformatter(tags, "name");
-
-    const [body, setBody] = useState<I_Note | null>(null);
-    const [noteId, setNoteId] = useState<number | null>(null);
     const [noteTitle, setNoteTitle] = useState<string>("");
     const [noteContent, setNoteContent] = useState<string>("");
+
+    const [noteId, setNoteId] = useState<number | null>(null);
 
     const handleSave = () => {
         if (note) {
             console.log("patch existing");
         } else {
-            console.log("from funkytown ", body);
-            AxiosClient.post("notes", {
-                noteSetId: 1,
-                title: noteTitle,
-                content: noteContent,
-                tagIds: [1, 2, 3],
-            });
+            if (!noteSetId) {
+                console.log("No noteSetId found");
+                return;
+            }
+            try {
+                const body = usePostNoteValidator({
+                    noteSetId: noteSetId,
+                    title: noteTitle,
+                    content: noteContent,
+                    tagIds: [1], // TODO get tagIds
+                });
+                AxiosClient.post("notes", body)
+                    .then((response: I_Note) => {
+                        navigate(`/note/${response.id}`);
+                    })
+                    .catch((err) => console.log(err));
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 
@@ -37,6 +50,9 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
     };
 
     useEffect(() => {
+        AxiosClient.get("tags")
+            .then((response: I_Tag[]) => setTags(response))
+            .catch((error) => console.error(error));
         console.log(note);
         console.log(tags);
         console.log(ColorOption.PRIMARY_BG);
@@ -59,14 +75,10 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
                     value={noteContent}
                     onChange={(e) => setNoteContent(e.target.value)}
                 />
-                {note && (
-                    <div className="note-view-tag-list">
-                        <Dropdown items={formattedTags} label={"Tags"} />
-                        {note.tags?.map((tag: I_Tag) => (
-                            <Tag tag={tag} />
-                        ))}
-                    </div>
-                )}
+                <div className="note-view-tag-list">
+                    <Dropdown items={formattedTags} label={"+ Tags"} />
+                    {note && note.tags?.map((tag: I_Tag) => <Tag tag={tag} />)}
+                </div>
             </div>
             <div className={`note-view-btn-box`}>
                 <Button content="save" handleClick={handleSave} />
@@ -82,4 +94,5 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
 
 interface NoteProps {
     note?: I_Note;
+    noteSetId?: number;
 }

@@ -2,11 +2,12 @@ import { SidebarLayout } from "../../components/layouts/sidebarlayout/SidebarLay
 import { Button } from "../../components/button/Button";
 import { LabelBar } from "../../components/labelbar/LabelBar";
 import { OverviewList } from "./overviewlist/OverviewList";
-import { useFetch } from "../../hooks/useApi";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { I_Environment } from "types/api";
+import { AxiosClient } from "../../services/AxiosClient";
 
 export const Environments = () => {
-    const { data: environments, error } = useFetch("environments");
+    const [environments, setEnvironments] = useState<I_Environment[]>([]);
 
     const addEnvironment = () => {
         console.log("add");
@@ -14,13 +15,13 @@ export const Environments = () => {
     };
 
     useEffect(() => {
-        // temp useEffect. delete me later!
-        console.log(environments);
-    }, [environments]);
-
-    if (error != null) {
-        return <div>error</div>;
-    }
+        AxiosClient.get("environments")
+            .then((response: I_Environment[]) => setEnvironments(response))
+            .catch((error) => {
+                console.log(error);
+            });
+        console.log(environments); // DEBUG STATEMENT, TODO DELETE ME!
+    }, []);
 
     return (
         <div className={` environments-box`}>
