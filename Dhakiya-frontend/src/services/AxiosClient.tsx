@@ -25,4 +25,15 @@ export class AxiosClient {
             return error.detail;
         }
     }
+
+    static async patch<T>(url: string, body: any) {
+        try {
+            const response = await axios.patch(`${BASE_URL}${url}`, body, {
+                headers: HEADERS,
+            });
+            return response.data;
+        } catch (error) {
+            return error.detail;
+        }
+    }
 }

@@ -45,6 +45,7 @@ body {
     --shadow-box: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+/* universal classes */
 .color-option-primary_bg {
     background-color: var(--color-option-primary);
 }
@@ -54,4 +55,8 @@ body {
 }
 .color-option-tertiary_bg {
     background-color: var(--color-option-tertiary);
+}
+
+.hidden {
+    display: none;
 }

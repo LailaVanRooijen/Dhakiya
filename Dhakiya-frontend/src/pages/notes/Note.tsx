@@ -5,10 +5,14 @@ import { ColorOption } from "../../types/enums";
 import { Tag } from "../../components/tag/Tag";
 import { Button } from "../../components/button/Button";
 import { Dropdown } from "../../components/dropdown/Dropdown";
-import { useDropdownReformatter } from "../../hooks/useListReformatter";
+import {
+    useDropdownReformatter,
+    useIdExtractor,
+} from "../../hooks/useListReformatter";
 import { AxiosClient } from "../../services/AxiosClient";
 import { useNavigate } from "react-router-dom";
 import { usePostNoteValidator } from "../../hooks/useValidators";
+import { AddTags } from "../../components/addTags/addTags";
 
 export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
     const navigate = useNavigate();
@@ -16,12 +20,11 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
     const formattedTags = useDropdownReformatter(tags, "name");
     const [noteTitle, setNoteTitle] = useState<string>("");
     const [noteContent, setNoteContent] = useState<string>("");
-
+    const [noteTags, setNoteTags] = useState<I_Tag[]>([]);
     const [noteId, setNoteId] = useState<number | null>(null);
 
     const handleSave = () => {
         if (note) {
-            console.log("patch existing");
         } else {
             if (!noteSetId) {
                 console.log("No noteSetId found");
@@ -32,7 +35,7 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
                     noteSetId: noteSetId,
                     title: noteTitle,
                     content: noteContent,
-                    tagIds: [1], // TODO get tagIds
+                    tagIds: useIdExtractor(noteTags), // TODO get tagIds
                 });
                 AxiosClient.post("notes", body)
                     .then((response: I_Note) => {
@@ -45,8 +48,9 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
         }
     };
 
-    const handleAddTag = () => {
-        console.log("Adding tag");
+    const handleAddTag = (tag: I_Tag) => {
+        console.log("tag: ", tag);
+        setNoteTags((prev) => [...prev, tag]);
     };
 
     useEffect(() => {
@@ -54,11 +58,10 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
             .then((response: I_Tag[]) => setTags(response))
             .catch((error) => console.error(error));
         console.log(note);
-        console.log(tags);
-        console.log(ColorOption.PRIMARY_BG);
         if (note) {
             setNoteTitle(note.title);
             setNoteContent(note.content);
+            setNoteTags(note.tags);
         }
     }, [note]);
 
@@ -76,17 +79,15 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
                     onChange={(e) => setNoteContent(e.target.value)}
                 />
                 <div className="note-view-tag-list">
-                    <Dropdown items={formattedTags} label={"+ Tags"} />
-                    {note && note.tags?.map((tag: I_Tag) => <Tag tag={tag} />)}
+                    <AddTags
+                        tagList={tags}
+                        onSelect={handleAddTag}
+                        selectedTags={note ? note.tags : []}
+                    />
                 </div>
             </div>
             <div className={`note-view-btn-box`}>
                 <Button content="save" handleClick={handleSave} />
-                <Button
-                    content="+ Tag"
-                    handleClick={handleAddTag}
-                    color={ColorOption.SECONDARY_BG}
-                />
             </div>
         </>
     );
