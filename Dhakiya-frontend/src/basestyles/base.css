@@ -57,6 +57,16 @@ body {
     background-color: var(--color-option-tertiary);
 }
 
+.small-width-option {
+    width: 150px;
+}
+.medium-width-option {
+    width: 200px;
+}
+.large-width-option {
+    width: 300px;
+}
+
 .hidden {
     display: none;
 }

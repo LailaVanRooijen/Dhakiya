@@ -1,41 +1,52 @@
 import "./note.css";
 import { useEffect, useState } from "react";
 import { I_Note, I_Tag } from "types/api";
-import { ColorOption } from "../../types/enums";
-import { Tag } from "../../components/tag/Tag";
 import { Button } from "../../components/button/Button";
-import { Dropdown } from "../../components/dropdown/Dropdown";
-import {
-    useDropdownReformatter,
-    useIdExtractor,
-} from "../../hooks/useListReformatter";
+import { useTagIdExtractor } from "../../hooks/useListReformatter";
 import { AxiosClient } from "../../services/AxiosClient";
 import { useNavigate } from "react-router-dom";
-import { usePostNoteValidator } from "../../hooks/useValidators";
-import { AddTags } from "../../components/addTags/addTags";
+import {
+    usePatchNoteValidator,
+    usePostNoteValidator,
+} from "../../hooks/useValidators";
+import { AddTags } from "../../components/addTags/AddTags";
 
 export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
     const navigate = useNavigate();
     const [tags, setTags] = useState<I_Tag[]>([]);
-    const formattedTags = useDropdownReformatter(tags, "name");
     const [noteTitle, setNoteTitle] = useState<string>("");
     const [noteContent, setNoteContent] = useState<string>("");
     const [noteTags, setNoteTags] = useState<I_Tag[]>([]);
-    const [noteId, setNoteId] = useState<number | null>(null);
 
     const handleSave = () => {
+        console.log("getting ready to save!");
+
         if (note) {
-        } else {
-            if (!noteSetId) {
-                console.log("No noteSetId found");
-                return;
+            console.log("the note: ", note);
+            try {
+                const body = usePatchNoteValidator({
+                    title: noteTitle,
+                    content: noteContent,
+                    tagIds: useTagIdExtractor(noteTags), // TODO fix me i bug
+                });
+                AxiosClient.patch(`notes/${note.id}`, body).then(
+                    (response: I_Note) => console.log(response)
+                );
+            } catch (error) {
+                console.error(error);
             }
+        }
+        if (!noteSetId) {
+            console.log("No noteSetId found");
+            return;
+        }
+        if (!note) {
             try {
                 const body = usePostNoteValidator({
                     noteSetId: noteSetId,
                     title: noteTitle,
                     content: noteContent,
-                    tagIds: useIdExtractor(noteTags), // TODO get tagIds
+                    tagIds: useTagIdExtractor(noteTags),
                 });
                 AxiosClient.post("notes", body)
                     .then((response: I_Note) => {
@@ -48,9 +59,9 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
         }
     };
 
-    const handleAddTag = (tag: I_Tag) => {
-        console.log("tag: ", tag);
-        setNoteTags((prev) => [...prev, tag]);
+    const handleAddTag = (tags: I_Tag[]) => {
+        const prevTags = tags.concat(noteTags);
+        setNoteTags([...new Set(prevTags)]);
     };
 
     useEffect(() => {
@@ -79,11 +90,16 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
                     onChange={(e) => setNoteContent(e.target.value)}
                 />
                 <div className="note-view-tag-list">
-                    <AddTags
-                        tagList={tags}
-                        onSelect={handleAddTag}
-                        selectedTags={note ? note.tags : []}
-                    />
+                    {note && (
+                        <AddTags
+                            tagList={tags}
+                            onSelect={handleAddTag}
+                            selectedTags={note.tags}
+                        />
+                    )}
+                    {!note && (
+                        <AddTags tagList={tags} onSelect={handleAddTag} />
+                    )}
                 </div>
             </div>
             <div className={`note-view-btn-box`}>

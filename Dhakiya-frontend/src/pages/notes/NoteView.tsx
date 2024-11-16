@@ -15,9 +15,10 @@ export const NoteView = () => {
             .catch((error) => console.error(error));
     }, []);
 
-    return (
-        <>
-            <Note note={note} />
-        </>
-    );
+    if (note)
+        return (
+            <>
+                <Note note={note} noteSetId={note.noteSetId} />
+            </>
+        );
 };

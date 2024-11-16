@@ -33,8 +33,8 @@ public class NoteController {
   }
 
   @GetMapping("/{id}")
-  public Note getById(@PathVariable Long id) {
-    return noteService.getById(id);
+  public NoteDto getById(@PathVariable Long id) {
+    return NoteDto.from(noteService.getById(id));
   }
 
   @DeleteMapping("/{id}")

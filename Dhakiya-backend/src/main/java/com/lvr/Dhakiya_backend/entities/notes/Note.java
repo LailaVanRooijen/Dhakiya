@@ -1,10 +1,9 @@
 package com.lvr.Dhakiya_backend.entities.notes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lvr.Dhakiya_backend.entities.noteSet.NoteSet;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
@@ -19,7 +18,8 @@ public class Note {
 
   @Setter private String title;
   @Setter private String content;
-  @ManyToMany private Set<Tag> tags = new HashSet<>();
+  @Setter @ManyToMany private Set<Tag> tags = new HashSet<>();
+  @JsonIgnore @ManyToOne private NoteSet noteSet;
 
   public Note(String title, String content, Set<Tag> tags) {
     this.title = title;
@@ -27,26 +27,9 @@ public class Note {
     this.tags.addAll(tags);
   }
 
-  public Note(String title, String content) {
+  public Note(String title, String content, NoteSet noteSet) {
     this.title = title;
     this.content = content;
-  }
-
-  public void addTags(Set<Tag> tags) {
-    this.tags.addAll(tags);
-  }
-
-  // overloaded
-  public void addTags(Tag tag) {
-    this.tags.add(tag);
-  }
-
-  public void removeTags(Set<Tag> tags) {
-    this.tags.removeAll(tags);
-  }
-
-  // overloaded
-  public void removeTags(Tag tag) {
-    this.tags.remove(tag);
+    this.noteSet = noteSet;
   }
 }

@@ -1,16 +1,15 @@
 import "./addTags.css";
 import { Button } from "../../components/button/Button";
 import { I_Tag } from "types/api";
-import { useEffect, useState } from "react";
-import { ColorOption } from "../../types/enums";
+import { useState } from "react";
+import { ColorOption, widthOption } from "../../types/enums";
 
-//TODO fix bug, selected word niet aangechecked
 export const AddTags: React.FC<AddTagsProps> = ({
     onSelect,
     tagList,
     selectedTags,
 }) => {
-    const [selected, setSelected] = useState<I_Tag[]>([]);
+    const [selected, setSelected] = useState<I_Tag[]>(selectedTags || []);
 
     const handleCheckboxChange = (tag: I_Tag) => {
         const isSelected = selected.some(
@@ -30,16 +29,13 @@ export const AddTags: React.FC<AddTagsProps> = ({
         setShow(!show);
     };
 
-    useEffect(() => {
-        if (selectedTags) setSelected(selectedTags);
-    }, []);
-
     return (
         <div className="add-tags-main-wrapper">
             <Button
-                content={"select tags"}
+                content={show ? "Hide tags" : "Show tags"}
                 handleClick={toggleSelect}
                 color={ColorOption.SECONDARY_BG}
+                width={widthOption.MEDIUM}
             />
             <div className={`add-tags-tag-list`}>
                 {tagList &&

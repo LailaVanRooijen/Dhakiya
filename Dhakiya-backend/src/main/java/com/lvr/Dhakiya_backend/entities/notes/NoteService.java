@@ -1,5 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.notes;
 
+import com.lvr.Dhakiya_backend.entities.noteSet.NoteSet;
+import com.lvr.Dhakiya_backend.entities.noteSet.NoteSetRepository;
 import com.lvr.Dhakiya_backend.entities.noteSet.NoteSetService;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagHelperMethods;
@@ -17,23 +19,22 @@ public class NoteService {
   private final NoteSetService noteSetService;
   private final TagHelperMethods tagHelper;
   private final NoteHelperService noteHelper;
+  private final NoteSetRepository noteSetRepository;
 
   public Note create(NoteDto dto) {
-    Note note = NoteDto.to(dto);
+    NoteSet noteSet =
+        noteSetRepository.findById(dto.noteSetId()).orElseThrow(NotFoundException::new);
+    Note note = NoteDto.to(dto, noteSet);
     if (dto.tagIds() != null) {
-      Set<Tag> tags = tagHelper.convertToTags(dto.tagIds());
-      if (tags.size() < dto.tagIds().size()) {
-        throw new BadRequestException("duplicate tag id's");
-      }
-      note.addTags(tags);
+      note.setTags(tagHelper.convertToTags(dto.tagIds()));
     }
     noteRepository.save(note);
     noteSetService.addNote(dto.noteSetId(), note);
     return note;
   }
 
-  public List<Note> getAll() {
-    return noteRepository.findAll();
+  public List<NoteDto> getAll() {
+    return noteRepository.findAll().stream().map(NoteDto::from).toList();
   }
 
   public Note getById(Long id) {
@@ -52,20 +53,11 @@ public class NoteService {
     Note note = noteRepository.findById(id).orElseThrow(NotFoundException::new);
     if (patch.title() != null) note.setTitle(patch.title());
     if (patch.content() != null) note.setContent(patch.content());
-    if (patch.addTags() != null) {
-      Set<Tag> tags = tagHelper.convertToTags(patch.addTags());
-      if (tags.size() < patch.addTags().size()) {
-        throw new BadRequestException("Duplicate tags provided");
-      }
-      note.addTags(tags);
+    if (patch.tags() != null) {
+      Set<Tag> tags = tagHelper.convertToTags(patch.tags());
+      note.setTags(tags);
     }
-    if (patch.deleteTags() != null) {
-      Set<Tag> tags = tagHelper.convertToTags(patch.deleteTags());
-      if (tags.size() < patch.deleteTags().size()) {
-        throw new BadRequestException("Duplicate tags tags provided");
-      }
-      note.removeTags(tags);
-    }
+
     return noteRepository.save(note);
   }
 }

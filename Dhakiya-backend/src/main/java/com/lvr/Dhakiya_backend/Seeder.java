@@ -118,7 +118,11 @@ public class Seeder implements CommandLineRunner {
         content -> {
           noteService.create(
               new NoteDto(
-                  1L, ("I am the title of this note!"), (content), new ArrayList<>(List.of(1L))));
+                  1L,
+                  1L,
+                  ("I am the title of this note!"),
+                  (content),
+                  new ArrayList<>(List.of(1L))));
         });
   }
 }

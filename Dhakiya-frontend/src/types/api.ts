@@ -1,5 +1,3 @@
-import { I_Card } from "./styleTypes";
-
 export interface I_Environment {
     id: number;
     title: string;
@@ -12,6 +10,7 @@ export interface I_Environment {
 }
 
 export interface I_Note {
+    noteId?: number;
     id?: number;
     noteSetId?: number;
     title: string;
