@@ -20,7 +20,6 @@ export const Environments = () => {
             .catch((error) => {
                 console.log(error);
             });
-        console.log(environments); // DEBUG STATEMENT, TODO DELETE ME!
     }, []);
 
     return (

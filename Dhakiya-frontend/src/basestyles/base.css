@@ -22,7 +22,9 @@ body {
     --cta-color-dark: rgb(255, 51, 102);
 
     --text: rgb(255, 255, 255);
+    --text-contrast: #333333;
     --primary-bg-color: #ffffff;
+    --primary-bg-contrast-color: #333333;
 
     --main-text-font: "Poppins", sans-serif;
     --secondary-text-font: "Doto,sans-serif";

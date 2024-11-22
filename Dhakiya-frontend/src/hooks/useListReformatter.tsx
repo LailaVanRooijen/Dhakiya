@@ -5,9 +5,9 @@ export const useDropdownReformatter = (objArray: any, keyName: string) => {
 };
 
 export const useTagIdExtractor = (tags: I_Tag[]) => {
+    if (tags == undefined || tags == undefined) return [];
     const tagIds = tags.map((tag) => {
-        tag.id;
+        tag;
     });
-    console.log("tagids: ", tagIds); //TODO fix me i bug
     return tagIds;
 };

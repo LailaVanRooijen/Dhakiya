@@ -10,24 +10,24 @@ import {
     usePostNoteValidator,
 } from "../../hooks/useValidators";
 import { AddTags } from "../../components/addTags/AddTags";
+import { useEnvironmentCtx } from "../../context/EnvironmentContext";
 
-export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
+export const Note: React.FC<NoteProps> = ({ note }) => {
     const navigate = useNavigate();
     const [tags, setTags] = useState<I_Tag[]>([]);
     const [noteTitle, setNoteTitle] = useState<string>("");
     const [noteContent, setNoteContent] = useState<string>("");
     const [noteTags, setNoteTags] = useState<I_Tag[]>([]);
+    const { environmentData } = useEnvironmentCtx();
 
     const handleSave = () => {
-        console.log("getting ready to save!");
-
         if (note) {
             console.log("the note: ", note);
             try {
                 const body = usePatchNoteValidator({
                     title: noteTitle,
                     content: noteContent,
-                    tagIds: useTagIdExtractor(noteTags), // TODO fix me i bug
+                    tagIds: useTagIdExtractor(noteTags),
                 });
                 AxiosClient.patch(`notes/${note.id}`, body).then(
                     (response: I_Note) => console.log(response)
@@ -36,14 +36,14 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
                 console.error(error);
             }
         }
-        if (!noteSetId) {
-            console.log("No noteSetId found");
-            return;
-        }
         if (!note) {
+            if (environmentData.noteSetId === null) {
+                console.log("no notesetid do something else");
+            }
+            console.log("noteSetId: ", environmentData.noteSetId);
             try {
                 const body = usePostNoteValidator({
-                    noteSetId: noteSetId,
+                    noteSetId: environmentData.noteSetId,
                     title: noteTitle,
                     content: noteContent,
                     tagIds: useTagIdExtractor(noteTags),
@@ -68,7 +68,6 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
         AxiosClient.get("tags")
             .then((response: I_Tag[]) => setTags(response))
             .catch((error) => console.error(error));
-        console.log(note);
         if (note) {
             setNoteTitle(note.title);
             setNoteContent(note.content);
@@ -111,5 +110,4 @@ export const Note: React.FC<NoteProps> = ({ note, noteSetId }) => {
 
 interface NoteProps {
     note?: I_Note;
-    noteSetId?: number;
 }

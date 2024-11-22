@@ -18,7 +18,7 @@ export const NoteView = () => {
     if (note)
         return (
             <>
-                <Note note={note} noteSetId={note.noteSetId} />
+                <Note note={note} />
             </>
         );
 };

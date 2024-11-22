@@ -1,0 +1,41 @@
+.flashcard-view-container {
+    padding: 27px;
+    background: var(--color-option-secondary);
+    color: var(--text);
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: larger;
+    font-family: var(--main-text-font);
+    width: 90%;
+    min-height: 420px;
+    display: grid;
+    grid-template-rows: 1fr 3fr 6fr 2fr;
+    gap: 12px;
+    border-radius: 3px;
+    box-shadow: var(--shadow-soft-fade);
+}
+
+.flashcard-view-front-content {
+    border-radius: inherit;
+    box-shadow: var(--shadow-soft-fade);
+    padding: 12px;
+    background-color: var(--primary-bg-color);
+}
+
+.flashcard-view-back-content {
+    border-radius: inherit;
+    box-shadow: var(--shadow-soft-fade);
+    background-color: var(--primary-bg-color);
+    padding: 12px;
+}
+
+.flashcard-view-moves {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 3px;
+}
+.flashcard-options {
+    display: flex;
+    justify-content: end;
+}

@@ -4,12 +4,16 @@ const themes = {
     light: {
         name: "light",
         background: "#ffffff",
+        contrast: "#333333",
         text: "#333333",
+        textContrast: "#ffffff",
     },
     dark: {
         name: "dark",
         background: "#333333",
         text: "#ffffff",
+        contrast: "#ffffff",
+        textContrast: "#333333",
     },
 };
 
@@ -26,6 +30,8 @@ export const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
 
         root.style.setProperty("--primary-bg-color", theme.background);
         root.style.setProperty("--text", theme.text);
+        root.style.setProperty("--primary-bg-contrast-color", theme.contrast);
+        root.style.setProperty("--text-contrast", theme.textContrast);
     }, [theme]);
 
     const toggleTheme = () => {
