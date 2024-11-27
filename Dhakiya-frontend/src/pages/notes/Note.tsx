@@ -14,7 +14,6 @@ import { useEnvironmentCtx } from "../../context/EnvironmentContext";
 
 export const Note: React.FC<NoteProps> = ({ note }) => {
     const navigate = useNavigate();
-    const [tags, setTags] = useState<I_Tag[]>([]);
     const [noteTitle, setNoteTitle] = useState<string>("");
     const [noteContent, setNoteContent] = useState<string>("");
     const [noteTags, setNoteTags] = useState<I_Tag[]>([]);
@@ -65,10 +64,8 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
     };
 
     useEffect(() => {
-        AxiosClient.get("tags")
-            .then((response: I_Tag[]) => setTags(response))
-            .catch((error) => console.error(error));
         if (note) {
+            console.log("note: ",note)
             setNoteTitle(note.title);
             setNoteContent(note.content);
             setNoteTags(note.tags);
@@ -91,13 +88,12 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
                 <div className="note-view-tag-list">
                     {note && (
                         <AddTags
-                            tagList={tags}
                             onSelect={handleAddTag}
-                            selectedTags={note.tags}
+                            selectedTagIds={note?.tagIds}
                         />
                     )}
                     {!note && (
-                        <AddTags tagList={tags} onSelect={handleAddTag} />
+                        <AddTags onSelect={handleAddTag} />
                     )}
                 </div>
             </div>

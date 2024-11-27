@@ -1,17 +1,31 @@
 import "./addTags.css";
 import { Button } from "../../components/button/Button";
 import { I_Tag } from "types/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorOption, widthOption } from "../../types/enums";
+import { AxiosClient } from "../../services/AxiosClient";
 
 export const AddTags: React.FC<AddTagsProps> = ({
     onSelect,
-    tagList,
-    selectedTags,
+    selectedTagIds,
 }) => {
-    const [selected, setSelected] = useState<I_Tag[]>(selectedTags || []);
+    const [selected, setSelected] = useState<I_Tag[]>([]);
+    const [tags,setTags] = useState<I_Tag[]>([]);
+
+    useEffect(()=>{
+        AxiosClient.get("tags")
+            .then((response: I_Tag[]) => setTags(response))
+            .catch((error) => console.error(error))
+    },[])
+
+    useEffect(()=>{
+        if(tags){
+            setSelected(tags.filter((tag)=>selectedTagIds.includes(tag.id)))
+        }
+    },[tags])  
 
     const handleCheckboxChange = (tag: I_Tag) => {
+        console.log("initial: ",selected)
         const isSelected = selected.some(
             (selectedTag) => selectedTag.id === tag.id
         );
@@ -19,6 +33,7 @@ export const AddTags: React.FC<AddTagsProps> = ({
             ? selected.filter((selectedTag) => selectedTag.id !== tag.id)
             : [...selected, tag];
 
+            console.log(updatedSelectedTags)
         setSelected(updatedSelectedTags);
 
         onSelect(updatedSelectedTags);
@@ -38,9 +53,9 @@ export const AddTags: React.FC<AddTagsProps> = ({
                 width={widthOption.MEDIUM}
             />
             <div className={`add-tags-tag-list`}>
-                {tagList &&
+                {tags &&
                     show &&
-                    tagList.map((tag: I_Tag) => (
+                    tags.map((tag: I_Tag) => (
                         <div className={`add-tags-tag-list-item`} key={tag.id}>
                             <input
                                 type="checkbox"
@@ -66,6 +81,5 @@ export const AddTags: React.FC<AddTagsProps> = ({
 
 interface AddTagsProps {
     onSelect: (tags: I_Tag[]) => void;
-    tagList: I_Tag[];
-    selectedTags?: I_Tag[];
+    selectedTagIds?: number[];
 }
