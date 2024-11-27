@@ -5,9 +5,11 @@ import { OverviewList } from "./overviewlist/OverviewList";
 import { useEffect, useState } from "react";
 import { I_Environment } from "types/api";
 import { AxiosClient } from "../../services/AxiosClient";
+import { useEnvironmentCtx } from "../../context/EnvironmentContext";
 
 export const Environments = () => {
     const [environments, setEnvironments] = useState<I_Environment[]>([]);
+    const {resetEnvironmentData} = useEnvironmentCtx();
 
     const addEnvironment = () => {
         console.log("add");
@@ -20,6 +22,7 @@ export const Environments = () => {
             .catch((error) => {
                 console.log(error);
             });
+            resetEnvironmentData();
     }, []);
 
     return (

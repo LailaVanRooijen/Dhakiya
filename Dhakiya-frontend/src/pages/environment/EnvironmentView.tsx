@@ -7,15 +7,12 @@ import { I_FlashcardSet } from "../../types/api";
 import { I_QuizSet } from "../../types/api";
 import { ColorOption } from "../../types/enums";
 import { AxiosClient } from "../../services/AxiosClient";
-import {
-    EnvironmentProvider,
-    useEnvironmentCtx,
-} from "../../context/EnvironmentContext";
+import {useEnvironmentCtx} from "../../context/EnvironmentContext";
 
 export const EnvironmentView = () => {
     const { id } = useParams<{ id: string }>();
     const [environment, setEnvironment] = useState<I_Environment | null>(null);
-    const { setNoteSet } = useEnvironmentCtx();
+    const { updateNoteSet } = useEnvironmentCtx();
 
     useEffect(() => {
         AxiosClient.get(`environments/${id}`)
@@ -27,14 +24,12 @@ export const EnvironmentView = () => {
 
     useEffect(() => {
         if (environment) {
-            console.log("setting notesetid: ", environment.noteSet.id);
-            setNoteSet(environment.noteSet.id);
+            updateNoteSet(environment.noteSet.id);
         }
-    }, [environment]);
+    }, [environment,updateNoteSet]);
 
     if (environment) {
         return (
-            <EnvironmentProvider>
                 <div>
                     <LabelBar label={environment.title} />
 
@@ -81,7 +76,6 @@ export const EnvironmentView = () => {
                         />
                     )}
                 </div>
-            </EnvironmentProvider>
         );
     }
 };

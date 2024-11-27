@@ -13,9 +13,11 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { QuizSets } from "./pages/quizsets/QuizSets";
 import { NoteView } from "./pages/notes/NoteView";
 import { CreateNote } from "./pages/notes/CreateNote";
+import { EnvironmentProvider } from "../src/context/EnvironmentContext";
 
 const App: React.FC = () => {
     return (
+        <EnvironmentProvider>
         <ThemeProvider>
             <Router>
                 <BasicPage>
@@ -24,7 +26,7 @@ const App: React.FC = () => {
                         <Route
                             path="/environment/:id"
                             element={<EnvironmentView />}
-                        />
+                            />
                         <Route path="/notes" element={<Notes />} />
                         <Route path="/note-set/:id" element={<NoteSet />} />
                         <Route path="/note/:id" element={<NoteView />} />
@@ -33,16 +35,17 @@ const App: React.FC = () => {
                         <Route
                             path="/flashcard-set/:id"
                             element={<FlashCardSet />}
-                        />
+                            />
                         <Route
                             path="/flashcard/:id"
                             element={<FlashcardView />}
-                        />
+                            />
                         <Route path="/quiz-sets" element={<QuizSets />} />
                     </Routes>
                 </BasicPage>
             </Router>
         </ThemeProvider>
+                            </EnvironmentProvider>
     );
 };
 

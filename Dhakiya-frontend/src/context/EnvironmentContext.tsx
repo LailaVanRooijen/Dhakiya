@@ -1,25 +1,32 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-const environmentData: any = {
-    noteSet: null,
-};
 
 const EnvironmentContext = createContext({
-    environmentData: environmentData,
-    setNoteSet: (id: number) => {},
+    noteSet: null,
+    updateNoteSet: (id: number) => {},
+    resetEnvironmentData:()=>{}
 });
 
-const setNoteSet = (id: number) => {
-    console.log("from noteset setter: ", id);
-
-    //TODO deze word niet aangeroepen, even uitvogelen waarom
-    environmentData.noteSet = id;
-};
-
 export const EnvironmentProvider: React.FC<Props> = ({ children }) => {
+    const [noteSet, setNoteSet] = useState<number | null>(null);
+
+    useEffect(()=>{
+        console.log("noteset change: ",noteSet)
+    },[noteSet])
+
+    const updateNoteSet = (id: number) => {
+        console.log("environmentData from ctx: ", noteSet)
+        setNoteSet(id); 
+    };
+
+    const resetEnvironmentData = ()=>{
+        setNoteSet(null);
+    }
+    
+
     const value = useMemo(
-        () => ({ environmentData, setNoteSet }),
-        [environmentData]
+        () => ({ noteSet, updateNoteSet,resetEnvironmentData }),
+        [noteSet]
     );
 
     return (

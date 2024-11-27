@@ -18,7 +18,7 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
     const [noteTitle, setNoteTitle] = useState<string>("");
     const [noteContent, setNoteContent] = useState<string>("");
     const [noteTags, setNoteTags] = useState<I_Tag[]>([]);
-    const { environmentData } = useEnvironmentCtx();
+    const { noteSet } = useEnvironmentCtx();
 
     const handleSave = () => {
         if (note) {
@@ -37,13 +37,13 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
             }
         }
         if (!note) {
-            if (environmentData.noteSetId === null) {
+            if (noteSet === null) {
+                console.log("ns", noteSet);
                 console.log("no notesetid do something else");
             }
-            console.log("noteSetId: ", environmentData.noteSetId);
             try {
                 const body = usePostNoteValidator({
-                    noteSetId: environmentData.noteSetId,
+                    noteSetId: noteSet,
                     title: noteTitle,
                     content: noteContent,
                     tagIds: useTagIdExtractor(noteTags),
