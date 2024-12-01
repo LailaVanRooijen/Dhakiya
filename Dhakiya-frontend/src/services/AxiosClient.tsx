@@ -36,4 +36,15 @@ export class AxiosClient {
             return error.detail;
         }
     }
+
+    static async delete<T>(url: string, id: number) {
+        try {
+            const response = await axios.delete(`${BASE_URL}${url}/${id}`, {
+                headers: HEADERS,
+            });
+            return response.data;
+        } catch (error) {
+            return error.detail;
+        }
+    }
 }

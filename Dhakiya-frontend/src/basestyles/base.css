@@ -33,6 +33,9 @@ body {
     --color-option-secondary: #1b998b;
     --color-option-tertiary: #ac3931;
 
+    --color-option-warning:#c9352a;
+    --color-option-encourage:#0bb150;
+
     /* shadows */
     --text-outline: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333,
         1px 1px 0 #333333;
@@ -48,15 +51,23 @@ body {
 }
 
 /* universal classes */
-.color-option-primary_bg {
+.color-option-primary-bg {
     background-color: var(--color-option-primary);
 }
 
-.color-option-secondary_bg {
+.color-option-secondary-bg {
     background-color: var(--color-option-secondary);
 }
-.color-option-tertiary_bg {
+.color-option-tertiary-bg {
     background-color: var(--color-option-tertiary);
+}
+
+.color-option-warning-bg{
+    background-color: var(--color-option-warning);
+}
+
+.color-option-encourage-bg{
+    background-color: var(--color-option-encourage);
 }
 
 .small-width-option {

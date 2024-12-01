@@ -11,6 +11,7 @@ import {
 } from "../../hooks/useValidators";
 import { AddTags } from "../../components/addTags/AddTags";
 import { useEnvironmentCtx } from "../../context/EnvironmentContext";
+import { ColorOption } from "../../types/enums";
 
 export const Note: React.FC<NoteProps> = ({ note }) => {
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
                 const body = usePatchNoteValidator({
                     title: noteTitle,
                     content: noteContent,
-                    tagIds: useTagIdExtractor(noteTags),
+                    tagIds: useTagIdExtractor(noteTags), //TODO gaat niet goed!
                 });
                 AxiosClient.patch(`notes/${note.id}`, body).then(
                     (response: I_Note) => console.log(response)
@@ -45,7 +46,7 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
                     noteSetId: noteSet,
                     title: noteTitle,
                     content: noteContent,
-                    tagIds: useTagIdExtractor(noteTags),
+                    tagIds: useTagIdExtractor(noteTags), //TODO gaat niet goed!
                 });
                 AxiosClient.post("notes", body)
                     .then((response: I_Note) => {
@@ -62,6 +63,13 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
         const prevTags = tags.concat(noteTags);
         setNoteTags([...new Set(prevTags)]);
     };
+
+    const handleDeleteNote = ()=>{
+        console.log(note.id)
+        AxiosClient.delete("notes",note.id)
+        .then(response=> console.log(response))
+        .catch(error=>console.error(error));
+    }
 
     useEffect(() => {
         if (note) {
@@ -98,7 +106,8 @@ export const Note: React.FC<NoteProps> = ({ note }) => {
                 </div>
             </div>
             <div className={`note-view-btn-box`}>
-                <Button content="save" handleClick={handleSave} />
+                <Button content="save" color={ColorOption.ENCOURAGE_BG} handleClick={handleSave} />
+                <Button content="delete" color={ColorOption.WARNING_BG} handleClick={handleDeleteNote} />
             </div>
         </>
     );
