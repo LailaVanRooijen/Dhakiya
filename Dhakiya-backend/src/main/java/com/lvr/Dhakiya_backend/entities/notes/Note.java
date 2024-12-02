@@ -1,7 +1,5 @@
 package com.lvr.Dhakiya_backend.entities.notes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.lvr.Dhakiya_backend.entities.noteSet.NoteSet;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import jakarta.persistence.*;
 import java.util.HashSet;
@@ -19,7 +17,7 @@ public class Note {
   @Setter private String title;
   @Setter private String content;
   @Setter @ManyToMany private Set<Tag> tags = new HashSet<>();
-  @JsonIgnore @ManyToOne private NoteSet noteSet;
+  private Long noteSetId;
 
   public Note(String title, String content, Set<Tag> tags) {
     this.title = title;
@@ -27,9 +25,9 @@ public class Note {
     this.tags.addAll(tags);
   }
 
-  public Note(String title, String content, NoteSet noteSet) {
+  public Note(String title, String content, Long noteSetId) {
     this.title = title;
     this.content = content;
-    this.noteSet = noteSet;
+    this.noteSetId = noteSetId;
   }
 }

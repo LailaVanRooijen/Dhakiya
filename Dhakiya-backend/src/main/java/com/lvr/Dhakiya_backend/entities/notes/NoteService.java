@@ -24,7 +24,7 @@ public class NoteService {
   public Note create(NoteDto dto) {
     NoteSet noteSet =
         noteSetRepository.findById(dto.noteSetId()).orElseThrow(NotFoundException::new);
-    Note note = NoteDto.to(dto, noteSet);
+    Note note = NoteDto.to(dto);
     if (dto.tagIds() != null) {
       note.setTags(tagHelper.convertToTags(dto.tagIds()));
     }

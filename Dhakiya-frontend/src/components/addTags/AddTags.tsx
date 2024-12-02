@@ -20,8 +20,9 @@ export const AddTags: React.FC<AddTagsProps> = ({
 
     useEffect(()=>{
         if(tags){
-            setSelected(tags.filter((tag)=>selectedTagIds.includes(tag.id)))
-        }
+            if(tags.length === 0)return;
+             setSelected(tags.filter((tag)=>selectedTagIds.includes(tag.id)))
+         }
     },[tags])  
 
     const handleCheckboxChange = (tag: I_Tag) => {

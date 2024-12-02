@@ -2,13 +2,10 @@ import "./note.css";
 import { useEffect, useState } from "react";
 import { I_Note, I_Tag } from "types/api";
 import { Button } from "../../components/button/Button";
-import { useTagIdExtractor } from "../../hooks/useListReformatter";
+import { useTagIdExtractor } from "../../helperfunctions/useListReformatter";
 import { AxiosClient } from "../../services/AxiosClient";
 import { useNavigate } from "react-router-dom";
-import {
-    usePatchNoteValidator,
-    usePostNoteValidator,
-} from "../../hooks/useValidators";
+import {usePatchNoteValidator,usePostNoteValidator,} from "../../helperfunctions/useValidators";
 import { AddTags } from "../../components/addTags/AddTags";
 import { useEnvironmentCtx } from "../../context/EnvironmentContext";
 import { ColorOption } from "../../types/enums";

@@ -12,7 +12,7 @@ export interface I_Environment {
 export interface I_Note {
     noteId?: number;
     id?: number;
-    ?: number;
+    noteSetId?: number;
     title: string;
     content: string;
     tagIds?: number[];
