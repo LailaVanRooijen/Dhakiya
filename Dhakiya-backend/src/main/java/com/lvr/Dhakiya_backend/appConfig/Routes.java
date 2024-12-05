@@ -11,4 +11,5 @@ public class Routes {
   public static final String QUIZ_SETS = BASE_ROUTE + "quiz-sets";
   public static final String ANSWERS = BASE_ROUTE + "answers";
   public static final String TAGS = BASE_ROUTE + "tags";
+  public static final String PROGRESS_REPORTS = BASE_ROUTE + "progress-reports";
 }

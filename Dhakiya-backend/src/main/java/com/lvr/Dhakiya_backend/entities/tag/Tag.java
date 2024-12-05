@@ -16,27 +16,39 @@ public class Tag {
   @GeneratedValue @Id Long id;
   @Setter private String tag;
   @Setter private Integer seenCount;
-  @Setter private Integer flaggedNegativeCount;
+  @Setter private Integer flaggedPositiveCount;
 
   @Setter @ManyToOne private Environment environment;
 
   public Tag(String tag) {
     this.tag = tag;
     this.seenCount = 0;
-    this.flaggedNegativeCount = 0;
+    this.flaggedPositiveCount = 0;
   }
 
   public TagStatus getStatus() {
-    double negativePercentage = (double) flaggedNegativeCount / seenCount * 100;
+    double percentage = getPercentage();
+    if (this.seenCount == 0) {
+      return TagStatus.NO_DATA;
+    }
 
-    if (negativePercentage <= 15) {
+    if (percentage >= 90) {
       return TagStatus.VERY_STRONG;
-    } else if (negativePercentage <= 30) {
+    } else if (percentage >= 70) {
       return TagStatus.STRONG;
-    } else if (negativePercentage <= 60) {
+    } else if (percentage >= 50) {
       return TagStatus.GOOD;
     } else {
       return TagStatus.WEAK;
     }
+  }
+
+  public double getPercentage() {
+    if (this.flaggedPositiveCount == 0 || this.seenCount == 0) {
+      return 0;
+    }
+
+    double percentage = (double) flaggedPositiveCount / seenCount * 100;
+    return Math.round(percentage);
   }
 }

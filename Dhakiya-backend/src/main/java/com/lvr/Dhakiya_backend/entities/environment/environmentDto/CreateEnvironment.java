@@ -1,4 +1,6 @@
-package com.lvr.Dhakiya_backend.entities.environment;
+package com.lvr.Dhakiya_backend.entities.environment.environmentDto;
+
+import com.lvr.Dhakiya_backend.entities.environment.Environment;
 
 public record CreateEnvironment(String title) {
   public static Environment to(CreateEnvironment dto) {

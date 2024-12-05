@@ -4,12 +4,12 @@ import org.springframework.boot.Banner;
 import org.springframework.core.env.Environment;
 
 public class CustomBanner implements Banner {
-  private static final String mantis = "\u001B[38;2;125;206;130m";
-  private static final String blush = "\u001B[38;2;227;101;136m";
-  private static final String jordyBlue = "\u001B[38;2;154;196;248m";
+  private static final String seaGreen = "\u001B[38;2;0;145;110m";
+  private static final String orchidPink = "\u001B[38;2;238;207;212m";
+  private static final String chinaRose = "\u001B[38;2;171;79;104m";
 
   private static final String BANNER =
-      blush
+      orchidPink
           + "\n"
           + "██████╗  ██╗  ██╗  █████╗  ██╗  ██╗ ██╗ ██╗   ██╗  █████╗ \n"
           + "██╔══██╗ ██║  ██║ ██╔══██╗ ██║ ██╔╝ ██║ ╚██╗ ██╔╝ ██╔══██╗\n"
@@ -17,9 +17,9 @@ public class CustomBanner implements Banner {
           + "██║  ██║ ██╔══██║ ██╔══██║ ██╔═██╗  ██║   ╚██╔╝   ██╔══██║\n"
           + "██████╔╝ ██║  ██║ ██║  ██║ ██║  ██╗ ██║    ██║    ██║  ██║\n"
           + "╚═════╝  ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝    ╚═╝    ╚═╝  ╚═╝\n"
-          + jordyBlue
+          + chinaRose
           + "Don't forget to have fun!          Spring version 3.3.4\n\n"
-          + mantis;
+          + seaGreen;
 
   @Override
   public void printBanner(Environment environment, Class<?> sourceClass, java.io.PrintStream out) {

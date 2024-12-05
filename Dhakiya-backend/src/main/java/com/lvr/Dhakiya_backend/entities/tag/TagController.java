@@ -2,6 +2,8 @@ package com.lvr.Dhakiya_backend.entities.tag;
 
 import static com.lvr.Dhakiya_backend.appConfig.Routes.TAGS;
 
+import com.lvr.Dhakiya_backend.entities.tag.tagDto.CreateTag;
+import com.lvr.Dhakiya_backend.entities.tag.tagDto.PatchTag;
 import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

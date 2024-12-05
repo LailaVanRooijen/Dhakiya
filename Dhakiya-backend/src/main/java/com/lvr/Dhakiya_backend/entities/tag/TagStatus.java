@@ -4,5 +4,6 @@ public enum TagStatus {
   WEAK,
   GOOD,
   STRONG,
-  VERY_STRONG
+  VERY_STRONG,
+  NO_DATA
 }

@@ -1,5 +1,9 @@
 package com.lvr.Dhakiya_backend.entities.environment;
 
+import com.lvr.Dhakiya_backend.entities.environment.environmentDto.CreateEnvironment;
+import com.lvr.Dhakiya_backend.entities.environment.environmentDto.PatchEnvironment;
+import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReport;
+import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReportRepository;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagRepository;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
@@ -12,10 +16,16 @@ import org.springframework.stereotype.Service;
 public class EnvironmentService {
   private final EnvironmentRepository environmentRepository;
   private final TagRepository tagRepository;
+  private final ProgressReportRepository progressReportRepository;
 
   public Environment create(CreateEnvironment dto) {
     Environment newEnvironment = CreateEnvironment.to(dto);
     environmentRepository.save(newEnvironment);
+
+    ProgressReport progressReport = new ProgressReport();
+    progressReport.setEnvironment(newEnvironment);
+    progressReportRepository.save(progressReport);
+
     return newEnvironment;
   }
 

@@ -1,9 +1,11 @@
 package com.lvr.Dhakiya_backend;
 
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
-import com.lvr.Dhakiya_backend.entities.environment.EnvironmentRepository;
-import com.lvr.Dhakiya_backend.entities.tag.Tag;
-import com.lvr.Dhakiya_backend.entities.tag.TagRepository;
+import com.lvr.Dhakiya_backend.entities.environment.EnvironmentService;
+import com.lvr.Dhakiya_backend.entities.environment.environmentDto.CreateEnvironment;
+import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReportService;
+import com.lvr.Dhakiya_backend.entities.tag.TagService;
+import com.lvr.Dhakiya_backend.entities.tag.tagDto.CreateTag;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -12,8 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class Seeder implements CommandLineRunner {
-  private final EnvironmentRepository environmentRepository;
-  private final TagRepository tagRepository;
+  private final EnvironmentService environmentService;
+  private final TagService tagService;
+  private final ProgressReportService progressReportService;
 
   @Override
   public void run(String... args) throws Exception {
@@ -22,25 +25,17 @@ public class Seeder implements CommandLineRunner {
   }
 
   public void seedEnvironments() {
-    environmentRepository.save(new Environment("OCA 21"));
-    environmentRepository.save(new Environment("History"));
-    environmentRepository.save(new Environment("Philosophy"));
+    environmentService.create(new CreateEnvironment("OCA 21"));
+    environmentService.create(new CreateEnvironment("History"));
+    environmentService.create(new CreateEnvironment("Lyricology"));
   }
 
   private void seedTags() {
-    List<Environment> environments = environmentRepository.findAll();
+    List<Environment> environments = environmentService.getAll();
     if (environments.isEmpty()) return;
 
-    Tag tag1 = new Tag("Primitive Datatypes");
-    tag1.setEnvironment(environments.get(0));
-    tagRepository.save(tag1);
-
-    Tag tag2 = new Tag("Ancient Egypt");
-    tag2.setEnvironment(environments.get(1));
-    tagRepository.save(tag2);
-
-    Tag tag3 = new Tag("Al-Kindi");
-    tag3.setEnvironment(environments.get(2));
-    tagRepository.save(tag3);
+    tagService.createTag(new CreateTag(environments.get(0).getId(), "Primitive Datatypes"));
+    tagService.createTag(new CreateTag(environments.get(1).getId(), "Ancient Egypt"));
+    tagService.createTag(new CreateTag(environments.get(2).getId(), "Punchlines"));
   }
 }
