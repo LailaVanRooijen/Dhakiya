@@ -1,7 +1,7 @@
-package com.lvr.Dhakiya_backend.entities.progressreport.progressReportDto;
+package com.lvr.Dhakiya_backend.entities.progressreport.dto;
 
 import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReport;
-import com.lvr.Dhakiya_backend.entities.tag.tagDto.DetailedTag;
+import com.lvr.Dhakiya_backend.entities.tag.dto.DetailedTag;
 import java.util.List;
 
 public record GetProgressReport(Long id, Long environmentId, List<DetailedTag> tags) {

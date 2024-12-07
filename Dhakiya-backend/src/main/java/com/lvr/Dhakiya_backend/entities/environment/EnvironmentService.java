@@ -1,9 +1,9 @@
 package com.lvr.Dhakiya_backend.entities.environment;
 
-import com.lvr.Dhakiya_backend.entities.environment.environmentDto.CreateEnvironment;
-import com.lvr.Dhakiya_backend.entities.environment.environmentDto.PatchEnvironment;
-import com.lvr.Dhakiya_backend.entities.noteset.NoteSet;
-import com.lvr.Dhakiya_backend.entities.noteset.NoteSetRepository;
+import com.lvr.Dhakiya_backend.entities.environment.dto.CreateEnvironment;
+import com.lvr.Dhakiya_backend.entities.environment.dto.PatchEnvironment;
+import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
+import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollectionRepository;
 import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReport;
 import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReportRepository;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
@@ -19,7 +19,7 @@ public class EnvironmentService {
   private final EnvironmentRepository environmentRepository;
   private final TagRepository tagRepository;
   private final ProgressReportRepository progressReportRepository;
-  private final NoteSetRepository noteSetRepository;
+  private final NoteCollectionRepository noteCollectionRepository;
 
   public Environment create(CreateEnvironment dto) {
     Environment newEnvironment = CreateEnvironment.to(dto);
@@ -29,9 +29,9 @@ public class EnvironmentService {
     progressReport.setEnvironment(newEnvironment);
     progressReportRepository.save(progressReport);
 
-    NoteSet noteSet = new NoteSet();
-    noteSet.setEnvironment(newEnvironment);
-    noteSetRepository.save(noteSet);
+    NoteCollection noteCollection = new NoteCollection();
+    noteCollection.setEnvironment(newEnvironment);
+    noteCollectionRepository.save(noteCollection);
 
     return newEnvironment;
   }
@@ -44,11 +44,11 @@ public class EnvironmentService {
     return environmentRepository.findById(id).orElseThrow(NotFoundException::new);
   }
 
-  public Environment patchEnvironment(Long id, PatchEnvironment patch) {
+  public Environment patchEnvironment(Long id, PatchEnvironment PatchEnvironment) {
     Environment patchedEnvironment =
         environmentRepository.findById(id).orElseThrow(NotFoundException::new);
-    if (patch.title() != null) {
-      patchedEnvironment.setTitle(patch.title());
+    if (PatchEnvironment.title() != null) {
+      patchedEnvironment.setTitle(PatchEnvironment.title());
     }
     return environmentRepository.save(patchedEnvironment);
   }

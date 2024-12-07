@@ -1,7 +1,10 @@
-package com.lvr.Dhakiya_backend.entities.noteset;
+package com.lvr.Dhakiya_backend.entities.notecollection;
 
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,10 +12,8 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @Getter
-public class NoteSet {
+public class NoteCollection {
   @GeneratedValue @Id private Long id;
 
   @Setter @OneToOne private Environment environment;
-
-  // @OneToMany List<Note> notes;
 }

@@ -1,6 +1,6 @@
 package com.lvr.Dhakiya_backend.entities.progressreport;
 
-import com.lvr.Dhakiya_backend.entities.progressreport.progressReportDto.GetProgressReport;
+import com.lvr.Dhakiya_backend.entities.progressreport.dto.GetProgressReport;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagRepository;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;

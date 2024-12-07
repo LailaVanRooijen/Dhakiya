@@ -1,4 +1,4 @@
-package com.lvr.Dhakiya_backend.entities.environment.environmentDto;
+package com.lvr.Dhakiya_backend.entities.environment.dto;
 
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
 

@@ -2,8 +2,8 @@ package com.lvr.Dhakiya_backend.entities.tag;
 
 import static com.lvr.Dhakiya_backend.appConfig.Routes.TAGS;
 
-import com.lvr.Dhakiya_backend.entities.tag.tagDto.CreateTag;
-import com.lvr.Dhakiya_backend.entities.tag.tagDto.PatchTag;
+import com.lvr.Dhakiya_backend.entities.tag.dto.CreateTag;
+import com.lvr.Dhakiya_backend.entities.tag.dto.PatchTag;
 import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class TagController {
   private final TagService tagService;
 
   @PostMapping
-  public ResponseEntity<Tag> createTag(@RequestBody CreateTag dto) {
+  public ResponseEntity<Tag> create(@RequestBody CreateTag dto) {
     Tag savedTag = tagService.createTag(dto);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
@@ -29,7 +29,7 @@ public class TagController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Tag>> getAllTags() {
+  public ResponseEntity<List<Tag>> getAll() {
     List<Tag> tags = tagService.getAllTags();
     if (tags.isEmpty()) {
       return ResponseEntity.noContent().build();
@@ -39,18 +39,18 @@ public class TagController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Tag> getTagById(@PathVariable Long id) {
+  public ResponseEntity<Tag> getById(@PathVariable Long id) {
     return ResponseEntity.ok(tagService.getById(id));
   }
 
   @PatchMapping("/{id}")
-  public ResponseEntity<Tag> patchTag(@PathVariable Long id, @RequestBody PatchTag patch) {
+  public ResponseEntity<Tag> patch(@PathVariable Long id, @RequestBody PatchTag patch) {
     Tag patchedTag = tagService.patchTag(id, patch);
     return ResponseEntity.ok(patchedTag);
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Tag> deleteTag(@PathVariable Long id) {
+  public ResponseEntity<Tag> delete(@PathVariable Long id) {
     tagService.deleteTag(id);
     return ResponseEntity.ok().build();
   }

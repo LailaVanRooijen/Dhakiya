@@ -1,4 +1,4 @@
-package com.lvr.Dhakiya_backend.entities.tag.tagDto;
+package com.lvr.Dhakiya_backend.entities.tag.dto;
 
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagStatus;

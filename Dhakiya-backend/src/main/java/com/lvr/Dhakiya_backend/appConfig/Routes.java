@@ -6,7 +6,7 @@ public class Routes {
   public static final String FLASHCARDS = BASE_ROUTE + "flashcards";
   public static final String FLASHCARD_SETS = BASE_ROUTE + "flashcard-sets";
   public static final String NOTES = BASE_ROUTE + "notes";
-  public static final String NOTE_SETS = BASE_ROUTE + "note-sets";
+  public static final String NOTE_COLLECTIONS = BASE_ROUTE + "note-collections";
   public static final String QUESTIONS = BASE_ROUTE + "questions";
   public static final String QUIZ_SETS = BASE_ROUTE + "quiz-sets";
   public static final String ANSWERS = BASE_ROUTE + "answers";

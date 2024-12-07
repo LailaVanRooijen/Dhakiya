@@ -1,7 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.progressreport;
 
 import com.lvr.Dhakiya_backend.appConfig.Routes;
-import com.lvr.Dhakiya_backend.entities.progressreport.progressReportDto.GetProgressReport;
+import com.lvr.Dhakiya_backend.entities.progressreport.dto.GetProgressReport;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

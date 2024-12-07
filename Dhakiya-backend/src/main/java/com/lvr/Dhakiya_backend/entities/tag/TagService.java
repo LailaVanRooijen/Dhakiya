@@ -2,8 +2,8 @@ package com.lvr.Dhakiya_backend.entities.tag;
 
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
 import com.lvr.Dhakiya_backend.entities.environment.EnvironmentRepository;
-import com.lvr.Dhakiya_backend.entities.tag.tagDto.CreateTag;
-import com.lvr.Dhakiya_backend.entities.tag.tagDto.PatchTag;
+import com.lvr.Dhakiya_backend.entities.tag.dto.CreateTag;
+import com.lvr.Dhakiya_backend.entities.tag.dto.PatchTag;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.BadRequestException;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
 import java.util.List;
