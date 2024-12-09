@@ -3,6 +3,11 @@ package com.lvr.Dhakiya_backend;
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
 import com.lvr.Dhakiya_backend.entities.environment.EnvironmentService;
 import com.lvr.Dhakiya_backend.entities.environment.dto.CreateEnvironment;
+import com.lvr.Dhakiya_backend.entities.environment.flashcard.FlashcardService;
+import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.PostFlashcard;
+import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeck;
+import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeckService;
+import com.lvr.Dhakiya_backend.entities.flashcarddeck.dto.PostFlashCardDeck;
 import com.lvr.Dhakiya_backend.entities.note.NoteService;
 import com.lvr.Dhakiya_backend.entities.note.dto.PostNote;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
@@ -24,12 +29,16 @@ public class Seeder implements CommandLineRunner {
   private final ProgressReportService progressReportService;
   private final NoteCollectionService noteCollectionService;
   private final NoteService noteService;
+  private final FlashcardDeckService flashcardDeckService;
+  private final FlashcardService flashcardService;
 
   @Override
   public void run(String... args) throws Exception {
     seedEnvironments();
     seedTags();
     seedNotes();
+    seedFlashcardDecks();
+    seedFlashcards();
   }
 
   public void seedEnvironments() {
@@ -74,5 +83,30 @@ public class Seeder implements CommandLineRunner {
             "A sequence of characters",
             "Not in alphabetical order",
             tags.get(2).getId()));
+  }
+
+  private void seedFlashcardDecks() {
+    List<Environment> environments = environmentService.getAll();
+    if (environments.isEmpty()) return;
+
+    flashcardDeckService.create(
+        new PostFlashCardDeck(environments.get(0).getId(), "Access Modifiers"));
+    flashcardDeckService.create(new PostFlashCardDeck(environments.get(1).getId(), "World war 1"));
+    flashcardDeckService.create(
+        new PostFlashCardDeck(environments.get(2).getId(), "Rhyme schemes"));
+  }
+
+  private void seedFlashcards() {
+    List<FlashcardDeck> decks = flashcardDeckService.getAll();
+    if (decks.isEmpty()) return;
+
+    List<Tag> tags = tagService.getAllTags();
+    if (tags.isEmpty()) return;
+
+    flashcardService.create(new PostFlashcard(decks.get(0).getId(), null, "ABC", "DEF"));
+    flashcardService.create(
+        new PostFlashcard(decks.get(1).getId(), tags.get(0).getId(), "ABC", "DEF"));
+    flashcardService.create(
+        new PostFlashcard(decks.get(2).getId(), tags.get(1).getId(), "ABC", "DEF"));
   }
 }
