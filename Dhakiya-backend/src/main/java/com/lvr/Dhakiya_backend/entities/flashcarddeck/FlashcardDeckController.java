@@ -1,8 +1,8 @@
 package com.lvr.Dhakiya_backend.entities.flashcarddeck;
 
 import com.lvr.Dhakiya_backend.appConfig.Routes;
+import com.lvr.Dhakiya_backend.entities.flashcarddeck.dto.PatchFlashcardDeck;
 import com.lvr.Dhakiya_backend.entities.flashcarddeck.dto.PostFlashCardDeck;
-
 import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -33,9 +33,25 @@ public class FlashcardDeckController {
 
   @PostMapping
   public ResponseEntity<FlashcardDeck> create(@RequestBody PostFlashCardDeck flashcardDeck) {
-    URI location =
-        ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand().toUri();
     FlashcardDeck createdFlashcardDeck = flashcardDeckService.create(flashcardDeck);
+    URI location =
+        ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(createdFlashcardDeck.getId())
+            .toUri();
     return ResponseEntity.created(location).body(createdFlashcardDeck);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<FlashcardDeck> delete(@PathVariable Long id) {
+    flashcardDeckService.delete(id);
+    return ResponseEntity.ok().build();
+  }
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<FlashcardDeck> update(
+      @PathVariable Long id, @RequestBody PatchFlashcardDeck patch) {
+    FlashcardDeck patchedFlashcardDeck = flashcardDeckService.patch(id, patch);
+    return ResponseEntity.ok(patchedFlashcardDeck);
   }
 }

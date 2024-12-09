@@ -2,6 +2,7 @@ package com.lvr.Dhakiya_backend.entities.flashcarddeck;
 
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
 import com.lvr.Dhakiya_backend.entities.environment.EnvironmentRepository;
+import com.lvr.Dhakiya_backend.entities.flashcarddeck.dto.PatchFlashcardDeck;
 import com.lvr.Dhakiya_backend.entities.flashcarddeck.dto.PostFlashCardDeck;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
 import java.util.List;
@@ -31,5 +32,19 @@ public class FlashcardDeckService {
     createdFlashcardDeck.setEnvironment(environment);
     flashcardDeckRepository.save(createdFlashcardDeck);
     return createdFlashcardDeck;
+  }
+
+  public void delete(Long id) {
+    flashcardDeckRepository.findById(id).orElseThrow(NotFoundException::new);
+    flashcardDeckRepository.deleteById(id);
+  }
+
+  public FlashcardDeck patch(Long id, PatchFlashcardDeck patch) {
+    FlashcardDeck flashcardDeck =
+        flashcardDeckRepository.findById(id).orElseThrow(NotFoundException::new);
+    if (patch.title() != null) {
+      flashcardDeck.setTitle(patch.title());
+    }
+    return flashcardDeckRepository.save(flashcardDeck);
   }
 }
