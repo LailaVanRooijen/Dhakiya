@@ -1,6 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.environment.flashcard;
 
 import com.lvr.Dhakiya_backend.appConfig.Routes;
+import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.PatchFlashcard;
 import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.PostFlashcard;
 import java.net.URI;
 import java.util.List;
@@ -35,5 +36,21 @@ public class FlashcardController {
     } else {
       return ResponseEntity.ok(flashcards);
     }
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<Flashcard> getById(@PathVariable Long id) {
+    return ResponseEntity.ok(flashcardService.getById(id));
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Flashcard> delete(@PathVariable Long id) {
+    flashcardService.delete(id);
+    return ResponseEntity.ok().build();
+  }
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<Flashcard> patch(@PathVariable Long id, @RequestBody PatchFlashcard patch) {
+    return ResponseEntity.ok(flashcardService.patch(id, patch));
   }
 }

@@ -19,11 +19,11 @@ public class Flashcard {
 
   @Setter private String title;
   @Setter private String content;
-  @Setter private Integer seenCount;
-  @Setter private Integer correctCount;
-  @Setter private Integer incorrectCount;
-  @Setter private Integer flaggedEasyCount;
-  @Setter private Integer flaggedDifficultCount;
+  @Setter private Integer seenCount = 0;
+  @Setter private Integer correctCount = 0;
+  @Setter private Integer incorrectCount = 0;
+  @Setter private Integer flaggedEasyCount = 0;
+  @Setter private Integer flaggedDifficultCount = 0;
   @Setter private LocalDate lastSeen;
   private final LocalDate createdOn = LocalDate.now();
 
