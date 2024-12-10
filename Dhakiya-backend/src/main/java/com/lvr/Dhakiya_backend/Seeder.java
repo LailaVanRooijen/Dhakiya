@@ -13,7 +13,10 @@ import com.lvr.Dhakiya_backend.entities.note.dto.PostNote;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollectionService;
 import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReportService;
+import com.lvr.Dhakiya_backend.entities.quiz.QuizService;
+import com.lvr.Dhakiya_backend.entities.quiz.dto.PostQuiz;
 import com.lvr.Dhakiya_backend.entities.quizcollection.QuizCollectionService;
+import com.lvr.Dhakiya_backend.entities.quizcollection.dto.GetQuizCollection;
 import com.lvr.Dhakiya_backend.entities.quizcollection.dto.PostQuizCollection;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagService;
@@ -34,6 +37,7 @@ public class Seeder implements CommandLineRunner {
   private final FlashcardDeckService flashcardDeckService;
   private final FlashcardService flashcardService;
   private final QuizCollectionService quizCollectionService;
+  private final QuizService quizService;
 
   @Override
   public void run(String... args) throws Exception {
@@ -43,6 +47,7 @@ public class Seeder implements CommandLineRunner {
     seedFlashcardDecks();
     seedFlashcards();
     seedQuizCollections();
+    seedQuizzes();
   }
 
   public void seedEnvironments() {
@@ -53,7 +58,7 @@ public class Seeder implements CommandLineRunner {
 
   private void seedTags() {
     List<Environment> environments = environmentService.getAll();
-    if (environments.isEmpty()) return;
+    if (environments.size() < 3) return;
 
     tagService.createTag(new CreateTag(environments.get(0).getId(), "Primitive Datatypes"));
     tagService.createTag(new CreateTag(environments.get(1).getId(), "Ancient Egypt"));
@@ -62,10 +67,10 @@ public class Seeder implements CommandLineRunner {
 
   private void seedNotes() {
     List<NoteCollection> noteCollections = noteCollectionService.getAll();
-    if (noteCollections.isEmpty()) return;
+    if (noteCollections.size() < 3) return;
 
     List<Tag> tags = tagService.getAllTags();
-    if (tags.isEmpty()) return;
+    if (tags.size() < 3) return;
 
     noteService.create(
         new PostNote(
@@ -91,7 +96,7 @@ public class Seeder implements CommandLineRunner {
 
   private void seedFlashcardDecks() {
     List<Environment> environments = environmentService.getAll();
-    if (environments.isEmpty()) return;
+    if (environments.size() < 3) return;
 
     flashcardDeckService.create(
         new PostFlashCardDeck(environments.get(0).getId(), "Access Modifiers"));
@@ -102,10 +107,10 @@ public class Seeder implements CommandLineRunner {
 
   private void seedFlashcards() {
     List<FlashcardDeck> decks = flashcardDeckService.getAll();
-    if (decks.isEmpty()) return;
+    if (decks.size() < 3) return;
 
     List<Tag> tags = tagService.getAllTags();
-    if (tags.isEmpty()) return;
+    if (tags.size() < 3) return;
 
     flashcardService.create(new PostFlashcard(decks.get(0).getId(), null, "ABC", "DEF", null));
     flashcardService.create(
@@ -116,7 +121,7 @@ public class Seeder implements CommandLineRunner {
 
   private void seedQuizCollections() {
     List<Environment> environments = environmentService.getAll();
-    if (environments.isEmpty()) return;
+    if (environments.size() < 3) return;
 
     quizCollectionService.create(
         new PostQuizCollection(environments.get(0).getId(), "My First Quiz Collection"));
@@ -124,5 +129,14 @@ public class Seeder implements CommandLineRunner {
         new PostQuizCollection(environments.get(1).getId(), "My Second Quiz Collection"));
     quizCollectionService.create(
         new PostQuizCollection(environments.get(2).getId(), "My Third Quiz Collection"));
+  }
+
+  private void seedQuizzes() {
+    List<GetQuizCollection> quizCollections = quizCollectionService.getAll();
+    if (quizCollections.size() < 3) return;
+
+    quizService.create(new PostQuiz(quizCollections.get(0).id(), "My First Quiz", null));
+    quizService.create(new PostQuiz(quizCollections.get(1).id(), "My Second Quiz", 21));
+    quizService.create(new PostQuiz(quizCollections.get(2).id(), "My Third Quiz", 30));
   }
 }
