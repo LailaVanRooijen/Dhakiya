@@ -1,6 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.environment.flashcard;
 
 import com.lvr.Dhakiya_backend.appConfig.Routes;
+import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.GetFlashcard;
 import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.PatchFlashcard;
 import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.PostFlashcard;
 import java.net.URI;
@@ -17,20 +18,20 @@ public class FlashcardController {
   private final FlashcardService flashcardService;
 
   @PostMapping
-  public ResponseEntity<Flashcard> create(@RequestBody PostFlashcard flashcard) {
-    Flashcard createdFlashcard = flashcardService.create(flashcard);
+  public ResponseEntity<GetFlashcard> create(@RequestBody PostFlashcard flashcard) {
+    GetFlashcard createdFlashcard = flashcardService.create(flashcard);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
-            .buildAndExpand(createdFlashcard.getId())
+            .buildAndExpand(createdFlashcard.id())
             .toUri();
 
     return ResponseEntity.created(location).body(createdFlashcard);
   }
 
   @GetMapping
-  public ResponseEntity<List<Flashcard>> getAll() {
-    List<Flashcard> flashcards = flashcardService.getAll();
+  public ResponseEntity<List<GetFlashcard>> getAll() {
+    List<GetFlashcard> flashcards = flashcardService.getAll();
     if (flashcards.isEmpty()) {
       return ResponseEntity.noContent().build();
     } else {
@@ -39,18 +40,19 @@ public class FlashcardController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Flashcard> getById(@PathVariable Long id) {
+  public ResponseEntity<GetFlashcard> getById(@PathVariable Long id) {
     return ResponseEntity.ok(flashcardService.getById(id));
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Flashcard> delete(@PathVariable Long id) {
+  public ResponseEntity<GetFlashcard> delete(@PathVariable Long id) {
     flashcardService.delete(id);
     return ResponseEntity.ok().build();
   }
 
   @PatchMapping("/{id}")
-  public ResponseEntity<Flashcard> patch(@PathVariable Long id, @RequestBody PatchFlashcard patch) {
+  public ResponseEntity<GetFlashcard> patch(
+      @PathVariable Long id, @RequestBody PatchFlashcard patch) {
     return ResponseEntity.ok(flashcardService.patch(id, patch));
   }
 }

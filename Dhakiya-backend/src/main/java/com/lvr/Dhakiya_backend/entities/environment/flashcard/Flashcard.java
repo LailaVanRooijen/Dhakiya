@@ -1,5 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.environment.flashcard;
 
+import com.lvr.Dhakiya_backend.entities.environment.enums.Status;
+import com.lvr.Dhakiya_backend.entities.environment.flashcard.enums.FlashcardFlags;
 import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeck;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import jakarta.persistence.Entity;
@@ -20,10 +22,10 @@ public class Flashcard {
   @Setter private String title;
   @Setter private String content;
   @Setter private Integer seenCount = 0;
-  @Setter private Integer correctCount = 0;
-  @Setter private Integer incorrectCount = 0;
-  @Setter private Integer flaggedEasyCount = 0;
-  @Setter private Integer flaggedDifficultCount = 0;
+
+  @Setter private Integer minimumDisplayCount = 5;
+  @Setter private Integer scorePoints = 0;
+
   @Setter private LocalDate lastSeen;
   private final LocalDate createdOn = LocalDate.now();
 
@@ -34,5 +36,36 @@ public class Flashcard {
   public Flashcard(String title, String content) {
     this.title = title;
     this.content = content;
+  }
+
+  public Status getStatus() {
+    if (seenCount == 0 || seenCount < minimumDisplayCount) {
+      return Status.NO_DATA;
+    }
+
+    double performanceScore = (double) scorePoints / seenCount;
+
+    if (performanceScore >= 4) {
+      return Status.STRONG;
+    } else if (performanceScore >= 3) {
+      return Status.GOOD;
+    } else if (performanceScore >= 2.5) {
+      return Status.MEDIOCRE;
+    } else {
+      return Status.WEAK;
+    }
+  }
+
+  public void updateScore(FlashcardFlags flag) {
+    if (flag == FlashcardFlags.FLAGGED_EASY) {
+      scorePoints += 4;
+    } else if (flag == FlashcardFlags.CORRECT) {
+      scorePoints += 3;
+    } else if (flag == FlashcardFlags.INCORRECT) {
+      scorePoints += 2;
+    } else if (flag == FlashcardFlags.FLAGGED_DIFFICULT) {
+      scorePoints += 1;
+    }
+    lastSeen = LocalDate.now();
   }
 }

@@ -1,6 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.tag;
 
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
+import com.lvr.Dhakiya_backend.entities.environment.enums.Status;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -26,20 +27,20 @@ public class Tag {
     this.flaggedPositiveCount = 0;
   }
 
-  public TagStatus getStatus() {
+  public Status getStatus() {
     double percentage = getPercentage();
     if (this.seenCount == 0) {
-      return TagStatus.NO_DATA;
+      return Status.NO_DATA;
     }
 
     if (percentage >= 90) {
-      return TagStatus.VERY_STRONG;
+      return Status.VERY_STRONG;
     } else if (percentage >= 70) {
-      return TagStatus.STRONG;
+      return Status.STRONG;
     } else if (percentage >= 50) {
-      return TagStatus.GOOD;
+      return Status.GOOD;
     } else {
-      return TagStatus.WEAK;
+      return Status.WEAK;
     }
   }
 
