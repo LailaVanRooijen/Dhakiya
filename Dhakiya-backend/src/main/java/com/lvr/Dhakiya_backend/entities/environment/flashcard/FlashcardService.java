@@ -29,6 +29,13 @@ public class FlashcardService {
       createdFlashcard.setTag(tag);
     }
 
+    if (dto.minimumDisplays() != null) {
+      if (dto.minimumDisplays() < 5) {
+        throw new BadRequestException("Flashcard minimum must be set to 5 or more");
+      }
+      createdFlashcard.setMinimumDisplayCount(dto.minimumDisplays());
+    }
+
     FlashcardDeck deck =
         flashcardDeckRepository.findById(dto.flashcardDeckId()).orElseThrow(NotFoundException::new);
 

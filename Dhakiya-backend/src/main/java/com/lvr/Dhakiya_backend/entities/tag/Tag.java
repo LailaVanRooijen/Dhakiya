@@ -15,14 +15,14 @@ import lombok.Setter;
 @Getter
 public class Tag {
   @GeneratedValue @Id Long id;
-  @Setter private String tag;
+  @Setter private String title;
   @Setter private Integer seenCount;
   @Setter private Integer flaggedPositiveCount;
 
   @Setter @ManyToOne private Environment environment;
 
-  public Tag(String tag) {
-    this.tag = tag;
+  public Tag(String title) {
+    this.title = title;
     this.seenCount = 0;
     this.flaggedPositiveCount = 0;
   }

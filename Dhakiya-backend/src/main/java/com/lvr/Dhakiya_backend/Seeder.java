@@ -13,6 +13,8 @@ import com.lvr.Dhakiya_backend.entities.note.dto.PostNote;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollectionService;
 import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReportService;
+import com.lvr.Dhakiya_backend.entities.quizcollection.QuizCollectionService;
+import com.lvr.Dhakiya_backend.entities.quizcollection.dto.PostQuizCollection;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagService;
 import com.lvr.Dhakiya_backend.entities.tag.dto.CreateTag;
@@ -31,6 +33,7 @@ public class Seeder implements CommandLineRunner {
   private final NoteService noteService;
   private final FlashcardDeckService flashcardDeckService;
   private final FlashcardService flashcardService;
+  private final QuizCollectionService quizCollectionService;
 
   @Override
   public void run(String... args) throws Exception {
@@ -39,6 +42,7 @@ public class Seeder implements CommandLineRunner {
     seedNotes();
     seedFlashcardDecks();
     seedFlashcards();
+    seedQuizCollections();
   }
 
   public void seedEnvironments() {
@@ -103,10 +107,22 @@ public class Seeder implements CommandLineRunner {
     List<Tag> tags = tagService.getAllTags();
     if (tags.isEmpty()) return;
 
-    flashcardService.create(new PostFlashcard(decks.get(0).getId(), null, "ABC", "DEF"));
+    flashcardService.create(new PostFlashcard(decks.get(0).getId(), null, "ABC", "DEF", null));
     flashcardService.create(
-        new PostFlashcard(decks.get(1).getId(), tags.get(0).getId(), "ABC", "DEF"));
+        new PostFlashcard(decks.get(1).getId(), tags.get(0).getId(), "ABC", "DEF", 10));
     flashcardService.create(
-        new PostFlashcard(decks.get(2).getId(), tags.get(1).getId(), "ABC", "DEF"));
+        new PostFlashcard(decks.get(2).getId(), tags.get(1).getId(), "ABC", "DEF", 8));
+  }
+
+  private void seedQuizCollections() {
+    List<Environment> environments = environmentService.getAll();
+    if (environments.isEmpty()) return;
+
+    quizCollectionService.create(
+        new PostQuizCollection(environments.get(0).getId(), "My First Quiz Collection"));
+    quizCollectionService.create(
+        new PostQuizCollection(environments.get(1).getId(), "My Second Quiz Collection"));
+    quizCollectionService.create(
+        new PostQuizCollection(environments.get(2).getId(), "My Third Quiz Collection"));
   }
 }

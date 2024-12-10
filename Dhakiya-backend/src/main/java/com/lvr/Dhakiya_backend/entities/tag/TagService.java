@@ -42,7 +42,7 @@ public class TagService {
     Tag tag = tagRepository.findById(id).orElseThrow(NotFoundException::new);
 
     if (patch.tag() != null && !patch.tag().isEmpty()) {
-      tag.setTag(patch.tag());
+      tag.setTitle(patch.tag());
     }
     if (patch.isFlaggedPositive() != null) {
       if (patch.isFlaggedPositive() == true) {

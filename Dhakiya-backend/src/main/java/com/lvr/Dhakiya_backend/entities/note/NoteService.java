@@ -1,5 +1,6 @@
 package com.lvr.Dhakiya_backend.entities.note;
 
+import com.lvr.Dhakiya_backend.entities.note.dto.GetNote;
 import com.lvr.Dhakiya_backend.entities.note.dto.PatchNote;
 import com.lvr.Dhakiya_backend.entities.note.dto.PostNote;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
@@ -19,15 +20,16 @@ public class NoteService {
   private final NoteCollectionRepository noteCollectionRepository;
   private final TagRepository tagRepository;
 
-  public List<Note> getAll() {
-    return noteRepository.findAll();
+  public List<GetNote> getAll() {
+    return noteRepository.findAll().stream().map(note -> GetNote.from(note)).toList();
   }
 
-  public Note getById(Long id) {
-    return noteRepository.findById(id).orElseThrow(NotFoundException::new);
+  public GetNote getById(Long id) {
+    Note note = noteRepository.findById(id).orElseThrow(NotFoundException::new);
+    return GetNote.from(note);
   }
 
-  public Note create(PostNote note) {
+  public GetNote create(PostNote note) {
     if (note.noteCollectionId() == null || note.title() == null || note.content() == null) {
       throw new BadRequestException("Incomplete body");
     }
@@ -42,10 +44,10 @@ public class NoteService {
       savedNote.setTag(tag);
     }
     noteRepository.save(savedNote);
-    return noteRepository.save(savedNote);
+    return GetNote.from(savedNote);
   }
 
-  public Note patch(Long id, PatchNote patch) {
+  public GetNote patch(Long id, PatchNote patch) {
     Note note = noteRepository.findById(id).orElseThrow(NotFoundException::new);
     if (patch.title() != null) {
       note.setTitle(patch.title());
@@ -57,7 +59,8 @@ public class NoteService {
       Tag tag = tagRepository.findById(patch.tagId()).orElseThrow(NotFoundException::new);
       note.setTag(tag);
     }
-    return noteRepository.save(note);
+    noteRepository.save(note);
+    return GetNote.from(note);
   }
 
   public void delete(Long id) {
