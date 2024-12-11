@@ -1,5 +1,6 @@
 package com.lvr.Dhakiya_backend;
 
+import com.lvr.Dhakiya_backend.entities.answer.dto.PostAnswer;
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
 import com.lvr.Dhakiya_backend.entities.environment.EnvironmentService;
 import com.lvr.Dhakiya_backend.entities.environment.dto.CreateEnvironment;
@@ -13,7 +14,10 @@ import com.lvr.Dhakiya_backend.entities.note.dto.PostNote;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollectionService;
 import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReportService;
+import com.lvr.Dhakiya_backend.entities.questions.QuestionService;
+import com.lvr.Dhakiya_backend.entities.questions.dto.PostQuestion;
 import com.lvr.Dhakiya_backend.entities.quiz.QuizService;
+import com.lvr.Dhakiya_backend.entities.quiz.dto.GetQuiz;
 import com.lvr.Dhakiya_backend.entities.quiz.dto.PostQuiz;
 import com.lvr.Dhakiya_backend.entities.quizcollection.QuizCollectionService;
 import com.lvr.Dhakiya_backend.entities.quizcollection.dto.GetQuizCollection;
@@ -21,6 +25,7 @@ import com.lvr.Dhakiya_backend.entities.quizcollection.dto.PostQuizCollection;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagService;
 import com.lvr.Dhakiya_backend.entities.tag.dto.CreateTag;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -38,6 +43,7 @@ public class Seeder implements CommandLineRunner {
   private final FlashcardService flashcardService;
   private final QuizCollectionService quizCollectionService;
   private final QuizService quizService;
+  private final QuestionService questionService;
 
   @Override
   public void run(String... args) throws Exception {
@@ -48,6 +54,7 @@ public class Seeder implements CommandLineRunner {
     seedFlashcards();
     seedQuizCollections();
     seedQuizzes();
+    seedQuestions();
   }
 
   public void seedEnvironments() {
@@ -138,5 +145,23 @@ public class Seeder implements CommandLineRunner {
     quizService.create(new PostQuiz(quizCollections.get(0).id(), "My First Quiz", null));
     quizService.create(new PostQuiz(quizCollections.get(1).id(), "My Second Quiz", 21));
     quizService.create(new PostQuiz(quizCollections.get(2).id(), "My Third Quiz", 30));
+  }
+
+  private void seedQuestions() {
+    List<GetQuiz> quizzes = quizService.getAll();
+    if (quizzes.size() < 3) return;
+    List<PostAnswer> answers =
+        new ArrayList<>(
+            List.of(
+                new PostAnswer("Answer a", true),
+                new PostAnswer("Answer b", true),
+                new PostAnswer("Answer c", true),
+                new PostAnswer("Answer d", false)));
+
+    questionService.create(new PostQuestion(quizzes.get(0).id(), "Is there a?", 4, 3, answers, 1L));
+    questionService.create(
+        new PostQuestion(quizzes.get(1).id(), "Will there be a?", 4, 3, answers, 1L));
+    questionService.create(
+        new PostQuestion(quizzes.get(2).id(), "Could it be so?", 4, 3, answers, 1L));
   }
 }
