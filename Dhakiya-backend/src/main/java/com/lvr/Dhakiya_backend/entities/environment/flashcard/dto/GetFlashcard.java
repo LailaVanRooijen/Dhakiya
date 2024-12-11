@@ -1,6 +1,6 @@
 package com.lvr.Dhakiya_backend.entities.environment.flashcard.dto;
 
-import com.lvr.Dhakiya_backend.entities.environment.enums.Status;
+import com.lvr.Dhakiya_backend.entities.enums.Status;
 import com.lvr.Dhakiya_backend.entities.environment.flashcard.Flashcard;
 import com.lvr.Dhakiya_backend.entities.tag.dto.GetTag;
 

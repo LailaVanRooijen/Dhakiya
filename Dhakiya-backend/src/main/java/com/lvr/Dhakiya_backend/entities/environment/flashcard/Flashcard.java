@@ -1,6 +1,6 @@
 package com.lvr.Dhakiya_backend.entities.environment.flashcard;
 
-import com.lvr.Dhakiya_backend.entities.environment.enums.Status;
+import com.lvr.Dhakiya_backend.entities.enums.Status;
 import com.lvr.Dhakiya_backend.entities.environment.flashcard.enums.FlashcardFlags;
 import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeck;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;

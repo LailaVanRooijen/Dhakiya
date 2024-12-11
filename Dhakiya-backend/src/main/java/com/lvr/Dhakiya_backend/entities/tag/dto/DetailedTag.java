@@ -1,6 +1,6 @@
 package com.lvr.Dhakiya_backend.entities.tag.dto;
 
-import com.lvr.Dhakiya_backend.entities.environment.enums.Status;
+import com.lvr.Dhakiya_backend.entities.enums.Status;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 
 public record DetailedTag(Long id, String tag, Double percentage, Status status) {
