@@ -1,3 +1,23 @@
 package com.lvr.Dhakiya_backend.entities.answer;
 
-public class Answer {}
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@NoArgsConstructor
+@Getter
+public class Answer {
+  @GeneratedValue @Id private Long id;
+
+  @Setter private String answer;
+  @Setter private Boolean isCorrect;
+
+  public Answer(String answer, Boolean isCorrect) {
+    this.answer = answer;
+    this.isCorrect = isCorrect;
+  }
+}

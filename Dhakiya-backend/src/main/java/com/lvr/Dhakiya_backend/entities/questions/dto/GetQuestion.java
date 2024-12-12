@@ -1,9 +1,12 @@
 package com.lvr.Dhakiya_backend.entities.questions.dto;
 
+import com.lvr.Dhakiya_backend.entities.answer.Answer;
 import com.lvr.Dhakiya_backend.entities.questions.Question;
 import com.lvr.Dhakiya_backend.entities.tag.dto.GetTag;
+import java.util.List;
 
-public record GetQuestion(Long id, Long quizId, String question, Boolean isCompleted, GetTag tag) {
+public record GetQuestion(
+    Long id, Long quizId, String question, Boolean isCompleted, List<Answer> answers, GetTag tag) {
   public static GetQuestion from(Question question) {
     GetTag tag = null;
     if (question.getTag() != null) {
@@ -15,6 +18,7 @@ public record GetQuestion(Long id, Long quizId, String question, Boolean isCompl
         question.getQuiz().getId(),
         question.getQuestion(),
         question.getIsCompleted(),
+        question.getAnswers(),
         tag);
   }
 }
