@@ -158,10 +158,10 @@ public class Seeder implements CommandLineRunner {
                 new PostAnswer("Answer c", true),
                 new PostAnswer("Answer d", false)));
 
-    questionService.create(new PostQuestion(quizzes.get(0).id(), "Is there a?", 4, 3, answers, 1L));
+    questionService.create(new PostQuestion(quizzes.get(0).id(), "Is there a?", 4, answers, 1L));
     questionService.create(
-        new PostQuestion(quizzes.get(1).id(), "Will there be a?", 4, 3, answers, 1L));
+        new PostQuestion(quizzes.get(1).id(), "Will there be a?", 4, answers, 1L));
     questionService.create(
-        new PostQuestion(quizzes.get(2).id(), "Could it be so?", 4, 3, answers, 1L));
+        new PostQuestion(quizzes.get(2).id(), "Could it be so?", 4, answers, 1L));
   }
 }

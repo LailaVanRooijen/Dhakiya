@@ -18,19 +18,20 @@ public class Question {
 
   @Setter @ManyToOne Quiz quiz;
   @Setter private String question;
-  @OneToMany List<Answer> answers = new ArrayList<>();
+
+  @OneToMany(cascade = CascadeType.REMOVE)
+  List<Answer> answers = new ArrayList<>();
+
   @Setter private Integer answerCount;
-  @Setter private Integer validAnswerCount;
-  @Setter private Boolean isCompleted;
+  @Setter private Boolean isCompleted = false;
   @Setter @ManyToOne private Tag tag;
 
-  public Question(String question, Integer answerCount, Integer validAnswerCount) {
+  public Question(String question, Integer answerCount) {
     this.question = question;
     this.answerCount = answerCount;
-    this.validAnswerCount = validAnswerCount;
   }
 
-  public void addAnswers(List<Answer> answers){
+  public void addAnswers(List<Answer> answers) {
     this.answers.addAll(answers);
   }
 }

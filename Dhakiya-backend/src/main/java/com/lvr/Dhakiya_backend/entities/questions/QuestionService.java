@@ -2,6 +2,7 @@ package com.lvr.Dhakiya_backend.entities.questions;
 
 import com.lvr.Dhakiya_backend.entities.answer.Answer;
 import com.lvr.Dhakiya_backend.entities.answer.AnswerRepository;
+import com.lvr.Dhakiya_backend.entities.answer.dto.PatchAnswer;
 import com.lvr.Dhakiya_backend.entities.answer.dto.PostAnswer;
 import com.lvr.Dhakiya_backend.entities.questions.dto.GetQuestion;
 import com.lvr.Dhakiya_backend.entities.questions.dto.PatchQuestion;
@@ -40,7 +41,7 @@ public class QuestionService {
     }
 
     if (dto.answers() == null || dto.answers().size() != dto.answerCount()) {
-      throw new BadRequestException("Answers must be provided");
+      throw new BadRequestException("Not all answers are provided");
     }
     List<Answer> answers = dto.answers().stream().map(answer -> PostAnswer.to(answer)).toList();
     answers.forEach(answer -> answerRepository.save(answer));
@@ -74,18 +75,10 @@ public class QuestionService {
     }
 
     if (patch.answerCount() != null) {
-      if (patch.answerCount() <= question.getValidAnswerCount() && patch.validAnswerCount() == null
-          || patch.answerCount() <= patch.validAnswerCount()) {
-        throw new BadRequestException("answerCount and validAnswerCount are incompatible");
+      if (question.getAnswers().size() > patch.answerCount()) {
+        throw new BadRequestException("answer count set lower then current answers");
       }
       question.setAnswerCount(patch.answerCount());
-    }
-
-    if (patch.validAnswerCount() != null) {
-      if (patch.validAnswerCount() >= question.getAnswerCount() && patch.answerCount() == null
-          || patch.validAnswerCount() >= patch.answerCount()) {
-        throw new BadRequestException("answerCount and validAnswerCount are incompatible");
-      }
     }
 
     if (patch.isCompleted() != null) {
@@ -97,7 +90,22 @@ public class QuestionService {
       question.setTag(tag);
     }
 
+    if (patch.answers() != null && !patch.answers().isEmpty()) {
+      patch.answers().forEach(answer -> patchAnswer(answer));
+    }
+
     questionRepository.save(question);
     return GetQuestion.from(question);
+  }
+
+  private Answer patchAnswer(PatchAnswer dto) {
+    Answer answer = answerRepository.findById(dto.id()).orElseThrow(NotFoundException::new);
+    if (dto.answer() != null) {
+      answer.setAnswer(dto.answer());
+    }
+    if (dto.isCorrect() != null) {
+      answer.setIsCorrect(dto.isCorrect());
+    }
+    return answerRepository.save(answer);
   }
 }
