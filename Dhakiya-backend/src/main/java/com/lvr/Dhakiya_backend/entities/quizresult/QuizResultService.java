@@ -14,6 +14,6 @@ public class QuizResultService {
 
 
     public GetQuizResult create(PostQuizResult dto) {
-        return null; //TODO uitvogelen hoe ik dit vorm wil geven
+        return null; //TODO figure out a plan for this
     }
 }
