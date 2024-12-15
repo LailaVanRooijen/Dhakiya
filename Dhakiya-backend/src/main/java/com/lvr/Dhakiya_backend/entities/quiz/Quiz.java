@@ -18,7 +18,6 @@ public class Quiz {
   @Setter private String title;
   @Setter private Integer size;
 
-  // private List<Question> questions;
 
   @Setter @ManyToOne private QuizCollection quizCollection;
 

@@ -2,9 +2,7 @@ package com.lvr.Dhakiya_backend.entities.quizresult;
 
 import com.lvr.Dhakiya_backend.entities.questions.Question;
 import com.lvr.Dhakiya_backend.entities.quiz.Quiz;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +17,6 @@ public class QuizResult {
 
     private String title;
 
-    private Quiz quiz;
+    @ManyToOne Quiz quiz;
 
-    private List<Question> questions = new ArrayList<>();
 }
