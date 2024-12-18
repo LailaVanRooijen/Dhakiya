@@ -81,10 +81,6 @@ public class QuestionService {
       question.setAnswerCount(patch.answerCount());
     }
 
-    if (patch.isCompleted() != null) {
-      question.setIsCompleted(patch.isCompleted());
-    }
-
     if (patch.tagId() != null) {
       Tag tag = tagRepository.findById(patch.tagId()).orElseThrow(NotFoundException::new);
       question.setTag(tag);

@@ -6,6 +6,5 @@ import java.util.List;
 public record PatchQuestion(
     String question,
     Integer answerCount,
-    Boolean isCompleted,
     List<PatchAnswer> answers,
     Long tagId) {}

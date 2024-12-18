@@ -1,5 +1,8 @@
 package com.lvr.Dhakiya_backend.entities.quiz;
 
+import com.lvr.Dhakiya_backend.entities.questions.Question;
+import com.lvr.Dhakiya_backend.entities.questions.QuestionRepository;
+import com.lvr.Dhakiya_backend.entities.questions.dto.GetQuestion;
 import com.lvr.Dhakiya_backend.entities.quiz.dto.GetQuiz;
 import com.lvr.Dhakiya_backend.entities.quiz.dto.PatchQuiz;
 import com.lvr.Dhakiya_backend.entities.quiz.dto.PostQuiz;
@@ -26,6 +29,8 @@ public class QuizService {
     createdQuiz.setQuizCollection(quizCollection);
 
     quizRepository.save(createdQuiz);
+
+
     return GetQuiz.from(createdQuiz);
   }
 
@@ -54,4 +59,5 @@ public class QuizService {
     quizRepository.save(quiz);
     return GetQuiz.from(quiz);
   }
+
 }
