@@ -19,6 +19,7 @@ public class QuizResult {
   @Setter private String title;
   @Setter private LocalDate createdOn;
   @Setter private Boolean isCompleted;
+  @Setter private int points = 0;
 
   @OneToMany List<AnsweredQuestion> questions = new ArrayList<>();
 
@@ -28,19 +29,19 @@ public class QuizResult {
     this.questions.addAll(questions);
   }
 
+  public void addPoint() {
+    this.points++;
+  }
+
+  public Double getScore() {
+    return (double) points / questions.size() * 100;
+  }
+
   // TODO delete comments
-  // wat is het plan? als een quizResult word aangemaakt dan:
-  // word er een AnsweredQuestion aangemaakt (maybe todo betere naam voor deze)
-  // dan kan per vraag een patch request gedaan worden om the selectedAnswers door te geven.
-  // dan kan er een patch gedaan worden om de quizResult te submitten.
-  // als de quizResult word gesubmit, dan komt er een total score uit, die word gedisplayed in de
-  // GetQuizResultDto
   // Pas bij de submit moeten de tags die aan deze questions gekoppeld zijn worden geflagged.
-  // en eigenlijk mag de entity dan niet meer worden aangepast. dus een isSubmited, als die true is
-  // exception throwen in patch ofzo?
   // als de quiz word gedelete, moeten de flags van tag er weer afgetrokken worden!
-  // TODO check of alle endpoints nog werken. + loop alle entities na, methods insert noemen als 1
-  // item word toegevoegd aan list, en add voor meerdere!
+  // TODO check of alle endpoints nog werken. + loop alle entities na:
+  // methods insert noemen als 1 item word toegevoegd aan list, en add voor meerdere!
   // update seeder met quizresults
   // check of de patch voor answers werkt
 

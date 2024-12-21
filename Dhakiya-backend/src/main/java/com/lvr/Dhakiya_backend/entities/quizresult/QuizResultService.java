@@ -11,6 +11,7 @@ import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.AnsweredQues
 import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.PatchAnsweredQuestion;
 import com.lvr.Dhakiya_backend.entities.quizresult.dto.GetQuizResult;
 import com.lvr.Dhakiya_backend.entities.quizresult.dto.PostQuizResult;
+import com.lvr.Dhakiya_backend.restadvice.exceptions.BadRequestException;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -43,7 +44,11 @@ public class QuizResultService {
   }
 
   public AnsweredQuestion copyQuestion(Question question) {
-    AnsweredQuestion copiedQuestion = new AnsweredQuestion(question);
+    Integer validAnswerCount = 0;
+    for (Answer answer : question.getAnswers()) {
+      if (answer.getIsCorrect()) validAnswerCount++;
+    }
+    AnsweredQuestion copiedQuestion = new AnsweredQuestion(question, validAnswerCount);
     return answeredQuestionRepository.save(copiedQuestion);
   }
 
@@ -59,13 +64,41 @@ public class QuizResultService {
   }
 
   public GetQuizResult submit(Long id) {
-    // TODO submit
-    return null;
+    QuizResult result = quizResultRepository.findById(id).orElseThrow(NotFoundException::new);
+    if (result.getIsCompleted()) {
+      throw new BadRequestException("quiz has already been submitted");
+    }
+
+    List<AnsweredQuestion> questions = result.getQuestions();
+    for (AnsweredQuestion question : questions) {
+      if (isAnsweredCorrect(question)) {
+        result.addPoint();
+      }
+    }
+    result.setIsCompleted(true);
+    quizResultRepository.save(result);
+    return GetQuizResult.from(result);
+  }
+
+  public Boolean isAnsweredCorrect(AnsweredQuestion question) {
+    // TODO als een antwoord fout is dan flag the tag
+    List<Answer> answers = question.getSelectedAnswers();
+
+    if (answers.size() != question.getValidAnswerCount()) return false;
+
+    for (Answer answer : answers) {
+      if (!answer.getIsCorrect()) return false;
+    }
+    return true;
   }
 
   public GetQuizResult submitAnswer(Long id, PatchAnsweredQuestion patch) {
     QuizResult result = quizResultRepository.findById(id).orElseThrow(NotFoundException::new);
+
     List<Answer> answers = answerRepository.findAllById(patch.answerIds());
+    if (patch.answerIds().size() != answers.size()) {
+      throw new BadRequestException("Invalid Answer Id");
+    }
 
     AnsweredQuestion question =
         answeredQuestionRepository.findById(patch.questionId()).orElseThrow(NotFoundException::new);

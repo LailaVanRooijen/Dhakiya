@@ -15,9 +15,11 @@ public class AnsweredQuestion {
   @GeneratedValue @Id private Long id;
   @ManyToOne Question question;
   @Setter @OneToMany private List<Answer> selectedAnswers;
+  private Integer validAnswerCount;
   @Setter private Boolean isCompleted = false;
 
-  public AnsweredQuestion(Question question) {
+  public AnsweredQuestion(Question question, Integer validAnswerCount) {
     this.question = question;
+    this.validAnswerCount = validAnswerCount;
   }
 }
