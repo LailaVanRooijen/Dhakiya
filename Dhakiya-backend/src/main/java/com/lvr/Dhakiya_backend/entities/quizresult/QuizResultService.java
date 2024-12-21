@@ -6,41 +6,73 @@ import com.lvr.Dhakiya_backend.entities.questions.Question;
 import com.lvr.Dhakiya_backend.entities.questions.QuestionRepository;
 import com.lvr.Dhakiya_backend.entities.quiz.Quiz;
 import com.lvr.Dhakiya_backend.entities.quiz.QuizRepository;
+import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.AnsweredQuestion;
+import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.AnsweredQuestionRepository;
+import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.PatchAnsweredQuestion;
 import com.lvr.Dhakiya_backend.entities.quizresult.dto.GetQuizResult;
 import com.lvr.Dhakiya_backend.entities.quizresult.dto.PostQuizResult;
-import com.lvr.Dhakiya_backend.entities.quizresult.quizResultQuestion.QuizResultQuestion;
-import com.lvr.Dhakiya_backend.entities.quizresult.quizResultQuestion.QuizResultQuestionRepository;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
-import jakarta.transaction.Transactional;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class QuizResultService {
-    private final QuizResultRepository quizResultRepository;
-    private final QuestionRepository questionRepository;
-    private final QuizRepository quizRepository;
-    private final QuizResultQuestionRepository quizResultQuestionRepository;
+  private final QuizResultRepository quizResultRepository;
+  private final QuestionRepository questionRepository;
+  private final QuizRepository quizRepository;
+  private final AnsweredQuestionRepository answeredQuestionRepository;
+  private final AnswerRepository answerRepository;
 
-    public GetQuizResult create(PostQuizResult dto) {
-        QuizResult quizResult = new QuizResult();
+  public GetQuizResult create(PostQuizResult dto) {
+    QuizResult quizResult = new QuizResult();
 
-        Quiz quiz = quizRepository.findById(dto.quizId()).orElseThrow(NotFoundException::new);
-        quizResult.setQuiz(quiz);
+    Quiz quiz = quizRepository.findById(dto.quizId()).orElseThrow(NotFoundException::new);
+    quizResult.setQuiz(quiz);
 
-        List<QuizResultQuestion> questions = questionRepository.findQuestionByQuiz(quiz).stream().map(question -> copyQuestion(question)).toList();
-        quizResult.add(questions);
+    List<AnsweredQuestion> questions =
+        questionRepository.findQuestionByQuiz(quiz).stream()
+            .map(question -> copyQuestion(question))
+            .toList();
+    quizResult.add(questions);
 
-        quizResultRepository.save(quizResult);
+    quizResultRepository.save(quizResult);
 
-        return GetQuizResult.from(quizResult);
-    }
+    return GetQuizResult.from(quizResult);
+  }
 
-    public QuizResultQuestion copyQuestion(Question question){
-        QuizResultQuestion copiedQuestion = new QuizResultQuestion(question);
-        return quizResultQuestionRepository.save(copiedQuestion);
-    }
+  public AnsweredQuestion copyQuestion(Question question) {
+    AnsweredQuestion copiedQuestion = new AnsweredQuestion(question);
+    return answeredQuestionRepository.save(copiedQuestion);
+  }
+
+  public List<GetQuizResult> getAll() {
+    return quizResultRepository.findAll().stream()
+        .map(result -> GetQuizResult.from(result))
+        .toList();
+  }
+
+  public GetQuizResult getById(Long id) {
+    QuizResult quizResult = quizResultRepository.findById(id).orElseThrow(NotFoundException::new);
+    return GetQuizResult.from(quizResult);
+  }
+
+  public GetQuizResult submit(Long id) {
+    // TODO submit
+    return null;
+  }
+
+  public GetQuizResult submitAnswer(Long id, PatchAnsweredQuestion patch) {
+    QuizResult result = quizResultRepository.findById(id).orElseThrow(NotFoundException::new);
+    List<Answer> answers = answerRepository.findAllById(patch.answerIds());
+
+    AnsweredQuestion question =
+        answeredQuestionRepository.findById(patch.questionId()).orElseThrow(NotFoundException::new);
+
+    question.setSelectedAnswers(answers);
+
+    quizResultRepository.save(result);
+    return GetQuizResult.from(result);
+  }
 }
