@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 public class NoteCollectionService {
   private final NoteCollectionRepository noteCollectionRepository;
 
+  public List<NoteCollection> getAll() {
+    return noteCollectionRepository.findAll();
+  }
+
   public NoteCollection getById(Long id) {
     return noteCollectionRepository.findById(id).orElseThrow(NotFoundException::new);
   }
