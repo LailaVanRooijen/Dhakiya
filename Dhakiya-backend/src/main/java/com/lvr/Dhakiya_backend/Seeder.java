@@ -72,16 +72,16 @@ public class Seeder implements CommandLineRunner {
     List<Environment> environments = environmentService.getAll();
     if (environments.size() < 3) return;
 
-    tagService.createTag(new CreateTag(environments.get(0).getId(), "Primitive Datatypes"));
-    tagService.createTag(new CreateTag(environments.get(1).getId(), "Ancient Egypt"));
-    tagService.createTag(new CreateTag(environments.get(2).getId(), "Punchlines"));
+    tagService.create(new CreateTag(environments.get(0).getId(), "Primitive Datatypes"));
+    tagService.create(new CreateTag(environments.get(1).getId(), "Ancient Egypt"));
+    tagService.create(new CreateTag(environments.get(2).getId(), "Punchlines"));
   }
 
   private void seedNotes() {
     List<NoteCollection> noteCollections = noteCollectionService.getAll();
     if (noteCollections.size() < 3) return;
 
-    List<Tag> tags = tagService.getAllTags();
+    List<Tag> tags = tagService.getAll();
     if (tags.size() < 3) return;
 
     noteService.create(
@@ -121,7 +121,7 @@ public class Seeder implements CommandLineRunner {
     List<FlashcardDeck> decks = flashcardDeckService.getAll();
     if (decks.size() < 3) return;
 
-    List<Tag> tags = tagService.getAllTags();
+    List<Tag> tags = tagService.getAll();
     if (tags.size() < 3) return;
 
     flashcardService.create(new PostFlashcard(decks.get(0).getId(), null, "ABC", "DEF", null));

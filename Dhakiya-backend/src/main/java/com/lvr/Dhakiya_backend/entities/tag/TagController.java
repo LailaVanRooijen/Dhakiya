@@ -19,7 +19,7 @@ public class TagController {
 
   @PostMapping
   public ResponseEntity<Tag> create(@RequestBody CreateTag dto) {
-    Tag savedTag = tagService.createTag(dto);
+    Tag savedTag = tagService.create(dto);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
@@ -30,7 +30,7 @@ public class TagController {
 
   @GetMapping
   public ResponseEntity<List<Tag>> getAll() {
-    List<Tag> tags = tagService.getAllTags();
+    List<Tag> tags = tagService.getAll();
     if (tags.isEmpty()) {
       return ResponseEntity.noContent().build();
     }
@@ -45,13 +45,13 @@ public class TagController {
 
   @PatchMapping("/{id}")
   public ResponseEntity<Tag> patch(@PathVariable Long id, @RequestBody PatchTag patch) {
-    Tag patchedTag = tagService.patchTag(id, patch);
+    Tag patchedTag = tagService.patch(id, patch);
     return ResponseEntity.ok(patchedTag);
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Tag> delete(@PathVariable Long id) {
-    tagService.deleteTag(id);
+    tagService.delete(id);
     return ResponseEntity.ok().build();
   }
 }

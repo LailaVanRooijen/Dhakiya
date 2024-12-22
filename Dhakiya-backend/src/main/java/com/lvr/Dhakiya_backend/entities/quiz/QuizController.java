@@ -45,15 +45,15 @@ public class QuizController {
     return ResponseEntity.ok(quizService.getById(id));
   }
 
+  @PatchMapping("/{id}")
+  public ResponseEntity<GetQuiz> patch(@PathVariable Long id, @RequestBody PatchQuiz patch) {
+    GetQuiz quiz = quizService.patch(id, patch);
+    return ResponseEntity.ok(quiz);
+  }
+
   @DeleteMapping("/{id}")
   public ResponseEntity<GetQuiz> delete(@PathVariable Long id) {
     quizService.delete(id);
     return ResponseEntity.ok().build();
-  }
-
-  @PatchMapping("/{id}")
-  public ResponseEntity<GetQuiz> update(@PathVariable Long id, @RequestBody PatchQuiz patch) {
-    GetQuiz quiz = quizService.update(id, patch);
-    return ResponseEntity.ok(quiz);
   }
 }

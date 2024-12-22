@@ -16,7 +16,7 @@ public class TagService {
   private final TagRepository tagRepository;
   private final EnvironmentRepository environmentRepository;
 
-  public Tag createTag(CreateTag dto) {
+  public Tag create(CreateTag dto) {
     Tag createdTag = CreateTag.to(dto);
 
     Environment environment =
@@ -30,7 +30,7 @@ public class TagService {
     return createdTag;
   }
 
-  public List<Tag> getAllTags() {
+  public List<Tag> getAll() {
     return tagRepository.findAll();
   }
 
@@ -38,7 +38,7 @@ public class TagService {
     return tagRepository.findById(id).orElseThrow(NotFoundException::new);
   }
 
-  public Tag patchTag(Long id, PatchTag patch) {
+  public Tag patch(Long id, PatchTag patch) {
     Tag tag = tagRepository.findById(id).orElseThrow(NotFoundException::new);
 
     if (patch.tag() != null && !patch.tag().isEmpty()) {
@@ -58,7 +58,7 @@ public class TagService {
     return tagRepository.save(tag);
   }
 
-  public void deleteTag(Long id) {
+  public void delete(Long id) {
     tagRepository.findById(id).orElseThrow(NotFoundException::new);
     tagRepository.deleteById(id);
   }

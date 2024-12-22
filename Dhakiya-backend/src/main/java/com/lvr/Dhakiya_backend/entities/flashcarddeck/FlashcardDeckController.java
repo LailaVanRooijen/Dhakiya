@@ -16,6 +16,17 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class FlashcardDeckController {
   private final FlashcardDeckService flashcardDeckService;
 
+  @PostMapping
+  public ResponseEntity<FlashcardDeck> create(@RequestBody PostFlashCardDeck flashcardDeck) {
+    FlashcardDeck createdFlashcardDeck = flashcardDeckService.create(flashcardDeck);
+    URI location =
+        ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(createdFlashcardDeck.getId())
+            .toUri();
+    return ResponseEntity.created(location).body(createdFlashcardDeck);
+  }
+
   @GetMapping
   public ResponseEntity<List<FlashcardDeck>> getAll() {
     List<FlashcardDeck> flashcardDecks = flashcardDeckService.getAll();
@@ -31,27 +42,16 @@ public class FlashcardDeckController {
     return ResponseEntity.ok(flashcardDeckService.getById(id));
   }
 
-  @PostMapping
-  public ResponseEntity<FlashcardDeck> create(@RequestBody PostFlashCardDeck flashcardDeck) {
-    FlashcardDeck createdFlashcardDeck = flashcardDeckService.create(flashcardDeck);
-    URI location =
-        ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/{id}")
-            .buildAndExpand(createdFlashcardDeck.getId())
-            .toUri();
-    return ResponseEntity.created(location).body(createdFlashcardDeck);
+  @PatchMapping("/{id}")
+  public ResponseEntity<FlashcardDeck> patch(
+      @PathVariable Long id, @RequestBody PatchFlashcardDeck patch) {
+    FlashcardDeck patchedFlashcardDeck = flashcardDeckService.patch(id, patch);
+    return ResponseEntity.ok(patchedFlashcardDeck);
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<FlashcardDeck> delete(@PathVariable Long id) {
     flashcardDeckService.delete(id);
     return ResponseEntity.ok().build();
-  }
-
-  @PatchMapping("/{id}")
-  public ResponseEntity<FlashcardDeck> update(
-      @PathVariable Long id, @RequestBody PatchFlashcardDeck patch) {
-    FlashcardDeck patchedFlashcardDeck = flashcardDeckService.patch(id, patch);
-    return ResponseEntity.ok(patchedFlashcardDeck);
   }
 }

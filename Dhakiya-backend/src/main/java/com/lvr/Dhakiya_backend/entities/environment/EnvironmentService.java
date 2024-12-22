@@ -44,16 +44,16 @@ public class EnvironmentService {
     return environmentRepository.findById(id).orElseThrow(NotFoundException::new);
   }
 
-  public Environment patch(Long id, PatchEnvironment PatchEnvironment) {
+  public Environment patch(Long id, PatchEnvironment patch) {
     Environment patchedEnvironment =
         environmentRepository.findById(id).orElseThrow(NotFoundException::new);
-    if (PatchEnvironment.title() != null) {
-      patchedEnvironment.setTitle(PatchEnvironment.title());
+    if (patch.title() != null) {
+      patchedEnvironment.setTitle(patch.title());
     }
     return environmentRepository.save(patchedEnvironment);
   }
 
-  public void deleteEnvironment(Long id) {
+  public void delete(Long id) {
     Environment environment =
         environmentRepository.findById(id).orElseThrow(NotFoundException::new);
     List<Tag> relatedTags = tagRepository.findByEnvironment(environment);

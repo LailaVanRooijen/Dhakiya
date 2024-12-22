@@ -16,7 +16,6 @@ public class AnswerController {
 
   @GetMapping
   public ResponseEntity<List<GetAnswer>> getAll() {
-
     return ResponseEntity.ok(answerService.getAll());
   }
 

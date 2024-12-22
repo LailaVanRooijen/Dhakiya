@@ -49,15 +49,6 @@ public class QuizResultService {
     return GetQuizResult.from(quizResult);
   }
 
-  public AnsweredQuestion copyQuestion(Question question) {
-    Integer validAnswerCount = 0;
-    for (Answer answer : question.getAnswers()) {
-      if (answer.getIsCorrect()) validAnswerCount++;
-    }
-    AnsweredQuestion copiedQuestion = new AnsweredQuestion(question, validAnswerCount);
-    return answeredQuestionRepository.save(copiedQuestion);
-  }
-
   public List<GetQuizResult> getAll() {
     return quizResultRepository.findAll().stream()
         .map(result -> GetQuizResult.from(result))
@@ -86,6 +77,33 @@ public class QuizResultService {
     return SubmitQuizResult.from(result);
   }
 
+  public GetQuizResult submitAnswer(Long id, PatchAnsweredQuestion patch) {
+    QuizResult result = quizResultRepository.findById(id).orElseThrow(NotFoundException::new);
+
+    List<Answer> answers = answerRepository.findAllById(patch.answerIds());
+    if (patch.answerIds().size() != answers.size()) {
+      throw new BadRequestException("Invalid Answer Id");
+    }
+
+    AnsweredQuestion question =
+        answeredQuestionRepository.findById(patch.questionId()).orElseThrow(NotFoundException::new);
+
+    question.setSelectedAnswers(answers);
+
+    quizResultRepository.save(result);
+    return GetQuizResult.from(result);
+  }
+
+  // Helper methods:
+  public AnsweredQuestion copyQuestion(Question question) {
+    Integer validAnswerCount = 0;
+    for (Answer answer : question.getAnswers()) {
+      if (answer.getIsCorrect()) validAnswerCount++;
+    }
+    AnsweredQuestion copiedQuestion = new AnsweredQuestion(question, validAnswerCount);
+    return answeredQuestionRepository.save(copiedQuestion);
+  }
+
   public Boolean isAnsweredCorrect(AnsweredQuestion question) {
     Tag tag = question.getQuestion().getTag();
     if (tag != null) {
@@ -107,22 +125,5 @@ public class QuizResultService {
       tagRepository.save(tag);
     }
     return true;
-  }
-
-  public GetQuizResult submitAnswer(Long id, PatchAnsweredQuestion patch) {
-    QuizResult result = quizResultRepository.findById(id).orElseThrow(NotFoundException::new);
-
-    List<Answer> answers = answerRepository.findAllById(patch.answerIds());
-    if (patch.answerIds().size() != answers.size()) {
-      throw new BadRequestException("Invalid Answer Id");
-    }
-
-    AnsweredQuestion question =
-        answeredQuestionRepository.findById(patch.questionId()).orElseThrow(NotFoundException::new);
-
-    question.setSelectedAnswers(answers);
-
-    quizResultRepository.save(result);
-    return GetQuizResult.from(result);
   }
 }

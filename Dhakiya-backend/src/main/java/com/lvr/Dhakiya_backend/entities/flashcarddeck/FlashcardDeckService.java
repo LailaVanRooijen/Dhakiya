@@ -15,6 +15,15 @@ public class FlashcardDeckService {
   private final FlashcardDeckRepository flashcardDeckRepository;
   private final EnvironmentRepository environmentRepository;
 
+  public FlashcardDeck create(PostFlashCardDeck dto) {
+    FlashcardDeck createdFlashcardDeck = PostFlashCardDeck.to(dto);
+    Environment environment =
+        environmentRepository.findById(dto.environmentId()).orElseThrow(NotFoundException::new);
+    createdFlashcardDeck.setEnvironment(environment);
+    flashcardDeckRepository.save(createdFlashcardDeck);
+    return createdFlashcardDeck;
+  }
+
   public List<FlashcardDeck> getAll() {
     return flashcardDeckRepository.findAll();
   }
@@ -25,20 +34,6 @@ public class FlashcardDeckService {
     return flashcardDeck;
   }
 
-  public FlashcardDeck create(PostFlashCardDeck dto) {
-    FlashcardDeck createdFlashcardDeck = PostFlashCardDeck.to(dto);
-    Environment environment =
-        environmentRepository.findById(dto.environmentId()).orElseThrow(NotFoundException::new);
-    createdFlashcardDeck.setEnvironment(environment);
-    flashcardDeckRepository.save(createdFlashcardDeck);
-    return createdFlashcardDeck;
-  }
-
-  public void delete(Long id) {
-    flashcardDeckRepository.findById(id).orElseThrow(NotFoundException::new);
-    flashcardDeckRepository.deleteById(id);
-  }
-
   public FlashcardDeck patch(Long id, PatchFlashcardDeck patch) {
     FlashcardDeck flashcardDeck =
         flashcardDeckRepository.findById(id).orElseThrow(NotFoundException::new);
@@ -46,5 +41,10 @@ public class FlashcardDeckService {
       flashcardDeck.setTitle(patch.title());
     }
     return flashcardDeckRepository.save(flashcardDeck);
+  }
+
+  public void delete(Long id) {
+    flashcardDeckRepository.findById(id).orElseThrow(NotFoundException::new);
+    flashcardDeckRepository.deleteById(id);
   }
 }

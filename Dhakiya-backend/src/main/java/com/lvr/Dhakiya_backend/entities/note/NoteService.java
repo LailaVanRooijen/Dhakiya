@@ -20,15 +20,6 @@ public class NoteService {
   private final NoteCollectionRepository noteCollectionRepository;
   private final TagRepository tagRepository;
 
-  public List<GetNote> getAll() {
-    return noteRepository.findAll().stream().map(note -> GetNote.from(note)).toList();
-  }
-
-  public GetNote getById(Long id) {
-    Note note = noteRepository.findById(id).orElseThrow(NotFoundException::new);
-    return GetNote.from(note);
-  }
-
   public GetNote create(PostNote note) {
     if (note.noteCollectionId() == null || note.title() == null || note.content() == null) {
       throw new BadRequestException("Incomplete body");
@@ -45,6 +36,15 @@ public class NoteService {
     }
     noteRepository.save(savedNote);
     return GetNote.from(savedNote);
+  }
+
+  public List<GetNote> getAll() {
+    return noteRepository.findAll().stream().map(note -> GetNote.from(note)).toList();
+  }
+
+  public GetNote getById(Long id) {
+    Note note = noteRepository.findById(id).orElseThrow(NotFoundException::new);
+    return GetNote.from(note);
   }
 
   public GetNote patch(Long id, PatchNote patch) {

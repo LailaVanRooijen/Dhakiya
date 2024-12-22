@@ -63,12 +63,7 @@ public class QuestionService {
     return GetQuestion.from(question);
   }
 
-  public void delete(Long id) {
-    questionRepository.findById(id).orElseThrow(NotFoundException::new);
-    questionRepository.deleteById(id);
-  }
-
-  public GetQuestion update(Long id, PatchQuestion patch) {
+  public GetQuestion patch(Long id, PatchQuestion patch) {
     Question question = questionRepository.findById(id).orElseThrow(NotFoundException::new);
 
     if (patch.question() != null) {
@@ -104,5 +99,10 @@ public class QuestionService {
       answer.setIsCorrect(dto.isCorrect());
     }
     return answerRepository.save(answer);
+  }
+
+  public void delete(Long id) {
+    questionRepository.findById(id).orElseThrow(NotFoundException::new);
+    questionRepository.deleteById(id);
   }
 }

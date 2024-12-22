@@ -44,17 +44,16 @@ public class QuizCollectionController {
     return ResponseEntity.ok(quizCollection);
   }
 
+  @PatchMapping("/{id}")
+  public ResponseEntity<GetQuizCollection> patch(@PathVariable Long id, PatchQuizCollection patch) {
+    GetQuizCollection quizCollection = quizCollectionService.patch(id, patch);
+    return ResponseEntity.ok(quizCollection);
+  }
+
   @DeleteMapping("/{id}")
   public ResponseEntity<GetQuizCollection> delete(@PathVariable Long id) {
     quizCollectionService.delete(id);
 
     return ResponseEntity.ok().build();
-  }
-
-  @PatchMapping("/{id}")
-  public ResponseEntity<GetQuizCollection> update(
-      @PathVariable Long id, PatchQuizCollection patch) {
-    GetQuizCollection quizCollection = quizCollectionService.update(id, patch);
-    return ResponseEntity.ok(quizCollection);
   }
 }

@@ -2,7 +2,6 @@ package com.lvr.Dhakiya_backend.entities.progressreport;
 
 import com.lvr.Dhakiya_backend.appConfig.Routes;
 import com.lvr.Dhakiya_backend.entities.progressreport.dto.GetProgressReport;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,17 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ProgressReportController {
   private final ProgressReportService progressReportService;
-
-  // TODO temporary for testing, delete me later!
-  @GetMapping
-  public ResponseEntity<List<GetProgressReport>> getAll() {
-    List<GetProgressReport> progressReports = progressReportService.getAll();
-    if (progressReports.isEmpty()) {
-      return ResponseEntity.noContent().build();
-    } else {
-      return ResponseEntity.ok(progressReports);
-    }
-  }
 
   @GetMapping("/{id}")
   public ResponseEntity<GetProgressReport> getById(@PathVariable Long id) {

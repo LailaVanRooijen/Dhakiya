@@ -43,15 +43,15 @@ public class QuestionController {
     return ResponseEntity.ok(questionService.getById(id));
   }
 
+  @PatchMapping("/{id}")
+  public ResponseEntity<GetQuestion> patch(
+      @PathVariable Long id, @RequestBody PatchQuestion patch) {
+    return ResponseEntity.ok(questionService.patch(id, patch));
+  }
+
   @DeleteMapping("/{id}")
   public ResponseEntity<GetQuestion> delete(@PathVariable Long id) {
     questionService.delete(id);
     return ResponseEntity.ok().build();
-  }
-
-  @PatchMapping("/{id}")
-  public ResponseEntity<GetQuestion> update(
-      @PathVariable Long id, @RequestBody PatchQuestion patch) {
-    return ResponseEntity.ok(questionService.update(id, patch));
   }
 }

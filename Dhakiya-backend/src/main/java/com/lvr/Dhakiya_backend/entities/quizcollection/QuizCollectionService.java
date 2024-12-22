@@ -42,12 +42,7 @@ public class QuizCollectionService {
     return GetQuizCollection.from(quizCollection);
   }
 
-  public void delete(Long id) {
-    quizCollectionRepository.findById(id).orElseThrow(NotFoundException::new);
-    quizCollectionRepository.deleteById(id);
-  }
-
-  public GetQuizCollection update(Long id, PatchQuizCollection patch) {
+  public GetQuizCollection patch(Long id, PatchQuizCollection patch) {
     QuizCollection quizCollection =
         quizCollectionRepository.findById(id).orElseThrow(NotFoundException::new);
     if (patch.title() != null) {
@@ -55,5 +50,10 @@ public class QuizCollectionService {
     }
     quizCollectionRepository.save(quizCollection);
     return GetQuizCollection.from(quizCollection);
+  }
+
+  public void delete(Long id) {
+    quizCollectionRepository.findById(id).orElseThrow(NotFoundException::new);
+    quizCollectionRepository.deleteById(id);
   }
 }

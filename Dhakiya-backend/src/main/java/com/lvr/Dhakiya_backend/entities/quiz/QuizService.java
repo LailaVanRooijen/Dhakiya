@@ -41,12 +41,7 @@ public class QuizService {
     return GetQuiz.from(quiz);
   }
 
-  public void delete(Long id) {
-    quizRepository.findById(id).orElseThrow(NotFoundException::new);
-    quizRepository.deleteById(id);
-  }
-
-  public GetQuiz update(Long id, PatchQuiz patch) {
+  public GetQuiz patch(Long id, PatchQuiz patch) {
     Quiz quiz = quizRepository.findById(id).orElseThrow(NotFoundException::new);
     if (quiz.getIsFinal()) {
       throw new BadRequestException("Editing a quiz after it has been saved is not allowed");
@@ -62,5 +57,10 @@ public class QuizService {
 
     quizRepository.save(quiz);
     return GetQuiz.from(quiz);
+  }
+
+  public void delete(Long id) {
+    quizRepository.findById(id).orElseThrow(NotFoundException::new);
+    quizRepository.deleteById(id);
   }
 }

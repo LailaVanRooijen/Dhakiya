@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 public class AnswerService {
   private final AnswerRepository answerRepository;
 
+  public List<GetAnswer> getAll() {
+    return answerRepository.findAll().stream().map(answer -> GetAnswer.from(answer)).toList();
+  }
+
   public GetAnswer patch(Long id, PatchAnswer patch) {
     Answer answer = answerRepository.findById(id).orElseThrow(NotFoundException::new);
 
@@ -25,8 +29,4 @@ public class AnswerService {
     answerRepository.save(answer);
     return GetAnswer.from(answer);
   }
-
-    public List<GetAnswer> getAll() {
-      return answerRepository.findAll().stream().map(answer -> GetAnswer.from(answer)).toList();
-    }
 }

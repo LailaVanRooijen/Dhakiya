@@ -17,6 +17,18 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class NoteController {
   private final NoteService noteService;
 
+  @PostMapping
+  public ResponseEntity<GetNote> create(@RequestBody PostNote note) {
+    GetNote savedNote = noteService.create(note);
+    URI location =
+        ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(savedNote.id())
+            .toUri();
+
+    return ResponseEntity.created(location).body(savedNote);
+  }
+
   @GetMapping
   public ResponseEntity<List<GetNote>> getAll() {
     List<GetNote> notes = noteService.getAll();
@@ -30,18 +42,6 @@ public class NoteController {
   @GetMapping("/{id}")
   public ResponseEntity<GetNote> getById(@PathVariable Long id) {
     return ResponseEntity.ok(noteService.getById(id));
-  }
-
-  @PostMapping
-  public ResponseEntity<GetNote> create(@RequestBody PostNote note) {
-    GetNote savedNote = noteService.create(note);
-    URI location =
-        ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/{id}")
-            .buildAndExpand(savedNote.id())
-            .toUri();
-
-    return ResponseEntity.created(location).body(savedNote);
   }
 
   @PatchMapping("/{id}")
