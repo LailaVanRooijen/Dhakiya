@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(Routes.NOTES)
+@CrossOrigin(origins = "${dhakiya.cors}")
 @RequiredArgsConstructor
 public class NoteController {
   private final NoteService noteService;

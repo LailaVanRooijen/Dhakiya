@@ -24,7 +24,7 @@ public class ProgressReportService {
   // Helper Methods
   public void syncProgressReport(ProgressReport progressReport) {
     List<Tag> tags = tagRepository.findByEnvironment(progressReport.getEnvironment());
-    progressReport.addTags(tags);
+    progressReport.add(tags);
     progressReportRepository.save(progressReport);
   }
 }

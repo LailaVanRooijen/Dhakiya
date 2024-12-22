@@ -12,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(Routes.FLASHCARD_DECKS)
+@CrossOrigin(origins = "${dhakiya.cors}")
 @RequiredArgsConstructor
 public class FlashcardDeckController {
   private final FlashcardDeckService flashcardDeckService;

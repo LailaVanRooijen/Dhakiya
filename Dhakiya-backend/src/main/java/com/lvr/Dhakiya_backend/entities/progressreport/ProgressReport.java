@@ -17,7 +17,7 @@ public class ProgressReport {
   @OneToMany private List<Tag> tags = new ArrayList<>();
   @OneToOne @Setter private Environment environment;
 
-  public void addTags(List<Tag> tags) {
+  public void add(List<Tag> tags) {
     this.tags = tags;
   }
 }

@@ -68,6 +68,8 @@ public class FlashcardService {
   }
 
   public GetFlashcard patch(Long id, PatchFlashcard patch) {
+    // TODO als een flashcard positive is moet die tag geflagged worden. En die tag moet ook als
+    // seen gemarkeerd worden!
     Flashcard flashcard = flashcardRepository.findById(id).orElseThrow(NotFoundException::new);
 
     if (patch.title() != null) {

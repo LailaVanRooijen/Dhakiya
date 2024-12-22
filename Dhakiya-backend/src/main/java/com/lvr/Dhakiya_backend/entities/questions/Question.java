@@ -37,7 +37,7 @@ public class Question {
     this.tag = tag;
   }
 
-  public void addAnswers(List<Answer> answers) {
+  public void add(List<Answer> answers) {
     this.answers.addAll(answers);
   }
 }

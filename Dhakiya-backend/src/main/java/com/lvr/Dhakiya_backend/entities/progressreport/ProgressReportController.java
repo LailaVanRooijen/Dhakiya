@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(Routes.PROGRESS_REPORTS)
+@CrossOrigin(origins = "${dhakiya.cors}")
 @RequiredArgsConstructor
 public class ProgressReportController {
   private final ProgressReportService progressReportService;

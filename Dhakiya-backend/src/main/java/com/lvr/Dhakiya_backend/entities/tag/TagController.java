@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 @RequestMapping(TAGS)
 @RequiredArgsConstructor
+@CrossOrigin(origins = "${dhakiya.cors}")
 public class TagController {
   private final TagService tagService;
 

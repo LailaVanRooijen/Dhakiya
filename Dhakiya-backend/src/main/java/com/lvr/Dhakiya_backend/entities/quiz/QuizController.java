@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(Routes.QUIZZES)
+@CrossOrigin(origins = "${dhakiya.cors}")
 public class QuizController {
   private final QuizService quizService;
 

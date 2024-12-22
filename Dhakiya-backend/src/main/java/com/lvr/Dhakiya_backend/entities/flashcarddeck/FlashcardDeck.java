@@ -22,6 +22,4 @@ public class FlashcardDeck {
   public FlashcardDeck(String title) {
     this.title = title;
   }
-
-  // @OneToMany private List<Flashcard> flashcards;
 }

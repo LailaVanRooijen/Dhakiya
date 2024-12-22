@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(Routes.QUIZ_COLLECTIONS)
+@CrossOrigin(origins = "${dhakiya.cors}")
 @RequiredArgsConstructor
 public class QuizCollectionController {
   private final QuizCollectionService quizCollectionService;

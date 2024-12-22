@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RequestMapping(ENVIRONMENTS)
+@CrossOrigin(origins = "${dhakiya.cors}")
 @RestController
 @RequiredArgsConstructor
 public class EnvironmentController {

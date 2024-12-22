@@ -46,7 +46,7 @@ public class QuestionService {
 
     List<Answer> answers = dto.answers().stream().map(answer -> PostAnswer.to(answer)).toList();
     answers.forEach(answer -> answerRepository.save(answer));
-    question.addAnswers(answers);
+    question.add(answers);
 
     questionRepository.save(question);
     return GetQuestion.from(question);
