@@ -1,6 +1,5 @@
 package com.lvr.Dhakiya_backend.entities.quiz;
 
-import com.lvr.Dhakiya_backend.entities.questions.Question;
 import com.lvr.Dhakiya_backend.entities.quizcollection.QuizCollection;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,7 +14,7 @@ public class Quiz {
 
   @Setter private String title;
   @Setter private Integer size;
-
+  @Setter private Boolean isFinal = false;
 
   @Setter @ManyToOne private QuizCollection quizCollection;
 

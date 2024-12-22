@@ -11,6 +11,9 @@ import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.AnsweredQues
 import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.PatchAnsweredQuestion;
 import com.lvr.Dhakiya_backend.entities.quizresult.dto.GetQuizResult;
 import com.lvr.Dhakiya_backend.entities.quizresult.dto.PostQuizResult;
+import com.lvr.Dhakiya_backend.entities.quizresult.dto.SubmitQuizResult;
+import com.lvr.Dhakiya_backend.entities.tag.Tag;
+import com.lvr.Dhakiya_backend.entities.tag.TagRepository;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.BadRequestException;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
 import java.util.List;
@@ -25,21 +28,24 @@ public class QuizResultService {
   private final QuizRepository quizRepository;
   private final AnsweredQuestionRepository answeredQuestionRepository;
   private final AnswerRepository answerRepository;
+  private final TagRepository tagRepository;
 
   public GetQuizResult create(PostQuizResult dto) {
     QuizResult quizResult = new QuizResult();
 
     Quiz quiz = quizRepository.findById(dto.quizId()).orElseThrow(NotFoundException::new);
+    if (!quiz.getIsFinal()) {
+      throw new BadRequestException("Quiz must be saved before using it");
+    }
     quizResult.setQuiz(quiz);
 
-    List<AnsweredQuestion> questions =
-        questionRepository.findQuestionByQuiz(quiz).stream()
-            .map(question -> copyQuestion(question))
-            .toList();
-    quizResult.add(questions);
+    List<Question> questions = questionRepository.findQuestionByQuiz(quiz);
+    List<AnsweredQuestion> answeredQuestions =
+        questions.stream().map(question -> copyQuestion(question)).toList();
+
+    quizResult.setAnsweredQuestions(answeredQuestions);
 
     quizResultRepository.save(quizResult);
-
     return GetQuizResult.from(quizResult);
   }
 
@@ -63,13 +69,13 @@ public class QuizResultService {
     return GetQuizResult.from(quizResult);
   }
 
-  public GetQuizResult submit(Long id) {
+  public SubmitQuizResult submit(Long id) {
     QuizResult result = quizResultRepository.findById(id).orElseThrow(NotFoundException::new);
     if (result.getIsCompleted()) {
       throw new BadRequestException("quiz has already been submitted");
     }
 
-    List<AnsweredQuestion> questions = result.getQuestions();
+    List<AnsweredQuestion> questions = result.getAnsweredQuestions();
     for (AnsweredQuestion question : questions) {
       if (isAnsweredCorrect(question)) {
         result.addPoint();
@@ -77,17 +83,28 @@ public class QuizResultService {
     }
     result.setIsCompleted(true);
     quizResultRepository.save(result);
-    return GetQuizResult.from(result);
+    return SubmitQuizResult.from(result);
   }
 
   public Boolean isAnsweredCorrect(AnsweredQuestion question) {
-    // TODO als een antwoord fout is dan flag the tag
+    Tag tag = question.getQuestion().getTag();
+    if (tag != null) {
+      tag.markAsSeen();
+    }
     List<Answer> answers = question.getSelectedAnswers();
 
-    if (answers.size() != question.getValidAnswerCount()) return false;
+    if (answers.size() != question.getValidAnswerCount()) {
+      return false;
+    }
 
     for (Answer answer : answers) {
-      if (!answer.getIsCorrect()) return false;
+      if (!answer.getIsCorrect()) {
+        return false;
+      }
+    }
+    if (tag != null) {
+      tag.flagPositive();
+      tagRepository.save(tag);
     }
     return true;
   }

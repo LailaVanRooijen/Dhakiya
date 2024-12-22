@@ -51,7 +51,7 @@ public class EnvironmentController {
 
   @PatchMapping("/{id}")
   public ResponseEntity<Environment> patch(
-      @PathVariable Long id, @RequestBody PatchEnvironment PatchEnvironment) {
-    return ResponseEntity.ok(environmentService.patchEnvironment(id, PatchEnvironment));
+      @PathVariable Long id, @RequestBody PatchEnvironment patch) {
+    return ResponseEntity.ok(environmentService.patch(id, patch));
   }
 }

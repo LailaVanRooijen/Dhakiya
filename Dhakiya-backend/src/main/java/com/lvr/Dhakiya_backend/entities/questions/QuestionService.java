@@ -43,6 +43,7 @@ public class QuestionService {
     if (dto.answers() == null || dto.answers().size() != dto.answerCount()) {
       throw new BadRequestException("Not all answers are provided");
     }
+
     List<Answer> answers = dto.answers().stream().map(answer -> PostAnswer.to(answer)).toList();
     answers.forEach(answer -> answerRepository.save(answer));
     question.addAnswers(answers);

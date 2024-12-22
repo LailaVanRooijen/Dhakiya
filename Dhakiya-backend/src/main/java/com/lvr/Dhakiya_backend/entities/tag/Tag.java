@@ -16,8 +16,8 @@ import lombok.Setter;
 public class Tag {
   @GeneratedValue @Id Long id;
   @Setter private String title;
-  @Setter private Integer seenCount;
-  @Setter private Integer flaggedPositiveCount;
+  @Setter private int seenCount;
+  @Setter private int flaggedPositiveCount;
 
   @Setter @ManyToOne private Environment environment;
 
@@ -51,5 +51,13 @@ public class Tag {
 
     double percentage = (double) flaggedPositiveCount / seenCount * 100;
     return Math.round(percentage);
+  }
+
+  public void markAsSeen() {
+    seenCount++;
+  }
+
+  public void flagPositive() {
+    flaggedPositiveCount++;
   }
 }

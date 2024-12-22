@@ -1,12 +1,15 @@
 package com.lvr.Dhakiya_backend.entities.quizresult.dto;
 
+import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.GetAnsweredQuestion;
 import com.lvr.Dhakiya_backend.entities.quizresult.QuizResult;
-import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.AnsweredQuestion;
-
 import java.util.List;
 
-public record GetQuizResult(Long id, List<AnsweredQuestion> questions, Double score) {
+public record GetQuizResult(Long id, List<GetAnsweredQuestion> answeredQuestions) {
   public static GetQuizResult from(QuizResult entity) {
-    return new GetQuizResult(entity.getId(), entity.getQuestions(), entity.getScore());
+    List<GetAnsweredQuestion> questions =
+        entity.getAnsweredQuestions().stream()
+            .map(question -> GetAnsweredQuestion.from(question))
+            .toList();
+    return new GetQuizResult(entity.getId(), questions);
   }
 }

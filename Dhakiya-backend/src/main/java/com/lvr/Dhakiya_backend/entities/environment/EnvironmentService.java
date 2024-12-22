@@ -44,7 +44,7 @@ public class EnvironmentService {
     return environmentRepository.findById(id).orElseThrow(NotFoundException::new);
   }
 
-  public Environment patchEnvironment(Long id, PatchEnvironment PatchEnvironment) {
+  public Environment patch(Long id, PatchEnvironment PatchEnvironment) {
     Environment patchedEnvironment =
         environmentRepository.findById(id).orElseThrow(NotFoundException::new);
     if (PatchEnvironment.title() != null) {

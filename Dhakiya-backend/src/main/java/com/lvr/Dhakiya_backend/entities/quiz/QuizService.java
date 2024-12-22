@@ -1,13 +1,11 @@
 package com.lvr.Dhakiya_backend.entities.quiz;
 
-import com.lvr.Dhakiya_backend.entities.questions.Question;
-import com.lvr.Dhakiya_backend.entities.questions.QuestionRepository;
-import com.lvr.Dhakiya_backend.entities.questions.dto.GetQuestion;
 import com.lvr.Dhakiya_backend.entities.quiz.dto.GetQuiz;
 import com.lvr.Dhakiya_backend.entities.quiz.dto.PatchQuiz;
 import com.lvr.Dhakiya_backend.entities.quiz.dto.PostQuiz;
 import com.lvr.Dhakiya_backend.entities.quizcollection.QuizCollection;
 import com.lvr.Dhakiya_backend.entities.quizcollection.QuizCollectionRepository;
+import com.lvr.Dhakiya_backend.restadvice.exceptions.BadRequestException;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +28,6 @@ public class QuizService {
 
     quizRepository.save(createdQuiz);
 
-
     return GetQuiz.from(createdQuiz);
   }
 
@@ -51,13 +48,19 @@ public class QuizService {
 
   public GetQuiz update(Long id, PatchQuiz patch) {
     Quiz quiz = quizRepository.findById(id).orElseThrow(NotFoundException::new);
+    if (quiz.getIsFinal()) {
+      throw new BadRequestException("Editing a quiz after it has been saved is not allowed");
+    }
 
     if (patch.title() != null) {
       quiz.setTitle(patch.title());
     }
 
+    if (patch.isFinal() != null) {
+      quiz.setIsFinal(patch.isFinal());
+    }
+
     quizRepository.save(quiz);
     return GetQuiz.from(quiz);
   }
-
 }

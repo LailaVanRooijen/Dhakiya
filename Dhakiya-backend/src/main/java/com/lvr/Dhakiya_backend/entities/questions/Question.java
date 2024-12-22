@@ -19,7 +19,8 @@ public class Question {
   @Setter @ManyToOne Quiz quiz;
   @Setter private String question;
 
-  @OneToMany(cascade = CascadeType.REMOVE) List<Answer> answers = new ArrayList<>();
+  @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+  List<Answer> answers = new ArrayList<>();
 
   @Setter private Integer answerCount;
   @Setter @ManyToOne private Tag tag;

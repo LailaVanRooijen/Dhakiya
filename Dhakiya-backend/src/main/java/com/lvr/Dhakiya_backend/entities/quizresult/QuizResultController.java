@@ -4,6 +4,7 @@ import com.lvr.Dhakiya_backend.appConfig.Routes;
 import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.PatchAnsweredQuestion;
 import com.lvr.Dhakiya_backend.entities.quizresult.dto.GetQuizResult;
 import com.lvr.Dhakiya_backend.entities.quizresult.dto.PostQuizResult;
+import com.lvr.Dhakiya_backend.entities.quizresult.dto.SubmitQuizResult;
 import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -43,14 +44,14 @@ public class QuizResultController {
     return ResponseEntity.ok(quizResultService.getById(id));
   }
 
-  @PatchMapping("/{id}/submit")
-  public ResponseEntity<GetQuizResult> submit(@PathVariable Long id) {
-    return ResponseEntity.ok(quizResultService.submit(id));
-  }
-
   @PatchMapping("/{id}/submit-answer")
   public ResponseEntity<GetQuizResult> submitAnswer(
       @PathVariable Long id, @RequestBody PatchAnsweredQuestion patch) {
     return ResponseEntity.ok(quizResultService.submitAnswer(id, patch));
+  }
+
+  @PatchMapping("/{id}/submit")
+  public ResponseEntity<SubmitQuizResult> submit(@PathVariable Long id) {
+    return ResponseEntity.ok(quizResultService.submit(id));
   }
 }
