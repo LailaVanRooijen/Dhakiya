@@ -1,4 +1,4 @@
-package com.lvr.Dhakiya_backend.entities.environment.flashcard.enums;
+package com.lvr.Dhakiya_backend.entities.flashcard.enums;
 
 public enum FlashcardFlags {
   CORRECT,

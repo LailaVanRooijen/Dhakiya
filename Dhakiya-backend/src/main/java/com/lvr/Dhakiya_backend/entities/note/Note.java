@@ -14,8 +14,10 @@ public class Note {
   @GeneratedValue @Id Long id;
 
   @Setter private String title;
-  // TODO set die field zodat die groter kan zijn dan x aantal chars
-  @Setter private String content;
+
+  @Column(length = 500)
+  @Setter
+  private String content;
 
   @Setter @ManyToOne private NoteCollection noteCollection;
 

@@ -1,4 +1,4 @@
-package com.lvr.Dhakiya_backend.entities.enums;
+package com.lvr.Dhakiya_backend.entities.tag.enums;
 
 public enum Status {
   WEAK,

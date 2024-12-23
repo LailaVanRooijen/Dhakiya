@@ -1,6 +1,6 @@
-package com.lvr.Dhakiya_backend.entities.environment.flashcard.dto;
+package com.lvr.Dhakiya_backend.entities.flashcard.dto;
 
-import com.lvr.Dhakiya_backend.entities.environment.flashcard.Flashcard;
+import com.lvr.Dhakiya_backend.entities.flashcard.Flashcard;
 
 public record PostFlashcard(
     Long flashcardDeckId, Long tagId, String title, String content, Integer minimumDisplays) {

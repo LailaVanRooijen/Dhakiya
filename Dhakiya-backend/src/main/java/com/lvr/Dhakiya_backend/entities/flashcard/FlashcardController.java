@@ -1,9 +1,9 @@
-package com.lvr.Dhakiya_backend.entities.environment.flashcard;
+package com.lvr.Dhakiya_backend.entities.flashcard;
 
 import com.lvr.Dhakiya_backend.appConfig.Routes;
-import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.GetFlashcard;
-import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.PatchFlashcard;
-import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.PostFlashcard;
+import com.lvr.Dhakiya_backend.entities.flashcard.dto.GetFlashcard;
+import com.lvr.Dhakiya_backend.entities.flashcard.dto.PatchFlashcard;
+import com.lvr.Dhakiya_backend.entities.flashcard.dto.PostFlashcard;
 import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

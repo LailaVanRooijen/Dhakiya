@@ -1,9 +1,9 @@
-package com.lvr.Dhakiya_backend.entities.environment.flashcard;
+package com.lvr.Dhakiya_backend.entities.flashcard;
 
-import com.lvr.Dhakiya_backend.entities.enums.Status;
-import com.lvr.Dhakiya_backend.entities.environment.flashcard.enums.FlashcardFlags;
+import com.lvr.Dhakiya_backend.entities.flashcard.enums.FlashcardFlags;
 import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeck;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
+import com.lvr.Dhakiya_backend.entities.tag.enums.Status;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -21,7 +21,7 @@ public class Flashcard {
 
   @Setter private String title;
   @Setter private String content;
-  @Setter private Integer seenCount = 0;
+  @Setter private int seenCount = 0;
 
   @Setter private Integer minimumDisplayCount = 5;
   @Setter private Integer scorePoints = 0;
@@ -67,5 +67,9 @@ public class Flashcard {
       scorePoints += 1;
     }
     lastSeen = LocalDate.now();
+  }
+
+  public void markAsSeen() {
+    this.seenCount++;
   }
 }

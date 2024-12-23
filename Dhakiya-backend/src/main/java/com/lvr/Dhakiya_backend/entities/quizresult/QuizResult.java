@@ -22,7 +22,9 @@ public class QuizResult {
   @Setter private Boolean isCompleted = false;
   @Setter private int points = 0;
 
-  @Setter @OneToMany List<AnsweredQuestion> answeredQuestions = new ArrayList<>();
+  @Setter
+  @OneToMany(cascade = CascadeType.REMOVE)
+  List<AnsweredQuestion> answeredQuestions = new ArrayList<>();
 
   @Setter @ManyToOne Quiz quiz;
 

@@ -1,9 +1,9 @@
-package com.lvr.Dhakiya_backend.entities.environment.flashcard;
+package com.lvr.Dhakiya_backend.entities.flashcard;
 
-import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.GetFlashcard;
-import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.PatchFlashcard;
-import com.lvr.Dhakiya_backend.entities.environment.flashcard.dto.PostFlashcard;
-import com.lvr.Dhakiya_backend.entities.environment.flashcard.enums.FlashcardFlags;
+import com.lvr.Dhakiya_backend.entities.flashcard.dto.GetFlashcard;
+import com.lvr.Dhakiya_backend.entities.flashcard.dto.PatchFlashcard;
+import com.lvr.Dhakiya_backend.entities.flashcard.dto.PostFlashcard;
+import com.lvr.Dhakiya_backend.entities.flashcard.enums.FlashcardFlags;
 import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeck;
 import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeckRepository;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
@@ -68,8 +68,6 @@ public class FlashcardService {
   }
 
   public GetFlashcard patch(Long id, PatchFlashcard patch) {
-    // TODO als een flashcard positive is moet die tag geflagged worden. En die tag moet ook als
-    // seen gemarkeerd worden!
     Flashcard flashcard = flashcardRepository.findById(id).orElseThrow(NotFoundException::new);
 
     if (patch.title() != null) {
@@ -78,18 +76,28 @@ public class FlashcardService {
     if (patch.content() != null) {
       flashcard.setContent(patch.content());
     }
+    if (patch.tagId() != null) {
+      Tag tag = tagRepository.findById(patch.tagId()).orElseThrow(NotFoundException::new);
+      flashcard.setTag(tag);
+    }
+
     if (patch.flag() != null) {
       try {
         FlashcardFlags flag = FlashcardFlags.valueOf(patch.flag().toUpperCase());
+        flashcard.markAsSeen();
         flashcard.updateScore(flag);
+        if (flashcard.tag != null || patch.tagId() == null) {
+          Tag tag = flashcard.getTag();
+          tag.markAsSeen();
+          if (flag == FlashcardFlags.CORRECT || flag == FlashcardFlags.FLAGGED_EASY) {
+            tag.flagPositive();
+          }
+          tagRepository.save(tag);
+        }
       } catch (IllegalArgumentException exception) {
         throw new BadRequestException("False flag");
       }
       flashcard.setSeenCount(flashcard.getSeenCount() + 1);
-    }
-    if (patch.tagId() != null) {
-      Tag tag = tagRepository.findById(patch.tagId()).orElseThrow(NotFoundException::new);
-      flashcard.setTag(tag);
     }
 
     flashcardRepository.save(flashcard);

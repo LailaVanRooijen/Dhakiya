@@ -13,10 +13,15 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AnsweredQuestion {
   @GeneratedValue @Id private Long id;
-  @ManyToOne Question question;
-  @Setter @OneToMany private List<Answer> selectedAnswers;
+
+  @ManyToOne(cascade = CascadeType.DETACH)
+  Question question;
+
+  @Setter
+  @OneToMany(cascade = CascadeType.DETACH)
+  private List<Answer> selectedAnswers;
+
   private Integer validAnswerCount;
-  @Setter private Boolean isCompleted = false;
 
   public AnsweredQuestion(Question question, Integer validAnswerCount) {
     this.question = question;

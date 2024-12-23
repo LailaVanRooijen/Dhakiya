@@ -55,4 +55,10 @@ public class QuizResultController {
   public ResponseEntity<SubmitQuizResult> submit(@PathVariable Long id) {
     return ResponseEntity.ok(quizResultService.submit(id));
   }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<QuizResult> delete(@PathVariable Long id) {
+    quizResultService.delete(id);
+    return ResponseEntity.ok().build();
+  }
 }

@@ -1,7 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.tag.dto;
 
-import com.lvr.Dhakiya_backend.entities.enums.Status;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
+import com.lvr.Dhakiya_backend.entities.tag.enums.Status;
 
 public record DetailedTag(Long id, String tag, Double percentage, Status status) {
   public static DetailedTag from(Tag tag) {

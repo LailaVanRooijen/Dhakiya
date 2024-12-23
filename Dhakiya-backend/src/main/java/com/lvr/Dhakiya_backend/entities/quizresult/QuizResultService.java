@@ -16,6 +16,7 @@ import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagRepository;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.BadRequestException;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -94,7 +95,24 @@ public class QuizResultService {
     return GetQuizResult.from(result);
   }
 
+  public void delete(Long id) {
+    QuizResult quizResult = quizResultRepository.findById(id).orElseThrow(NotFoundException::new);
+
+    quizResult.getAnsweredQuestions().forEach(answeredQuestion -> removeTagPoint(answeredQuestion));
+    quizResultRepository.deleteById(id);
+  }
+
   // Helper methods:
+  @Transactional
+  public void removeTagPoint(AnsweredQuestion answeredQuestion) {
+    if (answeredQuestion.getQuestion().getTag() == null) {
+      return;
+    }
+    Tag tag = answeredQuestion.getQuestion().getTag();
+    tag.flagNegative();
+    tagRepository.save(tag);
+  }
+
   public AnsweredQuestion copyQuestion(Question question) {
     Integer validAnswerCount = 0;
     for (Answer answer : question.getAnswers()) {

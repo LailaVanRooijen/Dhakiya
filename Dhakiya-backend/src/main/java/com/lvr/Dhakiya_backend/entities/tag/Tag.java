@@ -1,7 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.tag;
 
-import com.lvr.Dhakiya_backend.entities.enums.Status;
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
+import com.lvr.Dhakiya_backend.entities.tag.enums.Status;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -59,5 +59,9 @@ public class Tag {
 
   public void flagPositive() {
     flaggedPositiveCount++;
+  }
+
+  public void flagNegative() {
+    flaggedPositiveCount--;
   }
 }
