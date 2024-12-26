@@ -1,9 +1,0 @@
-import { LabelBar } from "../../components/labelbar/LabelBar";
-
-export const Notes = () => {
-    return (
-        <div>
-            <LabelBar label={"Notes"} />
-        </div>
-    );
-};

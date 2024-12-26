@@ -2,8 +2,8 @@ package com.lvr.Dhakiya_backend.entities.tag;
 
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
 import com.lvr.Dhakiya_backend.entities.environment.EnvironmentRepository;
-import com.lvr.Dhakiya_backend.entities.tag.dto.CreateTag;
 import com.lvr.Dhakiya_backend.entities.tag.dto.PatchTag;
+import com.lvr.Dhakiya_backend.entities.tag.dto.PostTag;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.BadRequestException;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
 import java.util.List;
@@ -16,8 +16,8 @@ public class TagService {
   private final TagRepository tagRepository;
   private final EnvironmentRepository environmentRepository;
 
-  public Tag create(CreateTag dto) {
-    Tag createdTag = CreateTag.to(dto);
+  public Tag create(PostTag dto) {
+    Tag createdTag = PostTag.to(dto);
 
     Environment environment =
         environmentRepository
@@ -41,8 +41,8 @@ public class TagService {
   public Tag patch(Long id, PatchTag patch) {
     Tag tag = tagRepository.findById(id).orElseThrow(NotFoundException::new);
 
-    if (patch.tag() != null && !patch.tag().isEmpty()) {
-      tag.setTitle(patch.tag());
+    if (patch.title() != null && !patch.title().isEmpty()) {
+      tag.setTitle(patch.title());
     }
     if (patch.isFlaggedPositive() != null) {
       if (patch.isFlaggedPositive() == true) {

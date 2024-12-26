@@ -1,7 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion;
 
 import com.lvr.Dhakiya_backend.entities.answer.Answer;
-import com.lvr.Dhakiya_backend.entities.questions.Question;
+import com.lvr.Dhakiya_backend.entities.question.Question;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.Getter;

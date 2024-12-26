@@ -2,8 +2,8 @@ package com.lvr.Dhakiya_backend.entities.tag;
 
 import static com.lvr.Dhakiya_backend.appConfig.Routes.TAGS;
 
-import com.lvr.Dhakiya_backend.entities.tag.dto.CreateTag;
 import com.lvr.Dhakiya_backend.entities.tag.dto.PatchTag;
+import com.lvr.Dhakiya_backend.entities.tag.dto.PostTag;
 import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class TagController {
   private final TagService tagService;
 
   @PostMapping
-  public ResponseEntity<Tag> create(@RequestBody CreateTag dto) {
+  public ResponseEntity<Tag> create(@RequestBody PostTag dto) {
     Tag savedTag = tagService.create(dto);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()

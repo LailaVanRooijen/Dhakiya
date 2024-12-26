@@ -2,8 +2,8 @@ package com.lvr.Dhakiya_backend.entities.environment;
 
 import static com.lvr.Dhakiya_backend.appConfig.Routes.ENVIRONMENTS;
 
-import com.lvr.Dhakiya_backend.entities.environment.dto.CreateEnvironment;
 import com.lvr.Dhakiya_backend.entities.environment.dto.PatchEnvironment;
+import com.lvr.Dhakiya_backend.entities.environment.dto.PostEnvironment;
 import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class EnvironmentController {
   public final EnvironmentService environmentService;
 
   @PostMapping
-  public ResponseEntity<Environment> create(@RequestBody CreateEnvironment dto) {
+  public ResponseEntity<Environment> create(@RequestBody PostEnvironment dto) {
     Environment savedEnvironment = environmentService.create(dto);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()

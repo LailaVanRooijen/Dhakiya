@@ -1,7 +1,7 @@
 package com.lvr.Dhakiya_backend.entities.environment;
 
-import com.lvr.Dhakiya_backend.entities.environment.dto.CreateEnvironment;
 import com.lvr.Dhakiya_backend.entities.environment.dto.PatchEnvironment;
+import com.lvr.Dhakiya_backend.entities.environment.dto.PostEnvironment;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollectionRepository;
 import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReport;
@@ -21,8 +21,8 @@ public class EnvironmentService {
   private final ProgressReportRepository progressReportRepository;
   private final NoteCollectionRepository noteCollectionRepository;
 
-  public Environment create(CreateEnvironment dto) {
-    Environment newEnvironment = CreateEnvironment.to(dto);
+  public Environment create(PostEnvironment dto) {
+    Environment newEnvironment = PostEnvironment.to(dto);
     environmentRepository.save(newEnvironment);
 
     ProgressReport progressReport = new ProgressReport();

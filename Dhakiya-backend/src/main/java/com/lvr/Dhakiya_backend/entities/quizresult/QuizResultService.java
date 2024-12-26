@@ -2,8 +2,8 @@ package com.lvr.Dhakiya_backend.entities.quizresult;
 
 import com.lvr.Dhakiya_backend.entities.answer.Answer;
 import com.lvr.Dhakiya_backend.entities.answer.AnswerRepository;
-import com.lvr.Dhakiya_backend.entities.questions.Question;
-import com.lvr.Dhakiya_backend.entities.questions.QuestionRepository;
+import com.lvr.Dhakiya_backend.entities.question.Question;
+import com.lvr.Dhakiya_backend.entities.question.QuestionRepository;
 import com.lvr.Dhakiya_backend.entities.quiz.Quiz;
 import com.lvr.Dhakiya_backend.entities.quiz.QuizRepository;
 import com.lvr.Dhakiya_backend.entities.quizresult.AnsweredQuestion.AnsweredQuestion;

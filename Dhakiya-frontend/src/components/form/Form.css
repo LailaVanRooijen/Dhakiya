@@ -1,0 +1,12 @@
+.form-wrapper {
+  margin: 9px;
+  padding: 9px;
+  border-radius: 3px;
+  background-color: var(--primary-bg-color);
+  box-shadow: var(--shadow-soft-fade);
+}
+
+.form-wrapper > button {
+  margin: 9px 0px;
+  background: var();
+}

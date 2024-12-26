@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.lvr.Dhakiya_backend.DhakiyaBackendApplicationTests" time="11.477" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\lvanr\Desktop\Projecten\Dhakiya\Dhakiya-backend\target\test-classes;C:\Users\lvanr\Desktop\Projecten\Dhakiya\Dhakiya-backend\target\classes;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.4.0\spring-boot-starter-data-jpa-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter\3.4.0\spring-boot-starter-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot\3.4.0\spring-boot-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.4.0\spring-boot-autoconfigure-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.4.0\spring-boot-starter-logging-3.4.0.jar;C:\Users\lvanr\.m2\repository\ch\qos\logback\logback-classic\1.5.12\logback-classic-1.5.12.jar;C:\Users\lvanr\.m2\repository\ch\qos\logback\logback-core\1.5.12\logback-core-1.5.12.jar;C:\Users\lvanr\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.1\log4j-to-slf4j-2.24.1.jar;C:\Users\lvanr\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.1\log4j-api-2.24.1.jar;C:\Users\lvanr\.m2\repository\org\slf4j\jul-to-slf4j\2.0.16\jul-to-slf4j-2.0.16.jar;C:\Users\lvanr\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\lvanr\.m2\repository\org\yaml\snakeyaml\2.3\snakeyaml-2.3.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.4.0\spring-boot-starter-jdbc-3.4.0.jar;C:\Users\lvanr\.m2\repository\com\zaxxer\HikariCP\5.1.0\HikariCP-5.1.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-jdbc\6.2.0\spring-jdbc-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\hibernate\orm\hibernate-core\6.6.2.Final\hibernate-core-6.6.2.Final.jar;C:\Users\lvanr\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\lvanr\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\lvanr\.m2\repository\org\hibernate\common\hibernate-commons-annotations\7.0.3.Final\hibernate-commons-annotations-7.0.3.Final.jar;C:\Users\lvanr\.m2\repository\io\smallrye\jandex\3.2.0\jandex-3.2.0.jar;C:\Users\lvanr\.m2\repository\net\bytebuddy\byte-buddy\1.15.10\byte-buddy-1.15.10.jar;C:\Users\lvanr\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\lvanr\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\lvanr\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\lvanr\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\lvanr\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\lvanr\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\lvanr\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\data\spring-data-jpa\3.4.0\spring-data-jpa-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\data\spring-data-commons\3.4.0\spring-data-commons-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-orm\6.2.0\spring-orm-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-context\6.2.0\spring-context-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-aop\6.2.0\spring-aop-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-tx\6.2.0\spring-tx-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-beans\6.2.0\spring-beans-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-aspects\6.2.0\spring-aspects-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\aspectj\aspectjweaver\1.9.22.1\aspectjweaver-1.9.22.1.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.4.0\spring-boot-starter-web-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.4.0\spring-boot-starter-json-3.4.0.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.18.1\jackson-databind-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.18.1\jackson-annotations-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.18.1\jackson-core-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.18.1\jackson-datatype-jdk8-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.18.1\jackson-datatype-jsr310-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.18.1\jackson-module-parameter-names-2.18.1.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.4.0\spring-boot-starter-tomcat-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.33\tomcat-embed-core-10.1.33.jar;C:\Users\lvanr\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.33\tomcat-embed-el-10.1.33.jar;C:\Users\lvanr\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.33\tomcat-embed-websocket-10.1.33.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-web\6.2.0\spring-web-6.2.0.jar;C:\Users\lvanr\.m2\repository\io\micrometer\micrometer-observation\1.14.1\micrometer-observation-1.14.1.jar;C:\Users\lvanr\.m2\repository\io\micrometer\micrometer-commons\1.14.1\micrometer-commons-1.14.1.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-webmvc\6.2.0\spring-webmvc-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-expression\6.2.0\spring-expression-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\projectlombok\lombok\1.18.36\lombok-1.18.36.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.4.0\spring-boot-starter-test-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-test\3.4.0\spring-boot-test-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.4.0\spring-boot-test-autoconfigure-3.4.0.jar;C:\Users\lvanr\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\lvanr\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\lvanr\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\lvanr\.m2\repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\lvanr\.m2\repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\lvanr\.m2\repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\lvanr\.m2\repository\org\assertj\assertj-core\3.26.3\assertj-core-3.26.3.jar;C:\Users\lvanr\.m2\repository\org\awaitility\awaitility\4.2.2\awaitility-4.2.2.jar;C:\Users\lvanr\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\lvanr\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.3\junit-jupiter-5.11.3.jar;C:\Users\lvanr\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.3\junit-jupiter-api-5.11.3.jar;C:\Users\lvanr\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\lvanr\.m2\repository\org\junit\platform\junit-platform-commons\1.11.3\junit-platform-commons-1.11.3.jar;C:\Users\lvanr\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\lvanr\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.3\junit-jupiter-params-5.11.3.jar;C:\Users\lvanr\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.3\junit-jupiter-engine-5.11.3.jar;C:\Users\lvanr\.m2\repository\org\junit\platform\junit-platform-engine\1.11.3\junit-platform-engine-1.11.3.jar;C:\Users\lvanr\.m2\repository\org\mockito\mockito-core\5.14.2\mockito-core-5.14.2.jar;C:\Users\lvanr\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.10\byte-buddy-agent-1.15.10.jar;C:\Users\lvanr\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\lvanr\.m2\repository\org\mockito\mockito-junit-jupiter\5.14.2\mockito-junit-jupiter-5.14.2.jar;C:\Users\lvanr\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\lvanr\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-core\6.2.0\spring-core-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-jcl\6.2.0\spring-jcl-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-test\6.2.0\spring-test-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\xmlunit\xmlunit-core\2.10.0\xmlunit-core-2.10.0.jar;C:\Users\lvanr\.m2\repository\org\xerial\sqlite-jdbc\3.47.0.0\sqlite-jdbc-3.47.0.0.jar;C:\Users\lvanr\.m2\repository\org\hibernate\orm\hibernate-community-dialects\6.6.2.Final\hibernate-community-dialects-6.6.2.Final.jar;C:\Users\lvanr\.m2\repository\org\jboss\logging\jboss-logging\3.6.1.Final\jboss-logging-3.6.1.Final.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-boot-starter\3.0.0\springfox-boot-starter-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-oas\3.0.0\springfox-oas-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\swagger\core\v3\swagger-annotations\2.1.2\swagger-annotations-2.1.2.jar;C:\Users\lvanr\.m2\repository\io\swagger\core\v3\swagger-models\2.1.2\swagger-models-2.1.2.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-spi\3.0.0\springfox-spi-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-schema\3.0.0\springfox-schema-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-core\3.0.0\springfox-core-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-spring-web\3.0.0\springfox-spring-web-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\github\classgraph\classgraph\4.8.83\classgraph-4.8.83.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-spring-webmvc\3.0.0\springfox-spring-webmvc-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-spring-webflux\3.0.0\springfox-spring-webflux-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-swagger-common\3.0.0\springfox-swagger-common-3.0.0.jar;C:\Users\lvanr\.m2\repository\org\mapstruct\mapstruct\1.3.1.Final\mapstruct-1.3.1.Final.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-data-rest\3.0.0\springfox-data-rest-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-bean-validators\3.0.0\springfox-bean-validators-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-swagger2\3.0.0\springfox-swagger2-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\swagger\swagger-annotations\1.5.20\swagger-annotations-1.5.20.jar;C:\Users\lvanr\.m2\repository\io\swagger\swagger-models\1.5.20\swagger-models-1.5.20.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-swagger-ui\3.0.0\springfox-swagger-ui-3.0.0.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\classmate\1.7.0\classmate-1.7.0.jar;C:\Users\lvanr\.m2\repository\org\slf4j\slf4j-api\2.0.16\slf4j-api-2.0.16.jar;C:\Users\lvanr\.m2\repository\org\springframework\plugin\spring-plugin-core\2.0.0.RELEASE\spring-plugin-core-2.0.0.RELEASE.jar;C:\Users\lvanr\.m2\repository\org\springframework\plugin\spring-plugin-metadata\2.0.0.RELEASE\spring-plugin-metadata-2.0.0.RELEASE.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Europe/Amsterdam"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="APPLICATION_NAME" value="Dhakiya"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="NL"/>
+    <property name="sun.boot.library.path" value="C:\Users\lvanr\.jdks\temurin-21.0.2\bin"/>
+    <property name="sun.java.command" value="C:\Users\lvanr\AppData\Local\Temp\surefire15322054124378459420\surefirebooter-20241225172206051_3.jar C:\Users\lvanr\AppData\Local\Temp\surefire15322054124378459420 2024-12-25T17-22-05_077-jvmRun1 surefire-20241225172206051_1tmp surefire_0-20241225172206051_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\lvanr\Desktop\Projecten\Dhakiya\Dhakiya-backend\target\test-classes;C:\Users\lvanr\Desktop\Projecten\Dhakiya\Dhakiya-backend\target\classes;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.4.0\spring-boot-starter-data-jpa-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter\3.4.0\spring-boot-starter-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot\3.4.0\spring-boot-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.4.0\spring-boot-autoconfigure-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.4.0\spring-boot-starter-logging-3.4.0.jar;C:\Users\lvanr\.m2\repository\ch\qos\logback\logback-classic\1.5.12\logback-classic-1.5.12.jar;C:\Users\lvanr\.m2\repository\ch\qos\logback\logback-core\1.5.12\logback-core-1.5.12.jar;C:\Users\lvanr\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.1\log4j-to-slf4j-2.24.1.jar;C:\Users\lvanr\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.1\log4j-api-2.24.1.jar;C:\Users\lvanr\.m2\repository\org\slf4j\jul-to-slf4j\2.0.16\jul-to-slf4j-2.0.16.jar;C:\Users\lvanr\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\lvanr\.m2\repository\org\yaml\snakeyaml\2.3\snakeyaml-2.3.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.4.0\spring-boot-starter-jdbc-3.4.0.jar;C:\Users\lvanr\.m2\repository\com\zaxxer\HikariCP\5.1.0\HikariCP-5.1.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-jdbc\6.2.0\spring-jdbc-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\hibernate\orm\hibernate-core\6.6.2.Final\hibernate-core-6.6.2.Final.jar;C:\Users\lvanr\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\lvanr\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\lvanr\.m2\repository\org\hibernate\common\hibernate-commons-annotations\7.0.3.Final\hibernate-commons-annotations-7.0.3.Final.jar;C:\Users\lvanr\.m2\repository\io\smallrye\jandex\3.2.0\jandex-3.2.0.jar;C:\Users\lvanr\.m2\repository\net\bytebuddy\byte-buddy\1.15.10\byte-buddy-1.15.10.jar;C:\Users\lvanr\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\lvanr\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\lvanr\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\lvanr\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\lvanr\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\lvanr\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\lvanr\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\data\spring-data-jpa\3.4.0\spring-data-jpa-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\data\spring-data-commons\3.4.0\spring-data-commons-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-orm\6.2.0\spring-orm-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-context\6.2.0\spring-context-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-aop\6.2.0\spring-aop-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-tx\6.2.0\spring-tx-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-beans\6.2.0\spring-beans-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-aspects\6.2.0\spring-aspects-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\aspectj\aspectjweaver\1.9.22.1\aspectjweaver-1.9.22.1.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.4.0\spring-boot-starter-web-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.4.0\spring-boot-starter-json-3.4.0.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.18.1\jackson-databind-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.18.1\jackson-annotations-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.18.1\jackson-core-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.18.1\jackson-datatype-jdk8-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.18.1\jackson-datatype-jsr310-2.18.1.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.18.1\jackson-module-parameter-names-2.18.1.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.4.0\spring-boot-starter-tomcat-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.33\tomcat-embed-core-10.1.33.jar;C:\Users\lvanr\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.33\tomcat-embed-el-10.1.33.jar;C:\Users\lvanr\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.33\tomcat-embed-websocket-10.1.33.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-web\6.2.0\spring-web-6.2.0.jar;C:\Users\lvanr\.m2\repository\io\micrometer\micrometer-observation\1.14.1\micrometer-observation-1.14.1.jar;C:\Users\lvanr\.m2\repository\io\micrometer\micrometer-commons\1.14.1\micrometer-commons-1.14.1.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-webmvc\6.2.0\spring-webmvc-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-expression\6.2.0\spring-expression-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\projectlombok\lombok\1.18.36\lombok-1.18.36.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.4.0\spring-boot-starter-test-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-test\3.4.0\spring-boot-test-3.4.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.4.0\spring-boot-test-autoconfigure-3.4.0.jar;C:\Users\lvanr\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\lvanr\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\lvanr\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\lvanr\.m2\repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\lvanr\.m2\repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\lvanr\.m2\repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\lvanr\.m2\repository\org\assertj\assertj-core\3.26.3\assertj-core-3.26.3.jar;C:\Users\lvanr\.m2\repository\org\awaitility\awaitility\4.2.2\awaitility-4.2.2.jar;C:\Users\lvanr\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\lvanr\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.3\junit-jupiter-5.11.3.jar;C:\Users\lvanr\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.3\junit-jupiter-api-5.11.3.jar;C:\Users\lvanr\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\lvanr\.m2\repository\org\junit\platform\junit-platform-commons\1.11.3\junit-platform-commons-1.11.3.jar;C:\Users\lvanr\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\lvanr\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.3\junit-jupiter-params-5.11.3.jar;C:\Users\lvanr\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.3\junit-jupiter-engine-5.11.3.jar;C:\Users\lvanr\.m2\repository\org\junit\platform\junit-platform-engine\1.11.3\junit-platform-engine-1.11.3.jar;C:\Users\lvanr\.m2\repository\org\mockito\mockito-core\5.14.2\mockito-core-5.14.2.jar;C:\Users\lvanr\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.10\byte-buddy-agent-1.15.10.jar;C:\Users\lvanr\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\lvanr\.m2\repository\org\mockito\mockito-junit-jupiter\5.14.2\mockito-junit-jupiter-5.14.2.jar;C:\Users\lvanr\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\lvanr\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-core\6.2.0\spring-core-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-jcl\6.2.0\spring-jcl-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\springframework\spring-test\6.2.0\spring-test-6.2.0.jar;C:\Users\lvanr\.m2\repository\org\xmlunit\xmlunit-core\2.10.0\xmlunit-core-2.10.0.jar;C:\Users\lvanr\.m2\repository\org\xerial\sqlite-jdbc\3.47.0.0\sqlite-jdbc-3.47.0.0.jar;C:\Users\lvanr\.m2\repository\org\hibernate\orm\hibernate-community-dialects\6.6.2.Final\hibernate-community-dialects-6.6.2.Final.jar;C:\Users\lvanr\.m2\repository\org\jboss\logging\jboss-logging\3.6.1.Final\jboss-logging-3.6.1.Final.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-boot-starter\3.0.0\springfox-boot-starter-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-oas\3.0.0\springfox-oas-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\swagger\core\v3\swagger-annotations\2.1.2\swagger-annotations-2.1.2.jar;C:\Users\lvanr\.m2\repository\io\swagger\core\v3\swagger-models\2.1.2\swagger-models-2.1.2.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-spi\3.0.0\springfox-spi-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-schema\3.0.0\springfox-schema-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-core\3.0.0\springfox-core-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-spring-web\3.0.0\springfox-spring-web-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\github\classgraph\classgraph\4.8.83\classgraph-4.8.83.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-spring-webmvc\3.0.0\springfox-spring-webmvc-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-spring-webflux\3.0.0\springfox-spring-webflux-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-swagger-common\3.0.0\springfox-swagger-common-3.0.0.jar;C:\Users\lvanr\.m2\repository\org\mapstruct\mapstruct\1.3.1.Final\mapstruct-1.3.1.Final.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-data-rest\3.0.0\springfox-data-rest-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-bean-validators\3.0.0\springfox-bean-validators-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-swagger2\3.0.0\springfox-swagger2-3.0.0.jar;C:\Users\lvanr\.m2\repository\io\swagger\swagger-annotations\1.5.20\swagger-annotations-1.5.20.jar;C:\Users\lvanr\.m2\repository\io\swagger\swagger-models\1.5.20\swagger-models-1.5.20.jar;C:\Users\lvanr\.m2\repository\io\springfox\springfox-swagger-ui\3.0.0\springfox-swagger-ui-3.0.0.jar;C:\Users\lvanr\.m2\repository\com\fasterxml\classmate\1.7.0\classmate-1.7.0.jar;C:\Users\lvanr\.m2\repository\org\slf4j\slf4j-api\2.0.16\slf4j-api-2.0.16.jar;C:\Users\lvanr\.m2\repository\org\springframework\plugin\spring-plugin-core\2.0.0.RELEASE\spring-plugin-core-2.0.0.RELEASE.jar;C:\Users\lvanr\.m2\repository\org\springframework\plugin\spring-plugin-metadata\2.0.0.RELEASE\spring-plugin-metadata-2.0.0.RELEASE.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\lvanr"/>
+    <property name="user.language" value="nl"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-01-16"/>
+    <property name="java.home" value="C:\Users\lvanr\.jdks\temurin-21.0.2"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\lvanr\Desktop\Projecten\Dhakiya\Dhakiya-backend"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="C:\Users\lvanr\AppData\Local\Temp\surefire15322054124378459420\surefirebooter-20241225172206051_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.2+13-LTS"/>
+    <property name="user.name" value="lvanr"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-21.0.2+13"/>
+    <property name="localRepository" value="C:\Users\lvanr\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\lvanr\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2024.1"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="java.version" value="21.0.2"/>
+    <property name="user.dir" value="C:\Users\lvanr\Desktop\Projecten\Dhakiya\Dhakiya-backend"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="12060"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\lvanr\.jdks\temurin-21.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PostgreSQL\15\bin;C:\Users\lvanr\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Calibre2\;C:\Users\lvanr\AppData\Local\Microsoft\WindowsApps;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Users\lvanr\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\lvanr\AppData\Local\Microsoft\WindowsApps;C:\Program Files\PostgreSQL\15;C:\Users\lvanr\AppData\Local\GitHubDesktop\bin;C:\Users\lvanr\AppData\Roaming\npm;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="21.0.2+13-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[Dhakiya] "/>
+  </properties>
+  <testcase name="contextLoads" classname="com.lvr.Dhakiya_backend.DhakiyaBackendApplicationTests" time="0.538">
+    <system-out><![CDATA[17:22:07.343 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.lvr.Dhakiya_backend.DhakiyaBackendApplicationTests]: DhakiyaBackendApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:22:07.500 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.lvr.Dhakiya_backend.DhakiyaBackendApplication for test class com.lvr.Dhakiya_backend.DhakiyaBackendApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.0)
+
+2024-12-25T17:22:08.102+01:00  INFO 12060 --- [Dhakiya] [           main] c.l.D.DhakiyaBackendApplicationTests     : Starting DhakiyaBackendApplicationTests using Java 21.0.2 with PID 12060 (started by lvanr in C:\Users\lvanr\Desktop\Projecten\Dhakiya\Dhakiya-backend)
+2024-12-25T17:22:08.103+01:00  INFO 12060 --- [Dhakiya] [           main] c.l.D.DhakiyaBackendApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2024-12-25T17:22:08.939+01:00  INFO 12060 --- [Dhakiya] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-25T17:22:09.087+01:00  INFO 12060 --- [Dhakiya] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 132 ms. Found 13 JPA repository interfaces.
+2024-12-25T17:22:09.652+01:00  INFO 12060 --- [Dhakiya] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-25T17:22:09.734+01:00  INFO 12060 --- [Dhakiya] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.2.Final
+2024-12-25T17:22:09.793+01:00  INFO 12060 --- [Dhakiya] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-25T17:22:10.181+01:00  INFO 12060 --- [Dhakiya] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-25T17:22:10.223+01:00  INFO 12060 --- [Dhakiya] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-25T17:22:10.390+01:00  INFO 12060 --- [Dhakiya] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@379f9555
+2024-12-25T17:22:10.393+01:00  INFO 12060 --- [Dhakiya] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-25T17:22:10.436+01:00  INFO 12060 --- [Dhakiya] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 3.47
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+Hibernate: create table HTE_progress_report(rn_ integer not null, environment_id bigint, id bigint, hib_sess_id char(36) not null, primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_answered_question(rn_ integer not null, valid_answer_count integer, id bigint, question_id bigint, hib_sess_id char(36) not null, primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_quiz(is_final boolean, rn_ integer not null, size integer, id bigint, quiz_collection_id bigint, hib_sess_id char(36) not null, title varchar(255), primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_note(rn_ integer not null, id bigint, note_collection_id bigint, tag_id bigint, hib_sess_id char(36) not null, content varchar(500), title varchar(255), primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_flashcard(created_on date, last_seen date, minimum_display_count integer, rn_ integer not null, score_points integer, seen_count integer, flashcard_deck_id bigint, id bigint, tag_id bigint, hib_sess_id char(36) not null, content varchar(255), title varchar(255), primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_environment(rn_ integer not null, id bigint, hib_sess_id char(36) not null, title varchar(255), primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_quiz_result(created_on date, is_completed boolean, points integer, rn_ integer not null, id bigint, quiz_id bigint, hib_sess_id char(36) not null, primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_flashcard_deck(rn_ integer not null, environment_id bigint, id bigint, hib_sess_id char(36) not null, title varchar(255), primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_answer(is_correct boolean, rn_ integer not null, id bigint, hib_sess_id char(36) not null, answer varchar(255), primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_question(answer_count integer, rn_ integer not null, id bigint, quiz_id bigint, tag_id bigint, hib_sess_id char(36) not null, question varchar(255), primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_tag(flagged_positive_count integer, rn_ integer not null, seen_count integer, environment_id bigint, id bigint, hib_sess_id char(36) not null, title varchar(255), primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_quiz_collection(rn_ integer not null, environment_id bigint, id bigint, hib_sess_id char(36) not null, title varchar(255), primary key (rn_, hib_sess_id))
+Hibernate: create table HTE_note_collection(rn_ integer not null, environment_id bigint, id bigint, hib_sess_id char(36) not null, primary key (rn_, hib_sess_id))
+2024-12-25T17:22:11.568+01:00  INFO 12060 --- [Dhakiya] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists answer
+Hibernate: drop table if exists answer_seq
+Hibernate: drop table if exists answered_question_seq
+Hibernate: drop table if exists answered_question
+Hibernate: drop table if exists answered_question_selected_answers
+Hibernate: drop table if exists environment
+Hibernate: drop table if exists environment_seq
+Hibernate: drop table if exists flashcard
+Hibernate: drop table if exists flashcard_deck_seq
+Hibernate: drop table if exists flashcard_seq
+Hibernate: drop table if exists flashcard_deck
+Hibernate: drop table if exists note
+Hibernate: drop table if exists note_collection_seq
+Hibernate: drop table if exists note_seq
+Hibernate: drop table if exists note_collection
+Hibernate: drop table if exists progress_report_seq
+Hibernate: drop table if exists progress_report
+Hibernate: drop table if exists progress_report_tags
+Hibernate: drop table if exists question
+Hibernate: drop table if exists question_answers
+Hibernate: drop table if exists question_seq
+Hibernate: drop table if exists quiz
+Hibernate: drop table if exists quiz_collection_seq
+Hibernate: drop table if exists quiz_result_seq
+Hibernate: drop table if exists quiz_seq
+Hibernate: drop table if exists quiz_collection
+Hibernate: drop table if exists quiz_result
+Hibernate: drop table if exists quiz_result_answered_questions
+Hibernate: drop table if exists tag
+Hibernate: drop table if exists tag_seq
+Hibernate: create table answer (is_correct boolean, id bigint not null, answer varchar(255), primary key (id))
+Hibernate: create table answer_seq (next_val bigint)
+Hibernate: insert into answer_seq values ( 1 )
+Hibernate: create table answered_question_seq (next_val bigint)
+Hibernate: insert into answered_question_seq values ( 1 )
+Hibernate: create table answered_question (valid_answer_count integer, id bigint not null, question_id bigint, primary key (id))
+Hibernate: create table answered_question_selected_answers (answered_question_id bigint not null, selected_answers_id bigint not null unique)
+Hibernate: create table environment (id bigint not null, title varchar(255), primary key (id))
+Hibernate: create table environment_seq (next_val bigint)
+Hibernate: insert into environment_seq values ( 1 )
+Hibernate: create table flashcard (created_on date, last_seen date, minimum_display_count integer, score_points integer, seen_count integer not null, flashcard_deck_id bigint, id bigint not null, tag_id bigint, content varchar(255), title varchar(255), primary key (id))
+Hibernate: create table flashcard_deck_seq (next_val bigint)
+Hibernate: insert into flashcard_deck_seq values ( 1 )
+Hibernate: create table flashcard_seq (next_val bigint)
+Hibernate: insert into flashcard_seq values ( 1 )
+Hibernate: create table flashcard_deck (environment_id bigint, id bigint not null, title varchar(255), primary key (id))
+Hibernate: create table note (id bigint not null, note_collection_id bigint, tag_id bigint, content varchar(500), title varchar(255), primary key (id))
+Hibernate: create table note_collection_seq (next_val bigint)
+Hibernate: insert into note_collection_seq values ( 1 )
+Hibernate: create table note_seq (next_val bigint)
+Hibernate: insert into note_seq values ( 1 )
+Hibernate: create table note_collection (environment_id bigint unique, id bigint not null, primary key (id))
+Hibernate: create table progress_report_seq (next_val bigint)
+Hibernate: insert into progress_report_seq values ( 1 )
+Hibernate: create table progress_report (environment_id bigint unique, id bigint not null, primary key (id))
+Hibernate: create table progress_report_tags (progress_report_id bigint not null, tags_id bigint not null unique)
+Hibernate: create table question (answer_count integer, id bigint not null, quiz_id bigint, tag_id bigint, question varchar(255), primary key (id))
+Hibernate: create table question_answers (answers_id bigint not null unique, question_id bigint not null)
+Hibernate: create table question_seq (next_val bigint)
+Hibernate: insert into question_seq values ( 1 )
+Hibernate: create table quiz (is_final boolean, size integer, id bigint not null, quiz_collection_id bigint, title varchar(255), primary key (id))
+Hibernate: create table quiz_collection_seq (next_val bigint)
+Hibernate: insert into quiz_collection_seq values ( 1 )
+Hibernate: create table quiz_result_seq (next_val bigint)
+Hibernate: insert into quiz_result_seq values ( 1 )
+Hibernate: create table quiz_seq (next_val bigint)
+Hibernate: insert into quiz_seq values ( 1 )
+Hibernate: create table quiz_collection (environment_id bigint, id bigint not null, title varchar(255), primary key (id))
+Hibernate: create table quiz_result (created_on date, is_completed boolean, points integer not null, id bigint not null, quiz_id bigint, primary key (id))
+Hibernate: create table quiz_result_answered_questions (answered_questions_id bigint not null unique, quiz_result_id bigint not null)
+Hibernate: create table tag (flagged_positive_count integer not null, seen_count integer not null, environment_id bigint, id bigint not null, title varchar(255), primary key (id))
+Hibernate: create table tag_seq (next_val bigint)
+Hibernate: insert into tag_seq values ( 1 )
+2024-12-25T17:22:12.771+01:00  INFO 12060 --- [Dhakiya] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-25T17:22:13.537+01:00  WARN 12060 --- [Dhakiya] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-25T17:22:13.999+01:00  INFO 12060 --- [Dhakiya] [           main] c.l.D.DhakiyaBackendApplicationTests     : Started DhakiyaBackendApplicationTests in 6.282 seconds (process running for 7.807)
+Hibernate: select next_val as id_val from environment_seq
+Hibernate: update environment_seq set next_val= ? where next_val=?
+Hibernate: insert into environment (title,id) values (?,?)
+Hibernate: select next_val as id_val from progress_report_seq
+Hibernate: update progress_report_seq set next_val= ? where next_val=?
+Hibernate: insert into progress_report (environment_id,id) values (?,?)
+Hibernate: select next_val as id_val from note_collection_seq
+Hibernate: update note_collection_seq set next_val= ? where next_val=?
+Hibernate: insert into note_collection (environment_id,id) values (?,?)
+Hibernate: select next_val as id_val from environment_seq
+Hibernate: update environment_seq set next_val= ? where next_val=?
+Hibernate: insert into environment (title,id) values (?,?)
+Hibernate: select next_val as id_val from progress_report_seq
+Hibernate: update progress_report_seq set next_val= ? where next_val=?
+Hibernate: insert into progress_report (environment_id,id) values (?,?)
+Hibernate: select next_val as id_val from note_collection_seq
+Hibernate: update note_collection_seq set next_val= ? where next_val=?
+Hibernate: insert into note_collection (environment_id,id) values (?,?)
+Hibernate: insert into environment (title,id) values (?,?)
+Hibernate: insert into progress_report (environment_id,id) values (?,?)
+Hibernate: insert into note_collection (environment_id,id) values (?,?)
+Hibernate: select e1_0.id,e1_0.title from environment e1_0
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select next_val as id_val from tag_seq
+Hibernate: update tag_seq set next_val= ? where next_val=?
+Hibernate: insert into tag (environment_id,flagged_positive_count,seen_count,title,id) values (?,?,?,?,?)
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select next_val as id_val from tag_seq
+Hibernate: update tag_seq set next_val= ? where next_val=?
+Hibernate: insert into tag (environment_id,flagged_positive_count,seen_count,title,id) values (?,?,?,?,?)
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: insert into tag (environment_id,flagged_positive_count,seen_count,title,id) values (?,?,?,?,?)
+Hibernate: select nc1_0.id,nc1_0.environment_id from note_collection nc1_0
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select t1_0.id,t1_0.environment_id,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select nc1_0.id,e1_0.id,e1_0.title from note_collection nc1_0 left join environment e1_0 on e1_0.id=nc1_0.environment_id where nc1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: select next_val as id_val from note_seq
+Hibernate: update note_seq set next_val= ? where next_val=?
+Hibernate: insert into note (content,note_collection_id,tag_id,title,id) values (?,?,?,?,?)
+Hibernate: select nc1_0.id,e1_0.id,e1_0.title from note_collection nc1_0 left join environment e1_0 on e1_0.id=nc1_0.environment_id where nc1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: select next_val as id_val from note_seq
+Hibernate: update note_seq set next_val= ? where next_val=?
+Hibernate: insert into note (content,note_collection_id,tag_id,title,id) values (?,?,?,?,?)
+Hibernate: select nc1_0.id,e1_0.id,e1_0.title from note_collection nc1_0 left join environment e1_0 on e1_0.id=nc1_0.environment_id where nc1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into note (content,note_collection_id,tag_id,title,id) values (?,?,?,?,?)
+Hibernate: select e1_0.id,e1_0.title from environment e1_0
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select next_val as id_val from flashcard_deck_seq
+Hibernate: update flashcard_deck_seq set next_val= ? where next_val=?
+Hibernate: insert into flashcard_deck (environment_id,title,id) values (?,?,?)
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select next_val as id_val from flashcard_deck_seq
+Hibernate: update flashcard_deck_seq set next_val= ? where next_val=?
+Hibernate: insert into flashcard_deck (environment_id,title,id) values (?,?,?)
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: insert into flashcard_deck (environment_id,title,id) values (?,?,?)
+Hibernate: select fd1_0.id,fd1_0.environment_id,fd1_0.title from flashcard_deck fd1_0
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select t1_0.id,t1_0.environment_id,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select fd1_0.id,e1_0.id,e1_0.title,fd1_0.title from flashcard_deck fd1_0 left join environment e1_0 on e1_0.id=fd1_0.environment_id where fd1_0.id=?
+Hibernate: select next_val as id_val from flashcard_seq
+Hibernate: update flashcard_seq set next_val= ? where next_val=?
+Hibernate: insert into flashcard (content,created_on,flashcard_deck_id,last_seen,minimum_display_count,score_points,seen_count,tag_id,title,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: select fd1_0.id,e1_0.id,e1_0.title,fd1_0.title from flashcard_deck fd1_0 left join environment e1_0 on e1_0.id=fd1_0.environment_id where fd1_0.id=?
+Hibernate: select next_val as id_val from flashcard_seq
+Hibernate: update flashcard_seq set next_val= ? where next_val=?
+Hibernate: insert into flashcard (content,created_on,flashcard_deck_id,last_seen,minimum_display_count,score_points,seen_count,tag_id,title,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: select fd1_0.id,e1_0.id,e1_0.title,fd1_0.title from flashcard_deck fd1_0 left join environment e1_0 on e1_0.id=fd1_0.environment_id where fd1_0.id=?
+Hibernate: insert into flashcard (content,created_on,flashcard_deck_id,last_seen,minimum_display_count,score_points,seen_count,tag_id,title,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: select e1_0.id,e1_0.title from environment e1_0
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select next_val as id_val from quiz_collection_seq
+Hibernate: update quiz_collection_seq set next_val= ? where next_val=?
+Hibernate: insert into quiz_collection (environment_id,title,id) values (?,?,?)
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select next_val as id_val from quiz_collection_seq
+Hibernate: update quiz_collection_seq set next_val= ? where next_val=?
+Hibernate: insert into quiz_collection (environment_id,title,id) values (?,?,?)
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: insert into quiz_collection (environment_id,title,id) values (?,?,?)
+Hibernate: select qc1_0.id,qc1_0.environment_id,qc1_0.title from quiz_collection qc1_0
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.title from environment e1_0 where e1_0.id=?
+Hibernate: select qc1_0.id,e1_0.id,e1_0.title,qc1_0.title from quiz_collection qc1_0 left join environment e1_0 on e1_0.id=qc1_0.environment_id where qc1_0.id=?
+Hibernate: select next_val as id_val from quiz_seq
+Hibernate: update quiz_seq set next_val= ? where next_val=?
+Hibernate: insert into quiz (is_final,quiz_collection_id,size,title,id) values (?,?,?,?,?)
+Hibernate: select qc1_0.id,e1_0.id,e1_0.title,qc1_0.title from quiz_collection qc1_0 left join environment e1_0 on e1_0.id=qc1_0.environment_id where qc1_0.id=?
+Hibernate: select next_val as id_val from quiz_seq
+Hibernate: update quiz_seq set next_val= ? where next_val=?
+Hibernate: insert into quiz (is_final,quiz_collection_id,size,title,id) values (?,?,?,?,?)
+Hibernate: select qc1_0.id,e1_0.id,e1_0.title,qc1_0.title from quiz_collection qc1_0 left join environment e1_0 on e1_0.id=qc1_0.environment_id where qc1_0.id=?
+Hibernate: insert into quiz (is_final,quiz_collection_id,size,title,id) values (?,?,?,?,?)
+Hibernate: select q1_0.id,q1_0.is_final,q1_0.quiz_collection_id,q1_0.size,q1_0.title from quiz q1_0
+Hibernate: select qc1_0.id,e1_0.id,e1_0.title,qc1_0.title from quiz_collection qc1_0 left join environment e1_0 on e1_0.id=qc1_0.environment_id where qc1_0.id=?
+Hibernate: select qc1_0.id,e1_0.id,e1_0.title,qc1_0.title from quiz_collection qc1_0 left join environment e1_0 on e1_0.id=qc1_0.environment_id where qc1_0.id=?
+Hibernate: select qc1_0.id,e1_0.id,e1_0.title,qc1_0.title from quiz_collection qc1_0 left join environment e1_0 on e1_0.id=qc1_0.environment_id where qc1_0.id=?
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: select next_val as id_val from answer_seq
+Hibernate: update answer_seq set next_val= ? where next_val=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: select next_val as id_val from answer_seq
+Hibernate: update answer_seq set next_val= ? where next_val=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: select next_val as id_val from question_seq
+Hibernate: update question_seq set next_val= ? where next_val=?
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: select next_val as id_val from question_seq
+Hibernate: update question_seq set next_val= ? where next_val=?
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: select next_val as id_val from answer_seq
+Hibernate: update answer_seq set next_val= ? where next_val=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: select next_val as id_val from answer_seq
+Hibernate: update answer_seq set next_val= ? where next_val=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into answer (answer,is_correct,id) values (?,?,?)
+Hibernate: insert into question (answer_count,question,quiz_id,tag_id,id) values (?,?,?,?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: insert into question_answers (question_id,answers_id) values (?,?)
+Hibernate: select q1_0.id,q1_0.is_final,q1_0.quiz_collection_id,q1_0.size,q1_0.title from quiz q1_0
+Hibernate: select qc1_0.id,e1_0.id,e1_0.title,qc1_0.title from quiz_collection qc1_0 left join environment e1_0 on e1_0.id=qc1_0.environment_id where qc1_0.id=?
+Hibernate: select qc1_0.id,e1_0.id,e1_0.title,qc1_0.title from quiz_collection qc1_0 left join environment e1_0 on e1_0.id=qc1_0.environment_id where qc1_0.id=?
+Hibernate: select qc1_0.id,e1_0.id,e1_0.title,qc1_0.title from quiz_collection qc1_0 left join environment e1_0 on e1_0.id=qc1_0.environment_id where qc1_0.id=?
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: update quiz set is_final=?,quiz_collection_id=?,size=?,title=? where id=?
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select q1_0.id,q1_0.answer_count,q1_0.question,q1_0.quiz_id,q1_0.tag_id from question q1_0 where q1_0.quiz_id=?
+Hibernate: select q1_0.id,q1_0.is_final,qc1_0.id,e1_0.id,e1_0.title,qc1_0.title,q1_0.size,q1_0.title from quiz q1_0 left join quiz_collection qc1_0 on qc1_0.id=q1_0.quiz_collection_id left join environment e1_0 on e1_0.id=qc1_0.environment_id where q1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: select t1_0.id,e1_0.id,e1_0.title,t1_0.flagged_positive_count,t1_0.seen_count,t1_0.title from tag t1_0 left join environment e1_0 on e1_0.id=t1_0.environment_id where t1_0.id=?
+Hibernate: select a1_0.question_id,a1_1.id,a1_1.answer,a1_1.is_correct from question_answers a1_0 join answer a1_1 on a1_1.id=a1_0.answers_id where a1_0.question_id=?
+Hibernate: select a1_0.question_id,a1_1.id,a1_1.answer,a1_1.is_correct from question_answers a1_0 join answer a1_1 on a1_1.id=a1_0.answers_id where a1_0.question_id=?
+Hibernate: select a1_0.question_id,a1_1.id,a1_1.answer,a1_1.is_correct from question_answers a1_0 join answer a1_1 on a1_1.id=a1_0.answers_id where a1_0.question_id=?
+Hibernate: select a1_0.question_id,a1_1.id,a1_1.answer,a1_1.is_correct from question_answers a1_0 join answer a1_1 on a1_1.id=a1_0.answers_id where a1_0.question_id=?
+Hibernate: select a1_0.question_id,a1_1.id,a1_1.answer,a1_1.is_correct from question_answers a1_0 join answer a1_1 on a1_1.id=a1_0.answers_id where a1_0.question_id=?
+Hibernate: select a1_0.question_id,a1_1.id,a1_1.answer,a1_1.is_correct from question_answers a1_0 join answer a1_1 on a1_1.id=a1_0.answers_id where a1_0.question_id=?
+Hibernate: select a1_0.question_id,a1_1.id,a1_1.answer,a1_1.is_correct from question_answers a1_0 join answer a1_1 on a1_1.id=a1_0.answers_id where a1_0.question_id=?
+Hibernate: select a1_0.question_id,a1_1.id,a1_1.answer,a1_1.is_correct from question_answers a1_0 join answer a1_1 on a1_1.id=a1_0.answers_id where a1_0.question_id=?
+Hibernate: select a1_0.question_id,a1_1.id,a1_1.answer,a1_1.is_correct from question_answers a1_0 join answer a1_1 on a1_1.id=a1_0.answers_id where a1_0.question_id=?
+Hibernate: select next_val as id_val from answered_question_seq
+Hibernate: update answered_question_seq set next_val= ? where next_val=?
+Hibernate: insert into answered_question (question_id,valid_answer_count,id) values (?,?,?)
+Hibernate: select next_val as id_val from answered_question_seq
+Hibernate: update answered_question_seq set next_val= ? where next_val=?
+Hibernate: insert into answered_question (question_id,valid_answer_count,id) values (?,?,?)
+Hibernate: insert into answered_question (question_id,valid_answer_count,id) values (?,?,?)
+Hibernate: insert into answered_question (question_id,valid_answer_count,id) values (?,?,?)
+Hibernate: insert into answered_question (question_id,valid_answer_count,id) values (?,?,?)
+Hibernate: insert into answered_question (question_id,valid_answer_count,id) values (?,?,?)
+Hibernate: insert into answered_question (question_id,valid_answer_count,id) values (?,?,?)
+Hibernate: insert into answered_question (question_id,valid_answer_count,id) values (?,?,?)
+Hibernate: insert into answered_question (question_id,valid_answer_count,id) values (?,?,?)
+Hibernate: select next_val as id_val from quiz_result_seq
+Hibernate: update quiz_result_seq set next_val= ? where next_val=?
+Hibernate: insert into quiz_result (created_on,is_completed,points,quiz_id,id) values (?,?,?,?,?)
+Hibernate: insert into quiz_result_answered_questions (quiz_result_id,answered_questions_id) values (?,?)
+Hibernate: insert into quiz_result_answered_questions (quiz_result_id,answered_questions_id) values (?,?)
+Hibernate: insert into quiz_result_answered_questions (quiz_result_id,answered_questions_id) values (?,?)
+Hibernate: insert into quiz_result_answered_questions (quiz_result_id,answered_questions_id) values (?,?)
+Hibernate: insert into quiz_result_answered_questions (quiz_result_id,answered_questions_id) values (?,?)
+Hibernate: insert into quiz_result_answered_questions (quiz_result_id,answered_questions_id) values (?,?)
+Hibernate: insert into quiz_result_answered_questions (quiz_result_id,answered_questions_id) values (?,?)
+Hibernate: insert into quiz_result_answered_questions (quiz_result_id,answered_questions_id) values (?,?)
+Hibernate: insert into quiz_result_answered_questions (quiz_result_id,answered_questions_id) values (?,?)
+]]></system-out>
+    <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\lvanr\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.10\byte-buddy-agent-1.15.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+  </testcase>
+</testsuite>

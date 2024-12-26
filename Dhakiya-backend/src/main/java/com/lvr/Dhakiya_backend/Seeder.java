@@ -3,7 +3,7 @@ package com.lvr.Dhakiya_backend;
 import com.lvr.Dhakiya_backend.entities.answer.dto.PostAnswer;
 import com.lvr.Dhakiya_backend.entities.environment.Environment;
 import com.lvr.Dhakiya_backend.entities.environment.EnvironmentService;
-import com.lvr.Dhakiya_backend.entities.environment.dto.CreateEnvironment;
+import com.lvr.Dhakiya_backend.entities.environment.dto.PostEnvironment;
 import com.lvr.Dhakiya_backend.entities.flashcard.FlashcardService;
 import com.lvr.Dhakiya_backend.entities.flashcard.dto.PostFlashcard;
 import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeck;
@@ -13,8 +13,8 @@ import com.lvr.Dhakiya_backend.entities.note.NoteService;
 import com.lvr.Dhakiya_backend.entities.note.dto.PostNote;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollectionService;
-import com.lvr.Dhakiya_backend.entities.questions.QuestionService;
-import com.lvr.Dhakiya_backend.entities.questions.dto.PostQuestion;
+import com.lvr.Dhakiya_backend.entities.question.QuestionService;
+import com.lvr.Dhakiya_backend.entities.question.dto.PostQuestion;
 import com.lvr.Dhakiya_backend.entities.quiz.Quiz;
 import com.lvr.Dhakiya_backend.entities.quiz.QuizRepository;
 import com.lvr.Dhakiya_backend.entities.quiz.QuizService;
@@ -27,7 +27,7 @@ import com.lvr.Dhakiya_backend.entities.quizresult.QuizResultService;
 import com.lvr.Dhakiya_backend.entities.quizresult.dto.PostQuizResult;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagService;
-import com.lvr.Dhakiya_backend.entities.tag.dto.CreateTag;
+import com.lvr.Dhakiya_backend.entities.tag.dto.PostTag;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -63,18 +63,18 @@ public class Seeder implements CommandLineRunner {
   }
 
   public void seedEnvironments() {
-    environmentService.create(new CreateEnvironment("OCA 21"));
-    environmentService.create(new CreateEnvironment("History"));
-    environmentService.create(new CreateEnvironment("Lyricology"));
+    environmentService.create(new PostEnvironment("OCA 21"));
+    environmentService.create(new PostEnvironment("History"));
+    environmentService.create(new PostEnvironment("Lyricology"));
   }
 
   private void seedTags() {
     List<Environment> environments = environmentService.getAll();
     if (environments.size() < 3) return;
 
-    tagService.create(new CreateTag(environments.get(0).getId(), "Primitive Datatypes"));
-    tagService.create(new CreateTag(environments.get(1).getId(), "Ancient Egypt"));
-    tagService.create(new CreateTag(environments.get(2).getId(), "Punchlines"));
+    tagService.create(new PostTag(environments.get(0).getId(), "Primitive Datatypes"));
+    tagService.create(new PostTag(environments.get(1).getId(), "Ancient Egypt"));
+    tagService.create(new PostTag(environments.get(2).getId(), "Punchlines"));
   }
 
   private void seedNotes() {
