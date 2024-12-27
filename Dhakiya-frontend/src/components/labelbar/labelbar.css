@@ -7,5 +7,5 @@
   justify-content: center;
   box-shadow: var(--shadow-box);
   font-family: var(--main-text-font);
-  background-color: var(--text);
+  background-color: var(--text-color);
 }

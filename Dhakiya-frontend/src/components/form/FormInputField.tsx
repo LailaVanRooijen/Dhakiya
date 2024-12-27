@@ -1,6 +1,6 @@
-import "./FormTextField.css";
+import "./FormInputField.css";
 
-export const FormTextField: React.FC<FormTextFieldProps> = ({
+export const FormInputField: React.FC<FormInputFieldProps> = ({
   label,
   type,
 }) => {
@@ -12,7 +12,7 @@ export const FormTextField: React.FC<FormTextFieldProps> = ({
   );
 };
 
-interface FormTextFieldProps {
+interface FormInputFieldProps {
   label: string;
   type?: string;
 }

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { GetEnvironmentResponse } from "../../../types/api";
+import { GetEnvironmentResponse } from "../../types/api";
 import "./List.css";
 
 export const List: React.FC<ListProps> = ({ list, linkTo }) => {

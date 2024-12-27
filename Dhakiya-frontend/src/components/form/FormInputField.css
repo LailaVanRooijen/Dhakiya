@@ -1,0 +1,11 @@
+.text-field-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 6px;
+  padding: 3px;
+  color: var(--text-color);
+}
+
+.text-field-wrapper > input {
+  border-radius: 3px;
+}

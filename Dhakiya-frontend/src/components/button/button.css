@@ -15,6 +15,15 @@
   font-size: medium;
 }
 
-.btn-color {
-  background-color: var(--cta-color);
+.btn-alert {
+  background-color: var(--alert-color);
+}
+
+.btn-encourage {
+  background-color: var(--encourage-color);
+}
+
+.btn-default {
+  background-color: var(--accent-color-secondary);
+  color: var(--text-contrast-color);
 }

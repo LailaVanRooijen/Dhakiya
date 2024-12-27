@@ -1,24 +1,38 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../components/button/Button";
 import { Form } from "../../components/form/Form";
-import { FormTextField } from "../../components/form/FormTextField";
+import { FormInputField } from "../../components/form/FormInputField";
 import { LabelBar } from "../../components/labelbar/LabelBar";
 import { SidebarLayout } from "../../components/layouts/sidebarlayout/SidebarLayout";
+import { List } from "../../components/list/List";
 import { useEnvironmentCtx } from "../../context/EnvironmentContext";
+import { ValidatePostEnvironment } from "../../helperfunctions/useFormValidators";
 import { AxiosClient } from "../../services/AxiosClient";
-import { GetEnvironmentResponse } from "../../types/api";
+import {
+  GetEnvironmentResponse,
+  PostEnvironmentRequest,
+} from "../../types/api";
 import "./HomePage.css";
-import { List } from "./list/List";
 
 export const HomePage = () => {
+  const [showForm, setShowForm] = useState<boolean>(false);
   const [environments, setEnvironments] = useState<GetEnvironmentResponse[]>(
     []
   );
   const { resetEnvironmentData } = useEnvironmentCtx();
 
-  const addEnvironment = () => {
-    console.log("add");
-    // TODO make function to create new environment
+  const postEnvironment = (requestbody: PostEnvironmentRequest) => {
+    console.log(requestbody);
+    if (ValidatePostEnvironment(requestbody)) {
+      AxiosClient.post("environments", requestbody)
+        .then((response: GetEnvironmentResponse) => {
+          setEnvironments((prev) => [...prev, response]);
+          setShowForm(false);
+        })
+        .catch((error) => console.error(error));
+    } else {
+      console.error("form field is empty");
+    }
   };
 
   useEffect(() => {
@@ -43,12 +57,17 @@ export const HomePage = () => {
         }
         rightContent={
           <div>
-            <Button content="add +" handleClick={addEnvironment} />
-            <div>
-              <Form>
-                <FormTextField label={"title"} type="text" />
+            <Button
+              content={showForm ? "hide" : "+ environment"}
+              handleClick={() => {
+                setShowForm(!showForm);
+              }}
+            />
+            {showForm && (
+              <Form handleSubmit={postEnvironment}>
+                <FormInputField label={"title"} type="text" />
               </Form>
-            </div>
+            )}
           </div>
         }
       />

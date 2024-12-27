@@ -7,7 +7,7 @@ export const SidebarLayout: React.FC<SidebarLayoutProps> = ({
 }) => {
   return (
     <div className={"sidebar-layout-wrapper"}>
-      <div>{leftContent}</div>
+      <div className="left-panel">{leftContent}</div>
       <div className={"right-panel"}>{rightContent}</div>
     </div>
   );

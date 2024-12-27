@@ -4,13 +4,14 @@ body {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 /* css variables */
 :root {
   /* primary colors */
-  --text: rgb(255, 255, 255);
-  --text-contrast: #333333;
+  --text-color: rgb(255, 255, 255);
+  --text-contrast-color: #333333;
   --primary-bg-color: #ffffff;
   --primary-bg-contrast-color: #333333;
 

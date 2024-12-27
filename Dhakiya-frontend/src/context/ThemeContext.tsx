@@ -29,7 +29,7 @@ export const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
     const root = document.documentElement;
 
     root.style.setProperty("--primary-bg-color", theme.background);
-    root.style.setProperty("--text", theme.text);
+    root.style.setProperty("--text-color", theme.text);
     root.style.setProperty("--primary-bg-contrast-color", theme.contrast);
     root.style.setProperty("--text-contrast", theme.textContrast);
   }, [theme]);

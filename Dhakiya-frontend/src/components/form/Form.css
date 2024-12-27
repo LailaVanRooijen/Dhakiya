@@ -1,8 +1,6 @@
 .form-wrapper {
-  margin: 9px;
-  padding: 9px;
+  padding: 21px 9px 9px 9px;
   border-radius: 3px;
-  background-color: var(--primary-bg-color);
   box-shadow: var(--shadow-soft-fade);
 }
 

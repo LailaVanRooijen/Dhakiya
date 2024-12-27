@@ -1,15 +1,17 @@
-import { ColorOption, widthOption } from "types/enums";
+import { widthOption } from "types/ThemeColors";
 import "./button.css";
 
 export const Button: React.FC<ButtonProps> = ({
   content,
   handleClick,
-  color,
+  btnStyle,
   width,
 }) => {
   return (
     <button
-      className={`button ${color ? color : "btn-color"} ${width ? width : ""}`}
+      className={`button ${btnStyle ? btnStyle : "btn-default"} ${
+        width ? width : ""
+      }`}
       onClick={handleClick}
     >
       {content}
@@ -19,8 +21,13 @@ export const Button: React.FC<ButtonProps> = ({
 
 interface ButtonProps {
   content: string;
-  handleClick: () => void;
+  handleClick?: () => void;
   type?: string;
-  color?: ColorOption;
+  btnStyle?: BUTTON_STYLE;
   width?: widthOption;
+}
+
+export enum BUTTON_STYLE {
+  ALERT = "btn-alert",
+  ENCOURAGE = "btn-encourage",
 }

@@ -1,38 +1,38 @@
 .nav-box {
-    background-color: var(--primary-bg-color);
-    width: 60px;
-    position: sticky;
-    padding-top: 30px;
-    box-shadow: var(--shadow-soft-fade);
+  background-color: var(--primary-bg-color);
+  width: 60px;
+  position: sticky;
+  padding-top: 30px;
+  box-shadow: var(--shadow-soft-fade);
 }
 
 .nav-bar {
-    padding: 0px;
-    margin: 0px;
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .link-item {
-    min-height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-link {
-    text-decoration: none;
-    color: var(--text);
-    font-size: xx-large;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: xx-large;
 }
 
 .theme-switch {
-    min-height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
