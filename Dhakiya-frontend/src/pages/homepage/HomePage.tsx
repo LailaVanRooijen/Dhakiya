@@ -64,7 +64,10 @@ export const HomePage = () => {
               }}
             />
             {showForm && (
-              <Form handleSubmit={postEnvironment}>
+              <Form
+                formLabel="Create new environment"
+                handleSubmit={postEnvironment}
+              >
                 <FormInputField label={"title"} type="text" />
               </Form>
             )}

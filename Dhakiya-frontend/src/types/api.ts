@@ -50,6 +50,7 @@ export interface PatchEnvironmentRequest {
 export interface getNoteCollectionResponse {
   id: number;
   environment: EnvironmentBase;
+  notes: GetNoteResponse[];
 }
 
 /* ~~~ Note ~~~ */

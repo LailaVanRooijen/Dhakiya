@@ -1,11 +1,14 @@
 .text-field-wrapper {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 6px;
-  padding: 3px;
+  display: flex;
+  gap: 18px;
+  padding: 9px;
   color: var(--text-color);
 }
 
 .text-field-wrapper > input {
   border-radius: 3px;
+}
+
+.text-field-wrapper > label {
+  text-transform: capitalize;
 }

@@ -1,7 +1,27 @@
 .form-wrapper {
-  padding: 21px 9px 9px 9px;
   border-radius: 3px;
   box-shadow: var(--shadow-soft-fade);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-wrapper > h2 {
+  width: 81%;
+  padding: 9px;
+  text-align: center;
+  font-size: medium;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary-bg-contrast-color);
+}
+
+.form-wrapper > form {
+  padding: 0 21px 21px 21px;
+  display: flex;
+  gap: 9px;
+  flex-direction: column;
+  align-items: end;
 }
 
 .form-wrapper > button {

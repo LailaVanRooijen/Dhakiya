@@ -13,8 +13,8 @@ const themes = {
   dark: {
     name: "dark",
     background: "#333333",
-    text: "#ffffff",
     contrast: "#ffffff",
+    text: "#ffffff",
     textContrast: "#333333",
     primaryHoverColor: "#2e2e2e",
     primaryContrastHoverColor: "#ededed",
@@ -35,7 +35,7 @@ export const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
     root.style.setProperty("--primary-bg-color", theme.background);
     root.style.setProperty("--text-color", theme.text);
     root.style.setProperty("--primary-bg-contrast-color", theme.contrast);
-    root.style.setProperty("--text-contrast", theme.textContrast);
+    root.style.setProperty("--text-contrast-color", theme.textContrast);
     root.style.setProperty("--primary-hover-color", theme.primaryHoverColor);
     root.style.setProperty(
       "--primary-contrast-hover-color",
