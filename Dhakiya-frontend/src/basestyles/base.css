@@ -5,6 +5,7 @@ body {
   margin: 0px;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  color: var(--text-color);
 }
 
 /* css variables */
@@ -14,6 +15,8 @@ body {
   --text-contrast-color: #333333;
   --primary-bg-color: #ffffff;
   --primary-bg-contrast-color: #333333;
+  --primary-hover-color: #ededed;
+  --primary-contrast-hover-color: #2e2e2e;
 
   /* default colors */
   --alert-color: #d52941;
@@ -30,4 +33,10 @@ body {
   --shadow-soft-fade: rgba(0, 0, 0, 0.25) 0px 14px 28px,
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
   --shadow-box: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.center-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

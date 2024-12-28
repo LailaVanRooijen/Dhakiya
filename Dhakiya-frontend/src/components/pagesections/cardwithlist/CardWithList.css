@@ -1,0 +1,22 @@
+.card-with-list-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 9px 18px;
+}
+
+.card-with-list-section-wrapper > ul {
+  padding: 0px;
+  list-style: none;
+}
+
+.card-with-list-section-wrapper > ul > li {
+  cursor: pointer;
+  padding: 9px;
+  border: 2px solid var(--primary-bg-contrast-color);
+  border-radius: 3px;
+}
+
+.card-with-list-section-wrapper > ul > li:hover {
+  background-color: var(--primary-bg-contrast-color);
+  color: var(--text-contrast-color);
+}

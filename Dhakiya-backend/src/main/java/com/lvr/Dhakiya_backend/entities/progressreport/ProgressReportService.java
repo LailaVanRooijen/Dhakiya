@@ -17,14 +17,7 @@ public class ProgressReportService {
   public GetProgressReport getById(Long id) {
     ProgressReport progressReport =
         progressReportRepository.findById(id).orElseThrow(NotFoundException::new);
-    syncProgressReport(progressReport);
-    return GetProgressReport.from(progressReport);
-  }
-
-  // Helper Methods
-  public void syncProgressReport(ProgressReport progressReport) {
     List<Tag> tags = tagRepository.findByEnvironment(progressReport.getEnvironment());
-    progressReport.add(tags);
-    progressReportRepository.save(progressReport);
+    return GetProgressReport.from(progressReport, tags);
   }
 }

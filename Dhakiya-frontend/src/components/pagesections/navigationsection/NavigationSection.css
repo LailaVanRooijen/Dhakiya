@@ -1,0 +1,18 @@
+.navigation-section-container {
+  cursor: pointer;
+  box-shadow: var(--shadow-box);
+  padding: 9px 18px;
+  height: 87%;
+  border: 1px solid var(--primary-bg-contrast-color);
+  border-radius: 3px;
+}
+
+.navigation-section-container > h3 {
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--accent-color-primary);
+}
+
+.navigation-section-container:hover {
+  background-color: var(--primary-bg-contrast-color);
+  color: var(--text-contrast-color);
+}

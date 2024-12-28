@@ -1,11 +1,17 @@
 package com.lvr.Dhakiya_backend.entities.environment;
 
+import com.lvr.Dhakiya_backend.entities.environment.dto.GetEnvironment;
 import com.lvr.Dhakiya_backend.entities.environment.dto.PatchEnvironment;
 import com.lvr.Dhakiya_backend.entities.environment.dto.PostEnvironment;
+import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeck;
+import com.lvr.Dhakiya_backend.entities.flashcarddeck.FlashcardDeckRepository;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
 import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollectionRepository;
 import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReport;
 import com.lvr.Dhakiya_backend.entities.progressreport.ProgressReportRepository;
+import com.lvr.Dhakiya_backend.entities.progressreport.dto.GetProgressReport;
+import com.lvr.Dhakiya_backend.entities.quizcollection.QuizCollection;
+import com.lvr.Dhakiya_backend.entities.quizcollection.QuizCollectionRepository;
 import com.lvr.Dhakiya_backend.entities.tag.Tag;
 import com.lvr.Dhakiya_backend.entities.tag.TagRepository;
 import com.lvr.Dhakiya_backend.restadvice.exceptions.NotFoundException;
@@ -20,6 +26,8 @@ public class EnvironmentService {
   private final TagRepository tagRepository;
   private final ProgressReportRepository progressReportRepository;
   private final NoteCollectionRepository noteCollectionRepository;
+  private final FlashcardDeckRepository flashcardDeckRepository;
+  private final QuizCollectionRepository quizCollectionRepository;
 
   public Environment create(PostEnvironment dto) {
     Environment newEnvironment = PostEnvironment.to(dto);
@@ -40,8 +48,19 @@ public class EnvironmentService {
     return environmentRepository.findAll();
   }
 
-  public Environment getById(Long id) {
-    return environmentRepository.findById(id).orElseThrow(NotFoundException::new);
+  public GetEnvironment getById(Long id) {
+    Environment environment =
+        environmentRepository.findById(id).orElseThrow(NotFoundException::new);
+    NoteCollection noteCollection = noteCollectionRepository.findByEnvironment(environment);
+    List<FlashcardDeck> flashcardDecks = flashcardDeckRepository.findAllByEnvironment(environment);
+    List<QuizCollection> quizCollections =
+        quizCollectionRepository.findAllByEnvironment(environment);
+    GetProgressReport progressReport =
+        GetProgressReport.from(
+            progressReportRepository.findByEnvironment(environment),
+            tagRepository.findByEnvironment(environment));
+    return GetEnvironment.from(
+        environment, noteCollection, flashcardDecks, quizCollections, progressReport);
   }
 
   public Environment patch(Long id, PatchEnvironment patch) {

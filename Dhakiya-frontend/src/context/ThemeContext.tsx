@@ -7,6 +7,8 @@ const themes = {
     contrast: "#333333",
     text: "#333333",
     textContrast: "#ffffff",
+    primaryHoverColor: "#ededed",
+    primaryContrastHoverColor: "#2e2e2e",
   },
   dark: {
     name: "dark",
@@ -14,6 +16,8 @@ const themes = {
     text: "#ffffff",
     contrast: "#ffffff",
     textContrast: "#333333",
+    primaryHoverColor: "#2e2e2e",
+    primaryContrastHoverColor: "#ededed",
   },
 };
 
@@ -32,6 +36,11 @@ export const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
     root.style.setProperty("--text-color", theme.text);
     root.style.setProperty("--primary-bg-contrast-color", theme.contrast);
     root.style.setProperty("--text-contrast", theme.textContrast);
+    root.style.setProperty("--primary-hover-color", theme.primaryHoverColor);
+    root.style.setProperty(
+      "--primary-contrast-hover-color",
+      theme.primaryContrastHoverColor
+    );
   }, [theme]);
 
   const toggleTheme = () => {

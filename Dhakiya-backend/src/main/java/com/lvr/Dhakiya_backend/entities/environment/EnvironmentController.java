@@ -2,6 +2,7 @@ package com.lvr.Dhakiya_backend.entities.environment;
 
 import static com.lvr.Dhakiya_backend.appConfig.Routes.ENVIRONMENTS;
 
+import com.lvr.Dhakiya_backend.entities.environment.dto.GetEnvironment;
 import com.lvr.Dhakiya_backend.entities.environment.dto.PatchEnvironment;
 import com.lvr.Dhakiya_backend.entities.environment.dto.PostEnvironment;
 import java.net.URI;
@@ -40,7 +41,7 @@ public class EnvironmentController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Environment> getById(@PathVariable Long id) {
+  public ResponseEntity<GetEnvironment> getById(@PathVariable Long id) {
     return ResponseEntity.ok(environmentService.getById(id));
   }
 

@@ -3,7 +3,7 @@
 /* This file holds all the interfaces related to the backends http requests responses and bodies */
 
 /* Api Enums */
-enum Status {
+enum STATUS {
   WEAK,
   MEDIOCRE,
   GOOD,
@@ -12,7 +12,7 @@ enum Status {
   NO_DATA,
 }
 
-enum Flag {
+enum FLAG {
   CORRECT,
   INCORRECT,
   FLAGGED_EASY,
@@ -28,6 +28,13 @@ interface EnvironmentBase {
 
 export interface GetEnvironmentResponse extends EnvironmentBase {
   id: number;
+}
+
+export interface GetFullEnvironmentResponse extends GetEnvironmentResponse {
+  noteCollectionId: number;
+  flashcardDecks: GetFlashcardDeckResponse[];
+  quizCollections: GetQuizCollectionResponse[];
+  progressReport: GetProgressReportResponse;
 }
 
 export interface PostEnvironmentRequest {
@@ -92,7 +99,7 @@ interface FlashcardBase {
 export interface GetFlashcardResponse extends FlashcardBase {
   id: number;
   tag?: TagBase;
-  status: Status;
+  status: STATUS;
 }
 
 export interface PostFlashcardRequest extends FlashcardBase {
@@ -102,7 +109,7 @@ export interface PostFlashcardRequest extends FlashcardBase {
 }
 
 export interface PatchFlashcardRequest extends FlashcardBase {
-  flag?: Flag;
+  flag?: FLAG;
   tagId?: number;
 }
 
@@ -207,7 +214,9 @@ export interface PatchQuizCollectionRequest {
 export interface GetProgressReportResponse {
   id: number;
   environmentId: number;
-  tags: GetTagResponse[];
+  tags: detailedTag[];
+  strength: detailedTag;
+  weakness: detailedTag;
 }
 
 /* ~~~ Tag ~~~ */
@@ -220,8 +229,14 @@ export interface GetTagResponse extends TagBase {
   seenCount: number;
   flaggedPositiveCount: number;
   environment: GetEnvironmentResponse;
-  status: Status;
+  status: STATUS;
   percentage: number;
+}
+interface detailedTag {
+  id: number;
+  percentage: number;
+  status: STATUS;
+  title: string;
 }
 
 export interface PostTagRequest extends TagBase {

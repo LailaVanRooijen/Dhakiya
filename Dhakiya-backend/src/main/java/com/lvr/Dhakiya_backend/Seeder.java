@@ -63,7 +63,7 @@ public class Seeder implements CommandLineRunner {
   }
 
   public void seedEnvironments() {
-    environmentService.create(new PostEnvironment("OCA 21"));
+    environmentService.create(new PostEnvironment("OCP 21"));
     environmentService.create(new PostEnvironment("History"));
     environmentService.create(new PostEnvironment("Lyricology"));
   }

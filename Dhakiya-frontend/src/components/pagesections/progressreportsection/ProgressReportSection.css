@@ -1,0 +1,31 @@
+.progress-report-section-wrapper {
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  padding: 9px 18px;
+  height: 93%;
+  gap: 9px;
+  border: 1px solid var(--primary-bg-contrast-color);
+  border-radius: 3px;
+}
+
+.progress-report-section-wrapper > div {
+  width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-report-section-header {
+  border-bottom: 2px solid var(--accent-color-primary);
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: larger;
+  font-family: var(--main-font);
+}
+
+.progress-report-section-wrapper:hover {
+  background-color: var(--primary-bg-contrast-color);
+  color: var(--text-contrast-color);
+}
