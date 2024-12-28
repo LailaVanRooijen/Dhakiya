@@ -30,4 +30,5 @@ interface ButtonProps {
 export enum BUTTON_STYLE {
   ALERT = "btn-alert",
   ENCOURAGE = "btn-encourage",
+  ACCENT = "btn-accent",
 }

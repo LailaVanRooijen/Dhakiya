@@ -62,4 +62,10 @@ public class TagService {
     tagRepository.findById(id).orElseThrow(NotFoundException::new);
     tagRepository.deleteById(id);
   }
+
+  public List<Tag> getAllByEnvironment(Long environmentId) {
+    Environment environment =
+        environmentRepository.findById(environmentId).orElseThrow(NotFoundException::new);
+    return tagRepository.findByEnvironment(environment);
+  }
 }

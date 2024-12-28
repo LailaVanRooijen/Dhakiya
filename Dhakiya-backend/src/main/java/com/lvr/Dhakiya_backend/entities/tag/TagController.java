@@ -39,6 +39,16 @@ public class TagController {
     return ResponseEntity.ok(tags);
   }
 
+  @GetMapping("/environments/{environmentId}")
+  public ResponseEntity<List<Tag>> getAllByEnvironment(@PathVariable Long environmentId) {
+    List<Tag> tags = tagService.getAllByEnvironment(environmentId);
+    if (tags.isEmpty()) {
+      return ResponseEntity.noContent().build();
+    }
+
+    return ResponseEntity.ok(tags);
+  }
+
   @GetMapping("/{id}")
   public ResponseEntity<Tag> getById(@PathVariable Long id) {
     return ResponseEntity.ok(tagService.getById(id));

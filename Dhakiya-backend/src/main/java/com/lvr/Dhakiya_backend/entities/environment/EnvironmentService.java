@@ -59,8 +59,9 @@ public class EnvironmentService {
         GetProgressReport.from(
             progressReportRepository.findByEnvironment(environment),
             tagRepository.findByEnvironment(environment));
+    List<Tag> tags = tagRepository.findByEnvironment(environment);
     return GetEnvironment.from(
-        environment, noteCollection, flashcardDecks, quizCollections, progressReport);
+        environment, noteCollection, flashcardDecks, quizCollections, progressReport, tags);
   }
 
   public Environment patch(Long id, PatchEnvironment patch) {

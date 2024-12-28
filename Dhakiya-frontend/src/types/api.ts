@@ -35,6 +35,7 @@ export interface GetFullEnvironmentResponse extends GetEnvironmentResponse {
   flashcardDecks: GetFlashcardDeckResponse[];
   quizCollections: GetQuizCollectionResponse[];
   progressReport: GetProgressReportResponse;
+  tags: GetTagResponse[];
 }
 
 export interface PostEnvironmentRequest {

@@ -18,12 +18,29 @@
 .btn-alert {
   background-color: var(--alert-color);
 }
+.btn-alert:hover {
+  background-color: var(--alert-color-hover);
+}
 
 .btn-encourage {
   background-color: var(--encourage-color);
 }
 
+.btn-encourage:hover {
+  background-color: var(--encourage-color-hover);
+}
 .btn-default {
+  background-color: var(--accent-color-primary);
+  color: var(--text-contrast-color);
+}
+.btn-default:hover {
+  background-color: var(--accent-color-primary-hover);
+}
+
+.btn-accent {
   background-color: var(--accent-color-secondary);
+}
+.btn-accent:hover {
+  background-color: var(--accent-color-secondary-hover);
   color: var(--text-contrast-color);
 }

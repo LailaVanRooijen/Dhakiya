@@ -12,6 +12,7 @@ export const CardWithList: React.FC<CardWithListProps> = ({ label, list }) => {
         {list.length != 0 ? (
           list.map((item) => (
             <li
+              key={item.id}
               onClick={() =>
                 navigate(`/${label.replace(" ", "-").toLowerCase()}/${item.id}`)
               }
@@ -20,7 +21,7 @@ export const CardWithList: React.FC<CardWithListProps> = ({ label, list }) => {
             </li>
           ))
         ) : (
-          <li>No {label} created yet</li>
+          <li>Nothing created yet</li>
         )}
       </ul>
     </div>

@@ -7,6 +7,8 @@ import com.lvr.Dhakiya_backend.entities.notecollection.NoteCollection;
 import com.lvr.Dhakiya_backend.entities.progressreport.dto.GetProgressReport;
 import com.lvr.Dhakiya_backend.entities.quizcollection.QuizCollection;
 import com.lvr.Dhakiya_backend.entities.quizcollection.dto.GetQuizCollection;
+import com.lvr.Dhakiya_backend.entities.tag.Tag;
+import com.lvr.Dhakiya_backend.entities.tag.dto.DetailedTag;
 import java.util.List;
 
 public record GetEnvironment(
@@ -15,25 +17,29 @@ public record GetEnvironment(
     Long noteCollectionId,
     List<GetFlashcardDeck> flashcardDecks,
     List<GetQuizCollection> quizCollections,
-    GetProgressReport progressReport) {
+    GetProgressReport progressReport,
+    List<DetailedTag> tags) {
   public static GetEnvironment from(
       Environment environment,
       NoteCollection noteCollection,
       List<FlashcardDeck> flashcardDecks,
       List<QuizCollection> quizCollections,
-      GetProgressReport progressReport) {
+      GetProgressReport progressReport,
+      List<Tag> tags) {
     List<GetFlashcardDeck> formattedFlashcardDecks =
         flashcardDecks.stream().map(flashcardDeck -> GetFlashcardDeck.from(flashcardDeck)).toList();
     List<GetQuizCollection> formattedQuizCollectons =
         quizCollections.stream()
             .map(quizCollection -> GetQuizCollection.from(quizCollection))
             .toList();
+    List<DetailedTag> detailedTags = tags.stream().map(tag -> DetailedTag.from(tag)).toList();
     return new GetEnvironment(
         environment.getId(),
         environment.getTitle(),
         noteCollection.getId(),
         formattedFlashcardDecks,
         formattedQuizCollectons,
-        progressReport);
+        progressReport,
+        detailedTags);
   }
 }

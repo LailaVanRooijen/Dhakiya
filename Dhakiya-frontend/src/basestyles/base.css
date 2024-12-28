@@ -20,9 +20,13 @@ body {
 
   /* default colors */
   --alert-color: #d52941;
+  --alert-color-hover: #b72338;
   --encourage-color: #3a7d44;
+  --encourage-color-hover: #306738;
   --accent-color-primary: #b3dee2;
+  --accent-color-primary-hover: #83c9d0;
   --accent-color-secondary: #ffdbda;
+  --accent-color-secondary-hover: #ffaaa8;
 
   /* fonts */
   --main-text-font: "Poppins", sans-serif;
