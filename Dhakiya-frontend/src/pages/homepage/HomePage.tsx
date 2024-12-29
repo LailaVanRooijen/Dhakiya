@@ -5,7 +5,7 @@ import { FormInputField } from "../../components/form/FormInputField";
 import { LabelBar } from "../../components/labelbar/LabelBar";
 import { SidebarLayout } from "../../components/layouts/sidebarlayout/SidebarLayout";
 import { List } from "../../components/list/List";
-import { useEnvironmentCtx } from "../../context/EnvironmentContext";
+import { ENVIRONMENT_BASE_PATH } from "../../helperfunctions/Routes";
 import { ValidatePostEnvironment } from "../../helperfunctions/useFormValidators";
 import { AxiosClient } from "../../services/AxiosClient";
 import {
@@ -19,7 +19,6 @@ export const HomePage = () => {
   const [environments, setEnvironments] = useState<GetEnvironmentResponse[]>(
     []
   );
-  const { resetEnvironmentData } = useEnvironmentCtx();
 
   const postEnvironment = (requestbody: PostEnvironmentRequest) => {
     console.log(requestbody);
@@ -41,7 +40,6 @@ export const HomePage = () => {
       .catch((error) => {
         console.log(error);
       });
-    resetEnvironmentData();
   }, []);
 
   return (
@@ -51,7 +49,7 @@ export const HomePage = () => {
         leftContent={
           <>
             {environments && (
-              <List list={environments} linkTo={"environment"} />
+              <List list={environments} linkTo={ENVIRONMENT_BASE_PATH} />
             )}
           </>
         }

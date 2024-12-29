@@ -6,19 +6,22 @@ import { Modal } from "../../components/modal/Modal";
 import { CardWithList } from "../../components/pagesections/cardwithlist/CardWithList";
 import { NavigationSection } from "../../components/pagesections/navigationsection/NavigationSection";
 import { ProgressReportSection } from "../../components/pagesections/progressreportsection/ProgressReportSection";
+import { createNoteCollectionPath } from "../../helperfunctions/Routes";
 import { AxiosClient } from "../../services/AxiosClient";
 import { GetFullEnvironmentResponse } from "../../types/api";
 import "./Environment.css";
 
 export const Environment = () => {
   const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
+  const { environmentId } = useParams<{
+    environmentId: string;
+  }>();
   const [environment, setEnvironment] =
     useState<GetFullEnvironmentResponse | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
-    AxiosClient.get(`environments/${id}`)
+    AxiosClient.get(`environments/${environmentId}`)
       .then((response: GetFullEnvironmentResponse) => {
         setEnvironment(response);
         console.log(response);
@@ -64,7 +67,10 @@ export const Environment = () => {
           <NavigationSection
             label={"Notes"}
             content={"View, create and edit notes"}
-            navToLink={`/note-collection/${environment.noteCollectionId}`}
+            navToLink={createNoteCollectionPath({
+              environmentId: environmentId,
+              noteCollectionId: environment.noteCollectionId,
+            })}
           />
         </div>
         <div className="environment-tag-panel">

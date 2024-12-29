@@ -1,3 +1,11 @@
 .note-collection-wrapper {
-  border: 2px solid white;
+  box-shadow: var(--shadow-box);
+  padding: 21px;
+}
+
+.note-collection-wrapper > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  list-style-type: none;
 }

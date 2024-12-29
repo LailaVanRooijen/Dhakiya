@@ -1,0 +1,48 @@
+.note-manager-wrapper {
+  background: #fff59d;
+  border-radius: 3px;
+  display: grid;
+  gap: 9px;
+  grid-template-rows: 0.5fr 5fr 0.5fr;
+  padding: 21px;
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.note-manager-wrapper > input,
+.note-manager-wrapper > textarea,
+.note-manager-wrapper > select {
+  font-family: var(--main-font);
+  background: #fff59d;
+  border: none;
+  resize: none;
+  padding: 12px;
+}
+.note-manager-wrapper > select {
+  width: 240px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 2px solid white;
+  border-radius: 3px;
+  padding: 0 9px;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.note-manager-wrapper > input {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.note-manager-wrapper > input:focus,
+.note-manager-wrapper > textarea:focus {
+  border: none;
+}
+
+@media screen and (min-width: 600px) {
+  .note-manager-wrapper {
+    min-width: 400px;
+    min-height: 400px;
+  }
+}
