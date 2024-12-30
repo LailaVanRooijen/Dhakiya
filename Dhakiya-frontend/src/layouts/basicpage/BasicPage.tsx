@@ -1,5 +1,5 @@
-import { useStyle } from "../../../context/ThemeContext";
-import { ToolBar } from "../../toolbar/ToolBar";
+import { ToolBar } from "../../components/toolbar/ToolBar";
+import { useStyle } from "../../context/ThemeContext";
 import "./basicPage.css";
 
 export const BasicPage: React.FC<PageProps> = ({ children }) => {

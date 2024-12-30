@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { GetFlashcardDeckResponse, GetQuizCollectionResponse } from "types/api";
-import { LabelBar } from "../../../components/labelbar/LabelBar";
+import { LabelBar } from "../../../../components/labelbar/LabelBar";
 import "./CardWithList.css";
 
 export const CardWithList: React.FC<CardWithListProps> = ({ label, list }) => {

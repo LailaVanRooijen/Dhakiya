@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { NoteManager } from "../../components/notemanager/NoteManager";
+import { NoteManager } from "./components/notemanager/NoteManager";
 import "./NotePage.css";
 
 export const NotePage = () => {

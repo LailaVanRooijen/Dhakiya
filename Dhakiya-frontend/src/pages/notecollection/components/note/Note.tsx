@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetNoteResponse } from "types/api";
-import { Button, BUTTON_STYLE } from "../../components/button/Button";
-import { Modal } from "../../components/modal/Modal";
-import { createNotePath } from "../../helperfunctions/Routes";
-import { AxiosClient } from "../../services/AxiosClient";
+import { Button, BUTTON_STYLE } from "../../../../components/button/Button";
+import { Modal } from "../../../../components/modal/Modal";
+import { AxiosClient } from "../../../../services/AxiosClient";
+import { createNotePath } from "../../../../utils/Routes";
 import "./Note.css";
 export const Note: React.FC<NoteProps> = ({ note, onNoteChange }) => {
   const { environmentId, noteCollectionId, noteId } = useParams<{
@@ -14,6 +14,10 @@ export const Note: React.FC<NoteProps> = ({ note, onNoteChange }) => {
   }>();
   const [showModal, setShowModal] = useState<boolean>(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(note);
+  }, []);
 
   const deleteNote = () => {
     AxiosClient.delete("notes", note.id)
@@ -53,14 +57,14 @@ export const Note: React.FC<NoteProps> = ({ note, onNoteChange }) => {
       <Button
         content={"X"}
         btnStyle={BUTTON_STYLE.ALERT}
-        handleClick={(e) => {
+        handleClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           setShowModal(true);
           e.stopPropagation();
         }}
       />
       <div className="note-title">{note.title}</div>
       <div className="note-content">{note.content}</div>
-      <div className="note-footer">{note.tag.title}</div>
+      <div className="note-footer">{note.tag && note.tag.title}</div>
     </div>
   );
 };

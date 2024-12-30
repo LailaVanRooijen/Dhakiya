@@ -3,12 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button, BUTTON_STYLE } from "../../components/button/Button";
 import { LabelBar } from "../../components/labelbar/LabelBar";
 import { Modal } from "../../components/modal/Modal";
-import { CardWithList } from "../../components/pagesections/cardwithlist/CardWithList";
-import { NavigationSection } from "../../components/pagesections/navigationsection/NavigationSection";
-import { ProgressReportSection } from "../../components/pagesections/progressreportsection/ProgressReportSection";
-import { createNoteCollectionPath } from "../../helperfunctions/Routes";
 import { AxiosClient } from "../../services/AxiosClient";
 import { GetFullEnvironmentResponse } from "../../types/api";
+import { createNoteCollectionPath } from "../../utils/Routes";
+import { CardWithList } from "./components/cardwithlist/CardWithList";
+import { NavigationSection } from "./components/navigationsection/NavigationSection";
+import { ProgressReportSection } from "./components/progressreportsection/ProgressReportSection";
 import "./Environment.css";
 
 export const Environment = () => {

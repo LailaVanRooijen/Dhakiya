@@ -37,7 +37,7 @@ export class AxiosClient {
     }
   }
 
-  static async delete<T>(url: string, id: number) {
+  static async delete<T>(url: string, id: number | string) {
     try {
       const response = await axios.delete(`${BASE_URL}${url}/${id}`, {
         headers: HEADERS,

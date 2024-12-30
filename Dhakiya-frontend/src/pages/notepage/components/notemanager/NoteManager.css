@@ -1,4 +1,14 @@
 .note-manager-wrapper {
+  position: relative;
+}
+
+.note-manager-wrapper > button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.note-manager-form {
   background: #fff59d;
   border-radius: 3px;
   display: grid;
@@ -9,16 +19,16 @@
   min-height: 200px;
 }
 
-.note-manager-wrapper > input,
-.note-manager-wrapper > textarea,
-.note-manager-wrapper > select {
+.note-manager-form > input,
+.note-manager-form > textarea,
+.note-manager-form > select {
   font-family: var(--main-font);
   background: #fff59d;
   border: none;
   resize: none;
   padding: 12px;
 }
-.note-manager-wrapper > select {
+.note-manager-form > select {
   width: 240px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -29,15 +39,25 @@
   color: #333333;
 }
 
-.note-manager-wrapper > input {
+.note-manager-form > input {
+  border-bottom: 2px solid #333333;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 1px;
 }
 
-.note-manager-wrapper > input:focus,
-.note-manager-wrapper > textarea:focus {
-  border: none;
+.note-manager-form > input:focus,
+.note-manager-form > textarea:focus {
+  outline: none;
+}
+
+.note-manager-redirect-tags {
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
+  justify-content: start;
+  align-items: center;
+  color: #333333;
 }
 
 @media screen and (min-width: 600px) {

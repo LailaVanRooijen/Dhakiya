@@ -3,9 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getNoteCollectionResponse } from "types/api";
 import { Button, BUTTON_STYLE } from "../../components/button/Button";
 import { HeaderBar } from "../../components/headerbar/HeaderBar";
-import { Note } from "../../components/note/Note";
-import { createNotePath } from "../../helperfunctions/Routes";
 import { AxiosClient } from "../../services/AxiosClient";
+import { createNotePath } from "../../utils/Routes";
+import { Note } from "./components/note/Note";
 import "./NoteCollection.css";
 
 export const NoteCollection = () => {
@@ -18,13 +18,12 @@ export const NoteCollection = () => {
     useState<getNoteCollectionResponse>(null);
 
   useEffect(() => {
-    console.log(environmentId, " joj:", noteCollectionId);
     AxiosClient.get(`note-collections/${noteCollectionId}`)
       .then((response: getNoteCollectionResponse) =>
         setNoteCollection(response)
       )
       .catch((error) => console.error(error));
-  }, []);
+  }, [noteCollectionId]);
 
   const handleNoteChange = (deletedNoteId: number) => {
     if (noteCollection) {
@@ -43,25 +42,26 @@ export const NoteCollection = () => {
   if (noteCollection)
     return (
       <div className="note-collection-wrapper">
-        <HeaderBar label={"Note Collection"} />
-        <Button
-          content={"new note"}
-          btnStyle={BUTTON_STYLE.ACCENT}
-          handleClick={() => {
-            console.log(
-              createNotePath({
-                environmentId: environmentId,
-                noteCollectionId: noteCollectionId,
-              })
-            );
-            navigate(
-              createNotePath({
-                environmentId: environmentId,
-                noteCollectionId: noteCollectionId,
-              })
-            );
-          }}
+        <HeaderBar
+          label={"Note Collection"}
+          option1={"TODO Filter"}
+          option2={"TODO Sort"}
+          option3={
+            <Button
+              content={"+ note"}
+              btnStyle={BUTTON_STYLE.ENCOURAGE}
+              handleClick={() => {
+                navigate(
+                  createNotePath({
+                    environmentId: environmentId,
+                    noteCollectionId: noteCollectionId,
+                  })
+                );
+              }}
+            />
+          }
         />
+
         <ul>
           {noteCollection.notes?.map((note) => (
             <li key={note.id}>

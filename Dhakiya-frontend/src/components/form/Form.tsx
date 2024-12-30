@@ -1,4 +1,4 @@
-import { Button, BUTTON_STYLE } from ".././../components/button/Button";
+import { Button, BUTTON_STYLE } from "../button/Button";
 import "./Form.css";
 
 export const Form: React.FC<FormProps> = ({

@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../components/button/Button";
 import { Form } from "../../components/form/Form";
-import { FormInputField } from "../../components/form/FormInputField";
+import { FormInputField } from "../../components/form/components/FormInputField";
 import { LabelBar } from "../../components/labelbar/LabelBar";
-import { SidebarLayout } from "../../components/layouts/sidebarlayout/SidebarLayout";
 import { List } from "../../components/list/List";
-import { ENVIRONMENT_BASE_PATH } from "../../helperfunctions/Routes";
-import { ValidatePostEnvironment } from "../../helperfunctions/useFormValidators";
+import { SidebarLayout } from "../../layouts/sidebarlayout/SidebarLayout";
 import { AxiosClient } from "../../services/AxiosClient";
 import {
   GetEnvironmentResponse,
   PostEnvironmentRequest,
 } from "../../types/api";
+import { ENVIRONMENT_BASE_PATH } from "../../utils/Routes";
+import { validateEnvironmentRequestBody } from "../../utils/useFormValidators";
 import "./HomePage.css";
 
 export const HomePage = () => {
@@ -22,7 +22,7 @@ export const HomePage = () => {
 
   const postEnvironment = (requestbody: PostEnvironmentRequest) => {
     console.log(requestbody);
-    if (ValidatePostEnvironment(requestbody)) {
+    if (validateEnvironmentRequestBody(requestbody)) {
       AxiosClient.post("environments", requestbody)
         .then((response: GetEnvironmentResponse) => {
           setEnvironments((prev) => [...prev, response]);

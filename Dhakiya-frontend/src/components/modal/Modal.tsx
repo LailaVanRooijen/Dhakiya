@@ -1,4 +1,4 @@
-import { BUTTON_STYLE, Button } from "../../components/button/Button";
+import { BUTTON_STYLE, Button } from "../button/Button";
 import "./Modal.css";
 export const Modal: React.FC<ModalProps> = ({ question, getAnswer }) => {
   return (

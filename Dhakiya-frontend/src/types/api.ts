@@ -62,7 +62,7 @@ export interface GetNoteResponse extends NoteBase {
   id: number;
   noteCollectionId: number;
   environmentId: number;
-  tag: TagBase;
+  tag: GetTagResponseBasic;
 }
 
 export interface PostNoteRequest extends NoteBase {
@@ -224,6 +224,10 @@ export interface GetProgressReportResponse {
 /* ~~~ Tag ~~~ */
 interface TagBase {
   title: string;
+}
+
+export interface GetTagResponseBasic extends TagBase {
+  id: number;
 }
 
 export interface GetTagResponse extends TagBase {

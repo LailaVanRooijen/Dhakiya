@@ -39,8 +39,8 @@
 
 .btn-accent {
   background-color: var(--accent-color-secondary);
+  color: var(--text-contrast-color);
 }
 .btn-accent:hover {
   background-color: var(--accent-color-secondary-hover);
-  color: var(--text-contrast-color);
 }
