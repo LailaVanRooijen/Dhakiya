@@ -1,4 +1,4 @@
-.nav-box {
+.tool-bar-wrapper {
   background-color: var(--primary-bg-color);
   width: 60px;
   position: sticky;
@@ -6,7 +6,7 @@
   box-shadow: var(--shadow-soft-fade);
 }
 
-.nav-bar {
+.tool-bar {
   padding: 0px;
   margin: 0px;
   list-style-type: none;
@@ -14,25 +14,4 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-}
-
-.link-item {
-  min-height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: var(--text-color);
-  font-size: xx-large;
-}
-
-.theme-switch {
-  min-height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 }

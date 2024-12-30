@@ -1,6 +1,6 @@
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import { useStyle } from "../../context/ThemeContext";
-import "./toolbar.css";
+import { useStyle } from "../../../../context/ThemeContext";
+import "./ThemeSwitch.css";
 
 export const ThemeSwitch = () => {
   const { theme, toggleTheme } = useStyle();
