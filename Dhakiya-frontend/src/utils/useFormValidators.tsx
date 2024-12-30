@@ -12,16 +12,14 @@ import {
   PostNoteRequest,
 } from "../types/api";
 
-export const validateEnvironmentRequestBody = (
-  requestbody: PostEnvironmentRequest
-) => {
+export const validateEnvironment = (requestbody: PostEnvironmentRequest) => {
   if (requestbody.title == "") {
     return false;
   }
   return true;
 };
 
-export const validateNoteRequestBody = (
+export const validateNote = (
   requestbody: PostNoteRequest | PatchNoteRequest,
   patch?: boolean
 ) => {

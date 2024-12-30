@@ -5,7 +5,10 @@ import { LabelBar } from "../../components/labelbar/LabelBar";
 import { Modal } from "../../components/modal/Modal";
 import { AxiosClient } from "../../services/AxiosClient";
 import { GetFullEnvironmentResponse } from "../../types/api";
-import { createNoteCollectionPath } from "../../utils/Routes";
+import {
+  createNoteCollectionPath,
+  createTagPagePath,
+} from "../../utils/Routes";
 import { CardWithList } from "./components/cardwithlist/CardWithList";
 import { NavigationSection } from "./components/navigationsection/NavigationSection";
 import { ProgressReportSection } from "./components/progressreportsection/ProgressReportSection";
@@ -18,7 +21,7 @@ export const Environment = () => {
   }>();
   const [environment, setEnvironment] =
     useState<GetFullEnvironmentResponse | null>(null);
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   useEffect(() => {
     AxiosClient.get(`environments/${environmentId}`)
@@ -38,14 +41,14 @@ export const Environment = () => {
   };
 
   const comfirmDelete = (answer: boolean) => {
-    setShowModal(false);
+    setIsModalVisible(false);
     if (answer) deleteEnvironment();
   };
 
   if (environment) {
     return (
       <div className="environment-wrapper">
-        {showModal && (
+        {isModalVisible && (
           <Modal
             question={"Are you sure you want to delete?"}
             getAnswer={(answer: boolean) => comfirmDelete(answer)}
@@ -59,7 +62,7 @@ export const Environment = () => {
           <Button
             content={"delete"}
             btnStyle={BUTTON_STYLE.ALERT}
-            handleClick={() => setShowModal(true)}
+            handleClick={() => setIsModalVisible(true)}
           />
           <Button content={"edit"} btnStyle={BUTTON_STYLE.ENCOURAGE} />{" "}
         </div>
@@ -77,7 +80,7 @@ export const Environment = () => {
           <NavigationSection
             label={"Tag Panel"}
             content={"View, create and edit tags"}
-            navToLink={`/tag-panel/${environment.id}`}
+            navToLink={createTagPagePath(environmentId)}
           />
         </div>
         <div className="environment-progress-report">

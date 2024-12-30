@@ -33,3 +33,7 @@ export const createNoteCollectionPath = ({
 }: NoteCollectionPathProps) => {
   return `/environments/${environmentId}/note-collections/${noteCollectionId}`;
 };
+
+export const createTagPagePath = (environmentId: number | string) => {
+  return `/environments/${environmentId}/tags`;
+};

@@ -11,7 +11,7 @@ import {
   PostEnvironmentRequest,
 } from "../../types/api";
 import { ENVIRONMENT_BASE_PATH } from "../../utils/Routes";
-import { validateEnvironmentRequestBody } from "../../utils/useFormValidators";
+import { validateEnvironment } from "../../utils/useFormValidators";
 import "./HomePage.css";
 
 export const HomePage = () => {
@@ -22,7 +22,7 @@ export const HomePage = () => {
 
   const postEnvironment = (requestbody: PostEnvironmentRequest) => {
     console.log(requestbody);
-    if (validateEnvironmentRequestBody(requestbody)) {
+    if (validateEnvironment(requestbody)) {
       AxiosClient.post("environments", requestbody)
         .then((response: GetEnvironmentResponse) => {
           setEnvironments((prev) => [...prev, response]);

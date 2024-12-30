@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  GetFullEnvironmentResponse,
   GetNoteResponse,
-  GetTagResponse,
   GetTagResponseBasic,
   PatchNoteRequest,
   PostNoteRequest,
@@ -14,8 +12,9 @@ import { AxiosClient } from "../../../../services/AxiosClient";
 import { createNoteCollectionPath } from "../../../../utils/Routes";
 import {
   getFormValues,
-  validateNoteRequestBody,
+  validateNote,
 } from "../../../../utils/useFormValidators";
+import { TagSelect } from "../tagselect/TagSelect";
 import "./NoteManager.css";
 
 export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
@@ -27,23 +26,13 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [tag, setTag] = useState<GetTagResponseBasic | null>(null);
-  const [environmentTags, setEnvironmentTags] = useState<GetTagResponse[] | []>(
-    []
-  );
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState<boolean>(true);
 
   useEffect(() => {
-    fetchTags();
     fetchNote(noteId);
+    if (noteId) setEditMode(false);
   }, [noteId]);
-
-  const fetchTags = () => {
-    AxiosClient.get(`environments/${environmentId}`)
-      .then((response: GetFullEnvironmentResponse) =>
-        setEnvironmentTags(response.tags)
-      )
-      .catch((error) => console.error(error));
-  };
 
   const fetchNote = (noteId: string | number) => {
     if (!noteId) return;
@@ -65,7 +54,7 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
     submitNote({
       requestBody: formValues,
       isPatch: Boolean(noteId),
-      isValid: validateNoteRequestBody(formValues),
+      isValid: validateNote(formValues),
     });
   };
 
@@ -75,19 +64,11 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
     const url = isPatch ? `notes/${noteId}` : `notes`;
     AxiosClient[method](url, requestBody)
       .then((response) => console.log(response))
-      .catch((error) => console.error(error));
-  };
-
-  const handleTagSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedTag = e.target.value;
-    if (selectedTag === "new-tag") {
-      console.log("Make a new tag!");
-    } else {
-      const newTag = environmentTags.find(
-        (tag: GetTagResponseBasic) => tag.id == Number(selectedTag)
-      );
-      setTag(newTag);
-    }
+      .catch((error) => console.error(error))
+      .finally(() => {
+        setEditMode(false);
+        //TODO als een note is gesaved dan werkt de delete niet meer omdat die afhankelijk is van die noteId
+      });
   };
 
   const deleteNote = () => {
@@ -117,7 +98,17 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
           getAnswer={(answer: boolean) => comfirmDelete(answer)}
         />
       )}
-      {noteId && (
+      <div className="note-manager-wrapper-btn-container">
+        {!editMode && (
+          <Button
+            content={"✏️"}
+            handleClick={() => {
+              setEditMode(true);
+            }}
+            btnStyle={BUTTON_STYLE.ENCOURAGE}
+          />
+        )}
+
         <Button
           content={"X"}
           btnStyle={BUTTON_STYLE.ALERT}
@@ -125,7 +116,7 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
             setShowModal(true);
           }}
         />
-      )}
+      </div>
       <form className="note-manager-form" onSubmit={handleSubmit}>
         <input
           name="title"
@@ -135,39 +126,32 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
           onChange={(e) => {
             setTitle(e.target.value);
           }}
+          disabled={!editMode}
         />
         <textarea
           name="content"
           value={content}
           placeholder="Write your note here..."
           onChange={(e) => setContent(e.target.value)}
+          disabled={!editMode}
         />
-        {environmentTags && (
-          <select
-            name="tagId"
-            onChange={(e) => handleTagSelect(e)}
-            value={tag ? tag.id : "default"}
-          >
-            <option value="default" disabled>
-              {tag ? tag.title : "Select a tag"}
-            </option>
-            {environmentTags.length != 0 ? (
-              environmentTags.map((environmentTag: GetTagResponse) => (
-                <option key={environmentTag.id} value={environmentTag.id}>
-                  {environmentTag.title}
-                </option>
-              ))
-            ) : (
-              <option value={"new-tag"}>Create new Tag...</option>
-            )}
-          </select>
-        )}
+
+        <TagSelect
+          environmentId={environmentId}
+          isEnabled={editMode}
+          getTag={(tag) => {
+            setTag(tag);
+          }}
+          initialValue={tag}
+        />
         <input
           type="hidden"
           name={"noteCollectionId"}
           value={noteCollectionId}
         />
-        <Button content={"save"} btnStyle={BUTTON_STYLE.ENCOURAGE} />
+        {editMode && (
+          <Button content={"save"} btnStyle={BUTTON_STYLE.ENCOURAGE} />
+        )}
       </form>
     </div>
   );

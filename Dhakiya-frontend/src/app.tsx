@@ -7,6 +7,7 @@ import { Environment } from "./pages/environment/Environment";
 import { HomePage } from "./pages/homepage/HomePage";
 import { NoteCollection } from "./pages/notecollection/NoteCollection";
 import { NotePage } from "./pages/notepage/NotePage";
+import { TagPage } from "./pages/tagpage/TagPage";
 
 const App: React.FC = () => {
   return (
@@ -30,6 +31,10 @@ const App: React.FC = () => {
             <Route
               path="/environments/:environmentId/note-collections/:noteCollectionId/notes"
               element={<NotePage />}
+            />
+            <Route
+              path="/environments/:environmentId/tags"
+              element={<TagPage />}
             />
           </Routes>
         </BasicPage>
