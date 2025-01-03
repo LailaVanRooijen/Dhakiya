@@ -30,6 +30,15 @@ public class TagService {
     return createdTag;
   }
 
+  public List<Tag> getAll(Long environmentId) {
+    if (environmentId != null) {
+      Environment environment =
+          environmentRepository.findById(environmentId).orElseThrow(NotFoundException::new);
+      return tagRepository.findByEnvironment(environment);
+    }
+    return tagRepository.findAll();
+  }
+
   public List<Tag> getAll() {
     return tagRepository.findAll();
   }
@@ -61,11 +70,5 @@ public class TagService {
   public void delete(Long id) {
     tagRepository.findById(id).orElseThrow(NotFoundException::new);
     tagRepository.deleteById(id);
-  }
-
-  public List<Tag> getAllByEnvironment(Long environmentId) {
-    Environment environment =
-        environmentRepository.findById(environmentId).orElseThrow(NotFoundException::new);
-    return tagRepository.findByEnvironment(environment);
   }
 }

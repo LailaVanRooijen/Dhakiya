@@ -4,10 +4,11 @@ const BASE_URL = "http://localhost:8080/api/v1/";
 const HEADERS = { "Content-Type": "application/json" };
 
 export class AxiosClient {
-  static async get<T>(url: string): Promise<T> {
+  static async get<T>(url: string, params?: Record<string, any>): Promise<T> {
     try {
       const response = await axios.get(`${BASE_URL}${url}`, {
         headers: HEADERS,
+        params: params,
       });
       return response.data;
     } catch (error) {

@@ -1,5 +1,4 @@
 .note-collection-wrapper {
-  box-shadow: var(--shadow-box);
   padding: 21px;
   display: flex;
   flex-direction: column;

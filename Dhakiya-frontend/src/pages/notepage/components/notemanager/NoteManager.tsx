@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  GetNoteResponse,
-  GetTagResponseBasic,
-  PatchNoteRequest,
-  PostNoteRequest,
-} from "types/api";
+import { GetNoteResponse, PatchNoteRequest, PostNoteRequest } from "types/api";
 import { Button, BUTTON_STYLE } from "../../../../components/button/Button";
 import { Modal } from "../../../../components/modal/Modal";
 import { AxiosClient } from "../../../../services/AxiosClient";
@@ -23,11 +18,17 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
     noteCollectionId: string;
   }>();
   const navigate = useNavigate();
-  const [title, setTitle] = useState<string>("");
-  const [content, setContent] = useState<string>("");
-  const [tag, setTag] = useState<GetTagResponseBasic | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [editMode, setEditMode] = useState<boolean>(true);
+
+  const [note, setNote] = useState<GetNoteResponse>({
+    environmentId: Number(environmentId),
+    noteCollectionId: Number(noteCollectionId),
+    id: null,
+    title: "",
+    content: "",
+    tag: null,
+  });
 
   useEffect(() => {
     fetchNote(noteId);
@@ -39,9 +40,7 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
     AxiosClient.get(`notes/${noteId}`)
       .then((response: GetNoteResponse) => {
         console.log(response);
-        setTitle(response.title);
-        setContent(response.content);
-        setTag(response.tag);
+        setNote(response);
       })
       .catch((error) => console.error(error));
   };
@@ -67,12 +66,11 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
       .catch((error) => console.error(error))
       .finally(() => {
         setEditMode(false);
-        //TODO als een note is gesaved dan werkt de delete niet meer omdat die afhankelijk is van die noteId
       });
   };
 
   const deleteNote = () => {
-    if (noteId) {
+    if (note.id) {
       AxiosClient.delete("notes", noteId).catch((error) =>
         console.error(error)
       );
@@ -121,18 +119,20 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
         <input
           name="title"
           type="text"
-          value={title}
+          value={note.title}
           placeholder="Title"
           onChange={(e) => {
-            setTitle(e.target.value);
+            setNote((prev) => ({ ...prev, title: e.target.value }));
           }}
           disabled={!editMode}
         />
         <textarea
           name="content"
-          value={content}
+          value={note.content}
           placeholder="Write your note here..."
-          onChange={(e) => setContent(e.target.value)}
+          onChange={(e) =>
+            setNote((prev) => ({ ...prev, content: e.target.value }))
+          }
           disabled={!editMode}
         />
 
@@ -140,9 +140,9 @@ export const NoteManager: React.FC<NoteEditorProps> = ({ noteId }) => {
           environmentId={environmentId}
           isEnabled={editMode}
           getTag={(tag) => {
-            setTag(tag);
+            setNote((prev) => ({ ...prev, tag: tag }));
           }}
-          initialValue={tag}
+          initialValue={note.tag}
         />
         <input
           type="hidden"

@@ -30,18 +30,8 @@ public class TagController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Tag>> getAll() {
-    List<Tag> tags = tagService.getAll();
-    if (tags.isEmpty()) {
-      return ResponseEntity.noContent().build();
-    }
-
-    return ResponseEntity.ok(tags);
-  }
-
-  @GetMapping("/environments/{environmentId}")
-  public ResponseEntity<List<Tag>> getAllByEnvironment(@PathVariable Long environmentId) {
-    List<Tag> tags = tagService.getAllByEnvironment(environmentId);
+  public ResponseEntity<List<Tag>> getAll(@RequestParam(required = false) Long environmentId) {
+    List<Tag> tags = tagService.getAll(environmentId);
     if (tags.isEmpty()) {
       return ResponseEntity.noContent().build();
     }
